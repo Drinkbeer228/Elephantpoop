@@ -138,13 +138,15 @@
         // Исправление прокрутки к середине страницы
         window.onload = function() {
             if (window.location.hash && window.location.hash !== '#top') {
-                window.scrollTo(0, 0); // Прокручиваем в начало
-                setTimeout(function() {
-                    var target = document.querySelector(window.location.hash);
-                    if (target) {
-                        target.scrollIntoView();
-                    }
-                }, 100); // Небольшая задержка, чтобы дать странице загрузиться
+                const targetId = window.location.hash.substring(1); // Убираем '#'
+                const target = document.getElementById(targetId);
+                if (target) {
+                    // Прокручиваем к элементу без предварительной прокрутки вверх
+                    target.scrollIntoView({ behavior: 'smooth' }); // Добавил плавную прокрутку для красоты
+                }
+            } else {
+                // Если якоря нет или это '#top', прокручиваем в начало (на всякий случай)
+                window.scrollTo(0, 0);
             }
         };
 
