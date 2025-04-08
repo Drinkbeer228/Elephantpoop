@@ -1,6 +1,7 @@
 .hero {
-    background: url('IMG_9184.jpg') no-repeat center; /* Новый путь к изображению */
+    background: url('IMG_9184.jpeg') no-repeat center;
     background-size: cover;
+    background-color: #333; /* Запасной цвет фона */
     color: white;
     padding: 80px 20px;
     display: flex;
@@ -15,17 +16,17 @@
     background-color: rgba(0, 0, 0, 0.5);
     padding: 30px;
     border-radius: 10px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Улучшает читаемость */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .hero h1 {
     font-size: 2.5em;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Уже есть в твоём коде */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero p {
     font-size: 1.5em;
     margin-bottom: 30px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Уже есть в твоём коде */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
