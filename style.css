@@ -25,10 +25,30 @@ nav a {
 
 .hero {
     padding: 50px 20px;
-    background: url('https://source.unsplash.com/1600x900/?nature,forest') no-repeat center;
-    background-size: cover;
+    background: url('C97C637C-E1CC-41BB-9668-9AB156E81040.png') no-repeat center; /* Используйте локальный путь к картинке */
+    background-size: cover; /* Растягивает картинку, сохраняя пропорции и обрезая лишнее */
     color: white;
+    text-align: center; /* Выравнивает текст и inline-block элементы по центру */
+    display: flex; /* Используем flexbox для центрирования по вертикали */
+    flex-direction: column; /* Размещаем элементы вертикально */
+    justify-content: center; /* Центрируем по вертикальной оси */
+    align-items: center; /* Центрируем по горизонтальной оси */
+    min-height: 400px; /* Задайте минимальную высоту секции, чтобы было место для контента */
 }
+
+.hero img {
+    display: block; /* Убирает лишнее пространство под картинкой */
+    max-width: 100%; /* Картинка не будет шире родительского контейнера */
+    height: auto; /* Автоматически подстраивает высоту, сохраняя пропорции */
+    margin-bottom: 20px; /* Добавляем отступ снизу от картинки до текста */
+}
+
+.hero h1,
+.hero p,
+.hero .btn {
+    text-align: center; /* Убеждаемся, что текст внутри тоже центрирован */
+}
+
 
 .btn {
     background: #4CAF50;
