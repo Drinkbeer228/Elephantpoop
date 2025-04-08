@@ -4,19 +4,21 @@ body {
     margin: 0;
     padding: 0;
     color: #333;
+    line-height: 1.6; /* Улучшил читаемость текста */
 }
 
 .container {
     width: 80%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 30px 20px; /* Увеличил вертикальный padding */
 }
 
 header {
     display: flex;
     justify-content: center;
-    padding: 10px;
-    background: #2c3e50;
+    padding: 20px 10px; /* Увеличил вертикальный padding */
+    background: #43a047; /* Более "природный" зеленый цвет */
+    border-bottom: 2px solid #388e3c; /* Добавил небольшую границу */
 }
 
 .hero {
@@ -24,67 +26,144 @@ header {
     background-size: cover;
     color: white;
     text-align: center;
-    padding: 120px 20px; /* Увеличил верхний и нижний padding для компенсации margin */
-    position: relative; /* Добавил для позиционирования .hero-content */
-    overflow: hidden; /* Скрывает выступающую часть фона */
+    padding: 150px 20px; /* Увеличил верхний и нижний padding */
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px; /* Сделал углы более округлыми */
+    margin-bottom: 30px; /* Увеличил отступ снизу */
 }
 
 .hero-content {
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 30px;
-    border-radius: 10px;
-    position: relative; /* Убедитесь, что он позиционирован относительно .hero */
-    z-index: 10; /* Обеспечивает отображение поверх фона */
+    background-color: rgba(0, 0, 0, 0.7); /* Сделал фон немного темнее */
+    padding: 40px; /* Увеличил внутренние отступы */
+    border-radius: 15px; /* Сделал углы более округлыми */
+    position: relative;
+    z-index: 10;
+}
+
+.hero h1 {
+    font-size: 2.5em; /* Увеличил размер заголовка */
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 1.2em; /* Увеличил размер параграфа */
+    margin-bottom: 30px;
 }
 
 .btn {
     display: inline-block;
-    padding: 10px 20px;
-    background: #ffcc00;
-    color: black;
+    padding: 15px 30px; /* Увеличил размер кнопки */
+    background: #ffc107; /* Желто-оранжевый цвет для акцента */
+    color: #222; /* Темный цвет текста */
     text-decoration: none;
-    border-radius: 5px;
-    transition: transform 0.2s, background-color 0.3s;
+    border-radius: 10px; /* Сделал углы более округлыми */
+    transition: transform 0.2s, background-color 0.3s ease;
+    font-size: 1.1em; /* Увеличил размер шрифта */
+    font-weight: bold; /* Сделал текст жирным */
 }
 
 .btn:hover {
-    transform: scale(1.1);
-    background-color: #ffaa00;
+    transform: scale(1.05);
+    background-color: #ffca28;
 }
 
-.about, .info, .catalog, .reviews, .contact {
+.about, .info, .catalog, .contact {
     background: white;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 10px;
+    padding: 30px; /* Увеличил внутренние отступы */
+    margin: 25px 0; /* Увеличил вертикальные отступы */
+    border-radius: 15px; /* Сделал углы более округлыми */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Добавил легкую тень */
+}
+
+.about h2, .info h2, .catalog h2, .contact h2 {
+    color: #388e3c; /* Зеленый цвет для заголовков секций */
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0; /* Добавил тонкую линию под заголовком */
+    padding-bottom: 10px;
+}
+
+.about ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.about ul li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+
+.about ul li strong {
+    font-weight: bold;
+}
+
+.about ul li::before {
+    content: "✅";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 1.2em;
+    color: #388e3c;
 }
 
 .spoiler-content {
     display: none;
-    margin-top: 10px;
-    padding: 10px;
+    margin-top: 15px;
+    padding: 20px;
     background-color: #f9f9f9;
-    border-left: 4px solid #2c3e50;
-    border-radius: 5px;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
-.spoiler-btn {
-    background-color: #2c3e50;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    display: block; /* Чтобы занимал всю ширину родителя */
-    width: 100%; /* На всякий случай, хотя display: block уже это делает */
-    text-align: left; /* Выравнивание текста слева для соответствия скриншоту */
+.spoiler-content h3 {
+    color: #388e3c;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
-.spoiler-btn:hover {
-    background-color: #1a252f;
+.spoiler-content ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-.review {
-    font-style: italic;
-    padding: 10px;
+.spoiler-content ul li {
+    margin-bottom: 8px;
+    padding-left: 25px;
+    position: relative;
 }
+
+.spoiler-content ul li::before {
+    content: "•";
+    position: absolute;
+    left: 10px;
+    color: #757575;
+}
+
+.catalog {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.product {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.product h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product p {
+    color: #757575;
+    font-size: 1.1em;
+}
+
+.contact p {
+    margin-bottom: 15px;
