@@ -5,9 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Слоновий навоз – натуральное удобрение</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Подключаем Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .hero-content a {
             cursor: pointer;
+        }
+        /* Стили для кнопок: черный текст */
+        .btn {
+            color: black !important; /* Черный цвет текста */
+            text-decoration: none; /* Убираем подчеркивание */
+        }
+        /* Стили для иконок */
+        .btn i {
+            margin-right: 8px; /* Отступ между иконкой и текстом */
         }
     </style>
 </head>
@@ -67,14 +78,15 @@
             <h2>Свяжитесь с нами</h2>
             <p>Звоните по всем вопросам:</p>
             <p><strong>📞 <a href="tel:+79264506113">+7 926 450-61-13</a></strong></p>
-            <p>Написать в WhatsApp:</p>
-            <p><strong><a href="https://wa.me/79264506113" class="btn">Написать в WhatsApp 📱</a></strong></p>
-            <p>Написать в Telegram:</p>
-            <p><strong><a href="https://t.me/OlegOrlov24" class="btn">Написать в Telegram ✈️</a></strong></p>
+            <!-- Убираем текст "Написать в WhatsApp:" и добавляем иконку -->
+            <p><strong><a href="https://wa.me/79264506113" class="btn"><i class="fab fa-whatsapp"></i> WhatsApp</a></strong></p>
+            <!-- Убираем текст "Написать в Telegram:" и добавляем иконку -->
+            <p><strong><a href="https://t.me/OlegOrlov24" class="btn"><i class="fab fa-telegram-plane"></i> Telegram</a></strong></p>
         </section>
     </div>
 
     <footer class="container">
+        <!-- Оставляем стандартный текст, но вы можете изменить его, если хотите -->
         <p>© 2025 Слоновий Навоз. Все права защищены.</p>
     </footer>
 
