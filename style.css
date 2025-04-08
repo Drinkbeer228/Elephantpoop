@@ -4,13 +4,13 @@ body {
     padding: 0;
     background-color: #f4f1e8;
     color: #3e3e3e;
-    text-align: center; /* Центрирование текста по умолчанию */
+    text-align: center;
 }
 
 .container {
-    max-width: 1200px; /* Максимальная ширина контента */
-    margin: 0 auto; /* Центрирование по горизонтали */
-    padding: 0 20px; /* Отступы по бокам для небольших экранов */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 header {
@@ -42,38 +42,42 @@ nav a {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 80vh;
 }
 
 .hero-content {
     text-align: center;
-    max-width: 800px; /* Ограничиваем ширину контента hero */
-}
-
-.hero img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 20px;
+    max-width: 800px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px;
+    border-radius: 10px;
 }
 
 .hero h1 {
     font-size: 2.5em;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero p {
-    font-size: 1.1em;
-    margin-bottom: 20px;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .btn {
     background: #4CAF50;
     color: white;
-    padding: 12px 25px;
+    padding: 15px 30px;
     text-decoration: none;
     border-radius: 5px;
-    display: inline-block; /* Чтобы работал text-align: center на родителе */
+    display: inline-block;
     font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
 }
 
 .about,
@@ -84,14 +88,14 @@ nav a {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Центрирование текста внутри секций */
+    text-align: center;
 }
 
 .catalog {
     display: flex;
     justify-content: center;
     gap: 20px;
-    flex-wrap: wrap; /* Перенос элементов на новую строку, если не хватает места */
+    flex-wrap: wrap;
 }
 
 .product {
@@ -100,8 +104,8 @@ nav a {
     border-radius: 5px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 300px; /* Задайте фиксированную ширину для карточек товара */
-    max-width: 100%; /* Адаптивность на маленьких экранах */
+    width: 300px;
+    max-width: 100%;
 }
 
 .contact p {
@@ -119,4 +123,34 @@ footer {
     padding: 20px 0;
     text-align: center;
     margin-top: 20px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 1.8em;
+    }
+
+    .hero p {
+        font-size: 1.2em;
+    }
+
+    .hero {
+        padding: 50px 20px;
+        min-height: 60vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.5em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .btn {
+        padding: 10px 20px;
+    }
 }
