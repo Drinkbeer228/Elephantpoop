@@ -24,13 +24,17 @@ header {
     background-size: cover;
     color: white;
     text-align: center;
-    padding: 80px 20px;
+    padding: 120px 20px; /* Увеличил верхний и нижний padding для компенсации margin */
+    position: relative; /* Добавил для позиционирования .hero-content */
+    overflow: hidden; /* Скрывает выступающую часть фона */
 }
 
 .hero-content {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 30px;
     border-radius: 10px;
+    position: relative; /* Убедитесь, что он позиционирован относительно .hero */
+    z-index: 10; /* Обеспечивает отображение поверх фона */
 }
 
 .btn {
@@ -71,6 +75,9 @@ header {
     padding: 10px 15px;
     cursor: pointer;
     border-radius: 5px;
+    display: block; /* Чтобы занимал всю ширину родителя */
+    width: 100%; /* На всякий случай, хотя display: block уже это делает */
+    text-align: left; /* Выравнивание текста слева для соответствия скриншоту */
 }
 
 .spoiler-btn:hover {
