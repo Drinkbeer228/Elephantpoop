@@ -45,7 +45,7 @@
                     <li>🥦 <strong>Богат питательными веществами:</strong> Содержит азот (N), фосфор (P) и калий (K).</li>
                     <li>🌾 <strong>Улучшает структуру почвы:</strong> Волокнистая текстура улучшает аэрацию и водоудержание.</li>
                     <li>🌍 <strong>Увеличивает органику:</strong> Повышает содержание органического вещества.</li>
-                    <li>🪱 <strong>Компостирование:</strong> Подходит для компоста и вермикомпоста.</li>
+                    <li>🪱 <strong>Компостиирование:</strong> Подходит для компоста и вермикомпоста.</li>
                     <li>🌿 <strong>Мягкое удобрение:</strong> Не “сжигает” растения.</li>
                     <li>🌸 <strong>Ускоряет рост:</strong> Увеличивает количество листьев.</li>
                     <li>🥕🍅 <strong>Повышает урожайность:</strong> Увеличивает урожай овощей.</li>
@@ -122,14 +122,14 @@
         <div class="spoiler">
             <button class="spoiler-btn">🐘 Откуда берётся слоновий навоз и как мы его готовим? ⬇️</button>
             <div class="spoiler-content">
-                <p>Всё просто и по-честному: слоны делают своё дело, а мы собираем. Вот как это работает:</p>
+                <p>Мы получаем наш продукт прямо от великанов природы – слонов! Всё максимально просто и естественно:</p>
                 <ul>
-                    <li><strong>Сбор:</strong> Дежурный убирает за слонами и фасует в мешки по 240 литров.</li>
-                    <li><strong>Свежий продукт:</strong> Никакой сушки – сразу от слона к вам.</li>
-                    <li><strong>Самовывоз:</strong> Местные, например цирковые, забирают мешки, если заранее попросят.</li>
-                    <li><strong>Прямо как есть:</strong> Без лишней обработки – чистая природа в каждом мешке.</li>
+                    <li><strong>Сбор:</strong> Наши специалисты аккуратно собирают свежий навоз и упаковывают его в мешки по 240 литров.</li>
+                    <li><strong>Свежий и натуральный:</strong> Никакой сушки или химии – только чистый продукт, каким его создали слоны.</li>
+                    <li><strong>Самовывоз:</strong> Для местных клиентов (например, цирков или ферм) доступен самовывоз по предварительной договоренности.</li>
+                    <li><strong>Прямо к вам:</strong> Минимальная обработка для максимальной пользы – природа в каждом мешке!</li>
                 </ul>
-                <p>Вы получаете свежий навоз, готовый к использованию по вашим правилам!</p>
+                <p>С нашим навозом ваш сад получит лучшее от слоновьей силы!</p>
             </div>
         </div>
     </div>
@@ -158,45 +158,47 @@
     </footer>
 
     <script>
-    // Обработка загрузки страницы
-    window.onload = function() {
-        if (window.location.hash && window.location.hash !== '#top') {
-            const targetId = window.location.hash.substring(1);
-            const target = document.getElementById(targetId);
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-                // Убираем хэш из URL после прокрутки
-                history.replaceState(null, null, window.location.pathname);
-            }
-        } else {
-            window.scrollTo(0, 0);
-        }
-    };
-
-    // Обработка кликов по якорным ссылкам
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault(); // Отменяем стандартное поведение
-            const sectionId = this.getAttribute('href').substring(1); // Получаем ID секции
-            if (sectionId) { // Проверяем, что ID не пустой
-                const section = document.getElementById(sectionId);
-                if (section) {
-                    section.scrollIntoView({ behavior: 'smooth' }); // Плавная прокрутка
+        // Обработка загрузки страницы
+        window.onload = function() {
+            if (window.location.hash && window.location.hash !== '#top') {
+                const targetId = window.location.hash.substring(1);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    // Убираем хэш из URL после прокрутки
+                    history.replaceState(null, null, window.location.pathname);
                 }
+            } else {
+                window.scrollTo(0, 0);
             }
-            // Убедимся, что хэш не появляется
-            history.replaceState(null, null, window.location.pathname);
-        });
-    });
+        };
 
-    // Обработка спойлеров (оставляем без изменений)
-    const spoilerButtons = document.querySelectorAll(".spoiler-btn");
-    spoilerButtons.forEach(button => {
-        button.addEventListener("click", function() {
-            const content = this.nextElementSibling;
-            if (content && content.classList.contains("spoiler-content")) content.style.display = content.style.display === "block" ? "none" : "block";
+        // Обработка кликов по якорным ссылкам
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault(); // Отменяем стандартное поведение
+                const sectionId = this.getAttribute('href').substring(1); // Получаем ID секции
+                if (sectionId) { // Проверяем, что ID не пустой
+                    const section = document.getElementById(sectionId);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' }); // Плавная прокрутка
+                    }
+                }
+                // Убедимся, что хэш не появляется
+                history.replaceState(null, null, window.location.pathname);
+            });
         });
-    });
-</script>
+
+        // Обработка спойлеров
+        const spoilerButtons = document.querySelectorAll(".spoiler-btn");
+        spoilerButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                const content = this.nextElementSibling;
+                if (content && content.classList.contains("spoiler-content")) {
+                    content.style.display = content.style.display === "block" ? "none" : "block";
+                }
+            });
+        });
+    </script>
 </body>
 </html>
