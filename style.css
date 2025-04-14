@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
@@ -13,59 +13,58 @@ body {
     padding: 30px 20px;
 }
 
-header {
-    display: flex;
-    justify-content: center;
-    padding: 20px 10px;
-    background: #43a047;
-    border-bottom: 2px solid #388e3c;
-}
-
 .hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('IMG_9184.jpeg') no-repeat center;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('IMG_9184.jpeg') no-repeat center;
     background-size: cover;
     color: white;
     text-align: center;
-    padding: 150px 20px;
+    padding: 100px 20px;
     position: relative;
     overflow: hidden;
-    border-radius: 15px;
+    border-radius: 20px;
     margin-bottom: 30px;
 }
 
 .hero-content {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px;
     border-radius: 15px;
     position: relative;
     z-index: 10;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .hero h1 {
-    font-size: 2.5em;
+    font-family: 'Pacifico', cursive;
+    font-size: 3em;
     margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero p {
-    font-size: 1.2em;
+    font-size: 1.3em;
     margin-bottom: 30px;
+    font-weight: 300;
 }
 
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     padding: 15px 30px;
-    background: #ffc107;
-    color: #222;
+    background: #8BC34A;
+    color: #fff;
     text-decoration: none;
     border-radius: 10px;
-    transition: transform 0.2s, background-color 0.3s ease;
     font-size: 1.1em;
     font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .btn:hover {
-    transform: scale(1.05);
-    background-color: #ffca28;
+    transform: translateY(-3px);
+    background-color: #7CB342;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .about, .info, .catalog, .contact {
