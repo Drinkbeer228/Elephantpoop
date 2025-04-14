@@ -158,27 +158,45 @@
     </footer>
 
     <script>
-        window.onload = function() {
-            if (window.location.hash && window.location.hash !== '#top') {
-                const targetId = window.location.hash.substring(1);
-                const target = document.getElementById(targetId);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            } else {
-                window.scrollTo(0, 0);
+    // Обработка загрузки страницы
+    window.onload = function() {
+        if (window.location.hash && window.location.hash !== '#top') {
+            const targetId = window.location.hash.substring(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+                // Убираем хэш из URL после прокрутки
+                history.replaceState(null, null, window.location.pathname);
             }
-        };
+        } else {
+            window.scrollTo(0, 0);
+        }
+    };
 
-        const spoilerButtons = document.querySelectorAll(".spoiler-btn");
-        spoilerButtons.forEach(button => {
-            button.addEventListener("click", function() {
-                const content = this.nextElementSibling;
-                if (content && content.classList.contains("spoiler-content")) {
-                    content.style.display = content.style.display === "block" ? "none" : "block";
+    // Обработка кликов по якорным ссылкам
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault(); // Отменяем стандартное поведение
+            const sectionId = this.getAttribute('href').substring(1); // Получаем ID секции
+            if (sectionId) { // Проверяем, что ID не пустой
+                const section = document.getElementById(sectionId);
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' }); // Плавная прокрутка
                 }
-            });
+            }
+            // Убедимся, что хэш не появляется
+            history.replaceState(null, null, window.location.pathname);
         });
-    </script>
+    });
+
+    // Обработка спойлеров (оставляем без изменений)
+    const spoilerButtons = document.querySelectorAll(".spoiler-btn");
+    spoilerButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            const content = this.nextElementSibling;
+            if (content && content.classList.contains("spoiler-content")) content.style.display = content.style.display === "block" ? "none" : "block";
+        });
+    });
+</script>
 </body>
 </html>
