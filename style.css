@@ -89,21 +89,20 @@ body {
 
 .about ul li {
     margin-bottom: 10px;
-    padding-left: 25px;
+    padding-left: 30px; /* Увеличиваем отступ для иконки */
     position: relative;
+}
+
+.about ul li i {
+    position: absolute;
+    left: 0;
+    top: 4px; /* Сдвигаем иконку вниз для выравнивания */
+    color: #388e3c; /* Тот же зеленый цвет */
+    font-size: 1.2em;
 }
 
 .about ul li strong {
     font-weight: bold;
-}
-
-.about ul li::before {
-    content: "✅";
-    position: absolute;
-    left: 0;
-    top: 2px;
-    font-size: 1.2em;
-    color: #388e3c;
 }
 
 .spoiler-container {
