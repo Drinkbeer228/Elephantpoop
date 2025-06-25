@@ -1,127 +1,40 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Купите слоновий навоз — экологичное органическое удобрение для сада и огорода. Доставка по России!" />
-  <meta name="keywords" content="слоновий навоз, органическое удобрение, удобрение для сада, экологичный навоз" />
-  <meta name="author" content="Elephantpoop Team" />
-  <meta name="robots" content="index, follow" /> <!-- Добавлено для SEO -->
-  <title>Слоновий Навоз - Лучшее Органическое Удобрение</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" /> <!-- Предварительное подключение для ускорения загрузки шрифтов -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Pacifico&display=swap" rel="stylesheet" />
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V1S0LH10N7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-V1S0LH10N7');
-  </script>
-</head>
-<body>
-  <header class="hero" role="banner"> <!-- Добавлен role для доступности -->
-    <div class="hero-content">
-      <h1>🐘 Сила Слонов для Вашего Сада!</h1>
-      <p>Экологичное удобрение, которое оживит ваши грядки!</p>
-      <a href="#contact" class="btn" aria-label="Заказать сейчас через форму контактов">Заказать сейчас 🐘</a>
+<!DOCTYPE html> <html lang="ru"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <meta name="description" content="Продажа слоновьего навоза фермерам в Сочи. Экологичное удобрение для вашего урожая!" /> <meta name="keywords" content="слоновий навоз, удобрение, фермеры, Сочи, органика" /> <meta name="author" content="Плодородный Слон" /> <title>Плодородный Слон - Экологичное Удобрение</title> <link rel="stylesheet" href="style.css" /> </head> <body> <header class="hero" role="banner"> <div class="hero-content"> <h1>🐘 Плодородный Слон</h1> <p>Продажа слоновьего навоза фермерам в Сочи</p> <a href="#contact" class="btn">Заказать сейчас</a> </div> </header>
+
+<main class="container"> <section id="features" class="features"> <h2>Почему выбирают нас?</h2> <div class="feature-list"> <div class="feature-item"> <h3>100% Органика</h3> <p>Наш продукт полностью натуральный и безопасный для окружающей среды.</p> </div> <div class="feature-item"> <h3>Высокая эффективность</h3> <p>Увеличивает урожайность и улучшает структуру почвы.</p> </div> <div class="feature-item"> <h3>Доставка по Сочи</h3> <p>Быстрая и удобная доставка прямо на вашу ферму.</p> </div> </div> </section>
+
+<section id="testimonials" class="testimonials">
+  <h2>Отзывы наших клиентов</h2>
+  <div class="testimonial-list">
+    <blockquote>
+      <p>Слоновий навоз от Плодородного Слона — это находка для моего сада! Урожай стал в два раза больше.</p>
+      <cite>— Иван, фермер из Сочи</cite>
+    </blockquote>
+    <blockquote>
+      <p>Экологично, удобно и эффективно. Рекомендую всем, кто заботится о своей земле.</p>
+      <cite>— Ольга, дачница</cite>
+    </blockquote>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Свяжитесь с нами</h2>
+  <form action="https://formspree.io/f/moveoqdz" method="POST">
+    <div class="form-group">
+      <label for="name">Ваше имя:</label>
+      <input id="name" type="text" name="name" required />
     </div>
-  </header>
+    <div class="form-group">
+      <label for="email">Ваш email:</label>
+      <input id="email" type="email" name="email" required />
+    </div>
+    <div class="form-group">
+      <label for="message">Ваше сообщение:</label>
+      <textarea id="message" name="message" rows="4"></textarea>
+    </div>
+    <button type="submit" class="btn">Отправить</button>
+  </form>
+</section>
 
-  <main class="container" id="main-content"> <!-- Добавлен id для прямой навигации -->
-    <nav aria-label="Основная навигация">
-      <!-- Убрал style="display: none;", так как навигация должна быть видна или управляться через CSS/JS -->
-      <ul class="nav-list">
-        <li><a href="#about">О нас</a></li>
-        <li><a href="#info">Информация</a></li>
-        <li><a href="#catalog">Каталог</a></li>
-        <li><a href="#contact">Контакты</a></li>
-      </ul>
-    </nav>
+</main>
 
-    <!-- Вставьте сюда секции about, info, catalog, reviews, telegram-channels из вашего исходного кода -->
-    <!-- Например: -->
-    <!-- <section id="about" class="about">...</section> -->
-    <!-- <section id="info" class="info">...</section> -->
-    <!-- <section id="catalog" class="catalog">...</section> -->
-    <!-- <section id="reviews" class="reviews">...</section> -->
-    <!-- <section id="telegram-channels" class="telegram-channels">...</section> -->
-
-    <section id="contact" class="contact">
-      <h2>Свяжитесь с нами</h2>
-      <p>📞 <a href="tel:+79264506113" aria-label="Позвонить по номеру +7 926 450-61-13">+7 926 450-61-13</a></p>
-      <p><a href="https://wa.me/79264506113" class="btn" aria-label="Связаться через WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp</a></p>
-      <p><a href="https://t.me/OlegOrlov24" class="btn" aria-label="Связаться через Telegram"><i class="fab fa-telegram-plane" aria-hidden="true"></i> Telegram</a></p>
-      <div class="contact-form">
-        <h3>Оставьте заявку</h3>
-        <form action="https://formspree.io/f/moveoqdz" method="POST" aria-labelledby="contact-form-title">
-          <h3 id="contact-form-title" class="visually-hidden">Форма для отправки заявки</h3> <!-- Скрытый заголовок для доступности -->
-          <div class="form-group"> <!-- Обернул поля в div для стилизации -->
-            <label for="name">Ваше имя:</label>
-            <input id="name" type="text" name="name" placeholder="Ваше имя" required aria-required="true" />
-          </div>
-          <div class="form-group">
-            <label for="phone">Ваш телефон:</label>
-            <input id="phone" type="tel" name="phone" placeholder="Ваш телефон" required aria-required="true" pattern="[0-9]{10,12}" /> <!-- Добавлен pattern для валидации -->
-          </div>
-          <div class="form-group">
-            <label for="email">Ваш email:</label>
-            <input id="email" type="email" name="email" placeholder="Ваш email" required aria-required="true" />
-          </div>
-          <div class="form-group">
-            <label for="message">Комментарий к заказу:</label>
-            <textarea id="message" name="message" placeholder="Укажите объём или вопросы" rows="4" aria-describedby="message-hint"></textarea>
-            <p id="message-hint" class="visually-hidden">Укажите желаемый объем навоза или другие вопросы</p> <!-- Подсказка для доступности -->
-          </div>
-          <button type="submit" aria-label="Отправить заявку через форму">Отправить заявку</button>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer"> <!-- Убрал класс container, так как footer имеет собственные стили -->
-    <p>© 2025 Слоновий Навоз. Все права защищены.</p>
-  </footer>
-
-  <script>
-    // Спойлеры с улучшенной доступностью
-    document.querySelectorAll('.spoiler-btn').forEach((button, index) => {
-      const content = button.nextElementSibling;
-      const contentId = `spoiler-${index}`;
-      button.setAttribute('aria-expanded', 'false');
-      button.setAttribute('aria-controls', contentId);
-      content.setAttribute('id', contentId);
-      content.setAttribute('hidden', '');
-
-      button.addEventListener('click', () => {
-        const isExpanded = button.getAttribute('aria-expanded') === 'true';
-        button.setAttribute('aria-expanded', !isExpanded);
-        content.hidden = isExpanded;
-        content.classList.toggle('active', !isExpanded);
-      });
-    });
-
-    // Плавная прокрутка с оптимизацией
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', (e) => {
-        e.preventDefault();
-        const sectionId = anchor.getAttribute('href').slice(1);
-        const section = document.getElementById(sectionId);
-        if (section) {
-          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          section.focus({ preventScroll: true }); // Добавлен фокус для доступности
-        }
-        history.replaceState(null, null, window.location.pathname);
-      });
-    });
-
-    // Очистка хэша при загрузке
-    window.addEventListener('load', () => {
-      history.replaceState(null, null, window.location.pathname);
-    });
-  </script>
-</body>
-</html>
+<footer class="footer"> <p>© 2025 Плодородный Слон. Все права защищены.</p> </footer> </body> </html>
