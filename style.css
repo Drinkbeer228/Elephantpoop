@@ -1,16 +1,14 @@
-```css
-/* Переменные для упрощения */
 :root {
-  --border-radius: 15px;
   --primary-color: #388e3c;
   --accent-color: #8BC34A;
   --text-color: #333;
   --bg-light: #f4f4f4;
   --bg-white: #fff;
-  --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  --border-radius: 15px;
+  --shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  --font-heading: 'Roboto', sans-serif;
 }
 
-/* Сброс и базовые стили */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -18,205 +16,123 @@
 }
 
 body {
-  font-family: 'Roboto', Arial, sans-serif;
-  background-color: var(--bg-light);
+  font-family: var(--font-heading);
   color: var(--text-color);
+  background: var(--bg-light);
   line-height: 1.6;
 }
 
-/* Вспомогательный класс для скрытия */
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
+.hero {
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/elephant-bg.webp') no-repeat center/cover;
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  border-radius: var(--border-radius);
 }
 
-/* Контейнер */
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent-color);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background: #7CB342;
+  transform: translateY(-2px);
+}
+
 .container {
   width: 90%;
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 30px 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  padding: 40px 20px;
 }
 
-/* Навигация */
-.nav-list {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  padding: 10px 0;
-}
-
-.nav-list a {
-  color: var(--primary-color);
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-.nav-list a:hover, .nav-list a:focus {
-  color: var(--accent-color);
-}
-
-/* Герой-секция */
-.hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('images/elephant-bg.webp') no-repeat center/cover; /* Заменен jpg на webp */
-  color: #fff;
-  text-align: center;
-  padding: 100px 15px;
-  border-radius: var(--border-radius);
+.features, .testimonials, .contact {
+  background: var(--bg-white);
   margin-bottom: 30px;
-}
-
-.hero-content {
-  background: rgba(0, 0, 0, 0.5);
   padding: 30px;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
 }
 
-.hero h1 {
-  font-family: 'Pacifico', cursive;
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+.features h2, .testimonials h2, .contact h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
 }
 
-.hero p {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+.feature-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
 }
 
-/* Кнопки */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  background: var(--accent-color);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-}
-
-.btn:hover, .btn:focus {
-  background: #7CB342;
-  transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Спойлеры */
-.spoiler-btn {
-  background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
-  color: #fff;
-  padding: 15px;
-  border: none;
-  border-radius: var(--border-radius) var(--border-radius) 0 0;
-  cursor: pointer;
-  font-size: 1.2rem;
-  width: 100%;
-  text-align: left;
-  transition: background 0.3s;
-}
-
-.spoiler-content {
-  max-height: 0;
-  overflow: hidden;
-  padding: 0 20px;
-  background: #f9f9f9;
-  border: 1px solid #dcdcdc;
-  border-top: none;
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
-  transition: max-height 0.4s ease, padding 0.4s ease;
-}
-
-.spoiler-content.active {
-  max-height: 2000px; /* Увеличен для больших спойлеров */
+.feature-item {
+  flex: 1 1 250px;
+  background: var(--bg-light);
   padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: var(--shadow);
 }
 
-/* Форма */
+.testimonial-list blockquote {
+  border-left: 4px solid var(--accent-color);
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  background: #fafafa;
+  border-radius: 5px;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 .form-group {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: 500;
-}
-
-.form-group input, .form-group textarea {
-  width: 100%;
+input, textarea {
   padding: 10px;
-  border: 1px solid #dcdcdc;
-  border-radius: 5px;
-  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
-.form-group input:focus, .form-group textarea:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 5px rgba(56, 142, 60, 0.3);
-}
-
-.contact-form button {
-  width: 100%;
-  padding: 12px;
-  background: var(--accent-color);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.3s;
-}
-
-.contact-form button:hover {
-  background: #7CB342;
-}
-
-/* Футер */
-.footer {
+footer.footer {
   text-align: center;
   padding: 20px;
   background: #333;
-  color: #fff;
+  color: white;
   border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
 
-/* Адаптивность */
 @media (max-width: 768px) {
-  .container {
-    width: 95%;
-    padding: 20px 10px;
-  }
-  .hero h1 {
+  .hero-content h1 {
     font-size: 2rem;
   }
-  .nav-list {
+
+  .feature-list {
     flex-direction: column;
     align-items: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero {
-    padding: 60px 10px;
-  }
-  .btn {
-    padding: 10px 16px;
-    font-size: 0.9rem;
   }
 }
