@@ -7,6 +7,7 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .hero-video-wrap {
   position: relative;
   width: 100vw;
@@ -19,6 +20,7 @@ body {
   justify-content: center;
   background: #e6e6de;
 }
+
 .hero-video {
   position: absolute;
   left: 50%;
@@ -32,6 +34,7 @@ body {
   object-fit: cover;
   filter: brightness(0.97) blur(0.4px);
 }
+
 .hero-text {
   position: relative;
   z-index: 2;
@@ -41,6 +44,7 @@ body {
   width: 100%;
   font-family: 'Montserrat', Arial, sans-serif;
 }
+
 .hero-text h1 {
   font-size: 2.5rem;
   margin: 0 0 12px 0;
@@ -48,6 +52,7 @@ body {
   font-weight: 800;
   line-height: 1.13;
 }
+
 .hero-text .subtitle {
   font-size: 1.25rem;
   color: #68b12c;
@@ -55,41 +60,23 @@ body {
   letter-spacing: 0.3px;
   margin: 0 auto;
 }
-header {
-  background: #fff;
-  padding: 24px 0 16px 0;
-  text-align: center;
-  box-shadow: 0 2px 8px #e0e0e0;
-  display: none; /* скрываем старую шапку, она не нужна */
-}
-.logo {
-  max-width: 140px;
-  margin-bottom: 8px;
-}
-h1 {
-  margin: 0 0 8px 0;
-  font-size: 2.1rem;
-  letter-spacing: 1px;
-}
-.subtitle {
-  color: #71bb52;
-  font-size: 1.1rem;
-  margin-bottom: 12px;
-}
+
 .container {
   max-width: 850px;
   margin: 30px auto 0 auto;
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 4px 18px #d3e2cc3d;
-  padding: 36px 24px 32px 24px;
+  padding: 38px 8vw 36px 8vw;
 }
+
 .vitirina {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 32px;
   margin-bottom: 32px;
 }
+
 .card {
   background: #f8fff4;
   border-radius: 14px;
@@ -101,6 +88,7 @@ h1 {
   flex-direction: column;
   align-items: center;
 }
+
 .card img {
   width: 100px;
   height: 100px;
@@ -113,6 +101,7 @@ h1 {
 .card h3 {
   margin: 0 0 6px 0;
   font-size: 1.2rem;
+  font-weight: bold;
 }
 .card .desc {
   font-size: 0.98rem;
@@ -139,6 +128,7 @@ h1 {
 .buy-btn:hover {
   background: #59a342;
 }
+
 .subtitle-center {
   text-align: center;
   font-size: 1rem;
@@ -153,27 +143,56 @@ h2 {
   margin-top: 0;
   margin-bottom: 10px;
 }
-table {
+
+.manure-compare {
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 18px;
-  background: #f2fbeb;
-  border-radius: 10px;
+  margin: 22px 0 10px 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #f7fff1;
+  border-radius: 13px;
+  box-shadow: 0 2px 8px #e0e0e0c2;
+  font-size: 1.08em;
   overflow: hidden;
-  font-size: 1rem;
 }
-th, td {
-  padding: 9px 10px;
+.manure-compare th, .manure-compare td {
+  padding: 13px 10px;
   text-align: center;
+  border-bottom: 1px solid #e2efdb;
 }
-th {
-  background: #e0f8ce;
+.manure-compare th {
+  background: #d9f9b6;
+  color: #355a19;
   font-weight: bold;
-  color: #398322;
 }
-tr:nth-child(even) {
-  background: #f8fff4;
+.manure-compare td {
+  background: #f7fff1;
+  vertical-align: middle;
 }
+.manure-compare tr:last-child td {
+  border-bottom: none;
+}
+.diff.green {
+  color: #45a429;
+  font-size: 0.89em;
+  font-weight: 500;
+}
+.compare-desc {
+  margin-top: 12px;
+  color: #51713d;
+  font-size: 1em;
+  background: #f8fef2;
+  padding: 9px 15px;
+  border-radius: 7px;
+}
+
+ul {
+  padding-left: 20px;
+}
+ul li {
+  margin-bottom: 8px;
+}
+
 .faq-block {
   margin-bottom: 18px;
   background: #fff7c7;
@@ -190,6 +209,7 @@ tr:nth-child(even) {
 .faq-a {
   margin-bottom: 0;
 }
+
 .partner-block {
   background: #eefcf8;
   padding: 14px 14px 14px 50px;
@@ -205,14 +225,7 @@ tr:nth-child(even) {
   top: 13px;
   font-size: 1.3em;
 }
-.contacts {
-  margin-bottom: 18px;
-  background: #f4f6f8;
-  border-radius: 9px;
-  box-shadow: 0 1px 4px #d7dadc66;
-  padding: 18px 16px;
-  font-size: 1.03rem;
-}
+
 .footer {
   background: #ede7da;
   color: #6a5c38;
@@ -221,6 +234,7 @@ tr:nth-child(even) {
   font-size: 0.98rem;
   border-top: 1px solid #e8d7b7;
 }
+
 .winkpoop {
   display: block;
   margin: 0 auto 6px auto;
@@ -236,6 +250,7 @@ tr:nth-child(even) {
   60% { transform: scale(1.09) rotate(4deg); }
   85% { transform: scale(0.98) rotate(-8deg); }
 }
+
 /* Мобильная адаптация */
 @media (max-width: 950px) {
   .container { max-width: 98vw; padding: 8vw 1vw; }
@@ -243,7 +258,6 @@ tr:nth-child(even) {
   .hero-video-wrap { height: 170px; min-height: 80px; }
 }
 @media (max-width: 600px) {
-  .logo { max-width: 90px; }
   h1 { font-size: 1.25rem; }
   .container { padding: 6vw 2vw; }
   h2 { font-size: 1.08rem; }
