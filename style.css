@@ -82,26 +82,7 @@ section {
   color: #503e12;
 }
 
-/* FAQ */
-.faq-block {
-  margin-bottom: 1.2em;
-  border-left: 4px solid #259b24;
-  background: #f9f8e6;
-  border-radius: 0.7em;
-  padding: 1.1em 1.3em 0.7em 1.2em;
-}
-.faq-q {
-  font-weight: 700;
-  font-size: 1.11em;
-  margin-bottom: 0.35em;
-}
-.faq-a {
-  margin-bottom: 0.2em;
-  color: #2b261b;
-  font-size: 0.98em;
-}
-
-/* Слоновья витрина */
+/* Витрина */
 .vitirina {
   display: flex;
   gap: 1.5em;
@@ -177,18 +158,86 @@ section {
   font-size: 0.98em;
 }
 
-/* Применения навоза */
-.block-uses {
-  font-size: 1.07em;
-  margin-top: 0.5em;
+/* Научные преимущества */
+.advantage-block {
+  background: #effcf1;
+  border-radius: 1.2em;
+  padding: 1.5em 1.2em 1.1em 1.2em;
+  box-shadow: 0 1px 8px rgba(60,140,60,0.03);
 }
-.block-uses ul {
-  margin: 1em 0 0.7em 0.5em;
+.advantage-block ul {
+  padding-left: 1.2em;
+}
+.advantage-block li {
+  margin-bottom: 0.7em;
+  line-height: 1.45;
+}
+.advantage-sources {
+  font-size: 0.93em;
+  color: #348745;
+  margin-top: 0.7em;
+}
+.advantage-block .note {
+  color: #397b98;
+  font-size: 0.98em;
+  margin-left: 0.35em;
+}
+
+/* FAQ - общая "обложка" */
+.faq-cover {
+  background: #f1efe5;
+  border-radius: 1.6em;
+  padding: 2em 1.6em;
+  margin-bottom: 2em;
+  box-shadow: 0 2px 12px rgba(100,80,40,0.06);
+}
+
+/* Каждый блок FAQ — вложенная "обложка" */
+.faq-block {
+  background: #fffbe7;
+  border-radius: 1.1em;
+  margin-bottom: 1.2em;
+  padding: 1.1em 1.1em 1em 1.3em;
+  box-shadow: 0 2px 6px rgba(200,200,100,0.04);
+}
+.faq-q {
+  color: #2987c3; /* ярко-синий */
+  font-weight: 700;
+  font-size: 1.15em;
+  margin-bottom: 0.4em;
+}
+.faq-a .faq-inner {
+  background: #f8f6e0;
+  border-radius: 0.8em;
+  padding: 0.8em 1em 0.7em 1em;
+  margin: 0.1em 0;
+}
+
+/* “Что ещё делают” — голубая/бирюзовая обложка */
+.uses-cover {
+  background: linear-gradient(104deg, #e3f7fa 80%, #d7f7ef 100%);
+  border-radius: 1.5em;
+  margin-bottom: 2em;
+  padding: 2em 1.7em;
+  box-shadow: 0 2px 14px rgba(30,140,140,0.06);
+}
+.uses-content {
+  background: #ffffffee;
+  border-radius: 1em;
+  padding: 1.1em 1.1em 0.9em 1.1em;
+  font-size: 1.09em;
+}
+.uses-content ul {
   padding-left: 1.3em;
 }
-.block-uses li {
+.uses-content li {
   margin-bottom: 0.6em;
   line-height: 1.45;
+}
+.uses-source {
+  font-size: 0.97em;
+  color: #379f91;
+  margin-top: 0.7em;
 }
 
 /* Партнёр, кто мы такие, отзывы */
@@ -211,6 +260,7 @@ section {
   .container { padding: 0.5em 0; }
   .block-uses { font-size: 0.97em; }
   .compare-desc { font-size: 0.94em; }
+  .faq-cover, .uses-cover, .advantage-block { padding: 1em 0.5em; }
   .faq-block { padding: 0.7em 0.4em 0.7em 0.7em; }
 }
 
