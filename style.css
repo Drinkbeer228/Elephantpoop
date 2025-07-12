@@ -1,332 +1,360 @@
-/* Общий фон: светлый зелёно-бежевый, как солнечная поляна */
-body {
+/* === Базовые переменные цветов === */
+:root {
+  --bg-main: #f6f6ee;           /* Общий фон: мягкий, природный */
+  --bg-hero: #e8e3c9;           /* Шапка: светлый песочный */
+  --block-yellow: #fdf8e4;      /* Блоки: тёплый желтоватый */
+  --block-green: #eaf7e0;       /* Блоки: светло-зелёный */
+  --block-blue: #e8f4fa;        /* Блоки: голубой (если нужен) */
+  --faq-card: #f7f9e9;          /* FAQ: мягкий травянистый */
+  --faq-border: #49a35f;        /* FAQ: насыщенная зелёная окантовка */
+  --altuses-card: #e8f4fa;      /* "Что ещё делают из навоза?" — голубой */
+  --text-main: #3c392a;         /* Тёмно-оливковый */
+  --text-muted: #6c7753;        /* Серовато-зелёный */
+  --accent: #49a35f;            /* Основной зелёный (кнопки, ссылки) */
+  --accent-hover: #389249;
+  --shadow: 0 6px 32px 0 rgba(110, 128, 91, 0.07);
+}
+
+/* === Общие стили и reset === */
+html, body {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: var(--bg-main);
+  color: var(--text-main);
   font-family: 'Montserrat', Arial, sans-serif;
-  background: linear-gradient(180deg, #e5f7e1 0%, #f7f6ec 60%, #d6e6cc 100%);
-  color: #3c3728;
+  font-size: 1.17em;
   min-height: 100vh;
 }
 
-/* Шапка: тёплый песочный, с тенью, ощущение мягкости */
-.hero-video-wrap {
-  background: linear-gradient(180deg, #ede4c7 70%, #e5f7e1 100%);
-  text-align: center;
-  padding: 110px 0 40px 0;
+body {
   position: relative;
-  box-shadow: 0 4px 32px 0 rgba(110, 140, 84, 0.08);
+  z-index: 1;
 }
 
-.hero-text h1 {
-  margin: 0 0 16px 0;
-  font-size: 3.2rem;
-  font-weight: bold;
-  color: #384c23;
-  text-shadow: 0 2px 6px #d0e3c2;
-}
-.hero-text .subtitle {
-  color: #5da166;
-  font-size: 1.4rem;
-  font-weight: 500;
+h1, h2, h3 {
+  font-family: inherit;
+  color: var(--text-main);
+  margin-top: 0.4em;
+  margin-bottom: 0.3em;
+  font-weight: 700;
   letter-spacing: 0.03em;
+}
+h1 { font-size: 2.6em; }
+h2 { font-size: 2em; }
+h3 { font-size: 1.3em; }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+a:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+b, strong {
+  color: var(--accent-hover);
+  font-weight: 700;
+}
+
+/* === "Живое небо" (анимированные облака) === */
+.sky-bg {
+  width: 100vw;
+  height: 260px;
+  position: absolute;
+  left: 0; top: 0;
+  z-index: 0;
+  background: linear-gradient(180deg, #bfe7fa 60%, var(--bg-hero) 100%);
+  overflow: hidden;
+}
+.cloud {
+  position: absolute;
+  background: #fff;
+  opacity: 0.77;
+  border-radius: 50%;
+  box-shadow: 60px 0px 0 -20px #fff, 120px 0px 0 -30px #fff;
+  width: 110px; height: 60px;
+  top: 45px;
+  left: 10vw;
+  animation: cloudmove1 44s linear infinite;
+}
+.cloud-2 {
+  width: 70px; height: 36px;
+  top: 100px; left: 62vw;
+  opacity: 0.7;
+  animation: cloudmove2 53s linear infinite;
+}
+.cloud-3 {
+  width: 90px; height: 44px;
+  top: 170px; left: 35vw;
+  opacity: 0.64;
+  animation: cloudmove3 66s linear infinite;
+}
+@keyframes cloudmove1 {
+  0% { left: -15vw; }
+  100% { left: 110vw; }
+}
+@keyframes cloudmove2 {
+  0% { left: 105vw; }
+  100% { left: -18vw; }
+}
+@keyframes cloudmove3 {
+  0% { left: -20vw; }
+  100% { left: 100vw; }
+}
+
+/* === Шапка === */
+header {
+  width: 100%;
+  min-height: 280px;
+  background: transparent;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  margin-bottom: -60px;
+}
+.hero-text {
+  background: var(--bg-hero);
+  padding: 48px 0 56px 0;
+  border-radius: 0 0 40px 40px;
+  box-shadow: var(--shadow);
+  text-align: center;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 880px;
+}
+.subtitle {
+  font-size: 1.28em;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-top: 14px;
 }
 
 .container {
   max-width: 980px;
   margin: 0 auto;
-  padding: 30px 16px 0 16px;
+  padding: 24px 8px 0 8px;
+  position: relative;
+  z-index: 2;
 }
 
-/* Блоки-карточки: бледно-зелёный, с тёплой тенью */
-section, .faq-section, .benefits-block, .faq-block, .extra-block, .about-block, .partner-block, .reviews-block {
-  background: #faf9ed;
-  border-radius: 22px;
-  margin-bottom: 36px;
-  box-shadow: 0 2px 20px 0 rgba(96, 126, 74, 0.06);
-  padding: 32px 28px;
-  transition: box-shadow 0.18s;
+section {
+  margin: 28px 0 0 0;
 }
 
-section.vitirina, .vitirina {
-  background: #fffbe9;
-  border-radius: 24px;
-  box-shadow: 0 2px 16px 0 rgba(96, 126, 74, 0.05);
-  margin-bottom: 38px;
-}
-
-.vitirina {
+.vitirina, .product-showcase .vitirina {
   display: flex;
+  gap: 36px;
   flex-wrap: wrap;
-  gap: 28px;
   justify-content: center;
-  background: none;
-  box-shadow: none;
-  margin: 30px 0 0 0;
+  margin-top: 20px;
+  margin-bottom: 12px;
 }
 
 .card {
-  background: linear-gradient(120deg, #e9f7ec 0%, #fffbe9 100%);
-  border-radius: 18px;
-  box-shadow: 0 4px 24px 0 rgba(110, 140, 84, 0.07);
-  flex: 1 1 260px;
-  max-width: 340px;
-  min-width: 230px;
-  padding: 28px 22px 26px 22px;
-  margin: 0 6px 14px 6px;
+  background: #fff;
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+  padding: 30px 22px 32px 22px;
+  width: 270px;
+  min-height: 340px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.17s, box-shadow 0.17s;
+  transition: transform .2s, box-shadow .2s;
 }
 .card:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 8px 36px 0 rgba(110, 140, 84, 0.13);
+  transform: translateY(-7px) scale(1.025);
+  box-shadow: 0 10px 36px 0 rgba(70,120,60,0.12);
 }
 .card img {
-  width: 86px;
-  height: 86px;
+  width: 84px;
+  height: 84px;
   object-fit: cover;
   border-radius: 50%;
-  border: 3px solid #b5ddb6;
   margin-bottom: 14px;
-  background: #e9f7ec;
+  margin-top: 6px;
+  box-shadow: 0 2px 12px 0 rgba(100, 160, 60, 0.09);
 }
-.card h3 {
-  font-size: 1.3rem;
-  color: #3c572d;
-  margin: 0 0 8px 0;
-}
+.card h3 { margin: 10px 0 8px 0; }
 .card .desc {
-  color: #58584b;
-  font-size: 1.04rem;
-  margin-bottom: 20px;
+  font-size: 1.07em;
+  color: var(--text-muted);
+  margin-bottom: 1.7em;
+  min-height: 54px;
   text-align: center;
 }
 .buy-btn {
-  background: linear-gradient(90deg, #54b961 0%, #5da166 100%);
+  display: block;
+  background: var(--accent);
   color: #fff;
-  border: none;
-  border-radius: 20px;
-  font-size: 1.12rem;
-  font-weight: bold;
-  padding: 14px 24px;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 40px;
   margin-top: auto;
-  cursor: pointer;
-  transition: background 0.2s, box-shadow 0.16s;
-  box-shadow: 0 1px 8px 0 rgba(83, 176, 97, 0.10);
-  text-decoration: none;
-  display: inline-block;
+  box-shadow: 0 2px 10px 0 rgba(56,160,80,0.09);
+  transition: background 0.2s, color 0.15s;
+  text-align: center;
+  font-size: 1.1em;
 }
-.buy-btn:hover {
-  background: linear-gradient(90deg, #4fa153 0%, #399340 100%);
-  color: #fff;
-  box-shadow: 0 5px 18px 0 rgba(96, 126, 74, 0.13);
+.buy-btn:hover { background: var(--accent-hover); color: #fff; }
+
+.subtitle-center {
+  text-align: center;
+  color: var(--text-main);
+  margin-bottom: 8px;
+  font-size: 1.17em;
 }
 
-/* Блок преимуществ */
-.benefits-block {
-  background: #fcfce9;
-  border: 2.5px solid #d3e5b3;
-  box-shadow: 0 2px 18px 0 rgba(154, 180, 120, 0.07);
+/* === Блоки: общий стиль === */
+section[class^="block-"], .block-faq, .block-altuses {
+  background: var(--block-yellow);
+  border-radius: 30px;
+  box-shadow: var(--shadow);
+  padding: 32px 28px;
+  margin-bottom: 28px;
 }
 
-.benefits-block h2 {
-  color: #2d4734;
+/* === Преимущества (научно-обоснованные) === */
+.block-advantage {
+  background: var(--block-yellow);
+}
+.block-advantage ul {
+  margin-top: 10px;
   margin-bottom: 18px;
-}
-
-.benefits-block ul {
-  padding-left: 22px;
-  margin-bottom: 0;
-}
-
-.benefits-block li {
-  font-size: 1.12rem;
-  margin-bottom: 6px;
-}
-
-/* Ссылка на источники */
-.benefits-block .sources {
-  margin: 12px 0 0 0;
-  font-size: 1.03rem;
-  color: #1d671d;
-}
-
-.benefits-block .sources a {
-  color: #379c33;
-  text-decoration: underline dotted;
-}
-
-/* Таблица параметров */
-.benefits-block table {
-  width: 100%;
-  margin: 22px 0 10px 0;
-  border-collapse: collapse;
-  background: #f4f9ef;
-  border-radius: 13px;
-  overflow: hidden;
-}
-.benefits-block th,
-.benefits-block td {
-  padding: 10px 7px;
-  border: 1.5px solid #e0eccd;
-  font-size: 1.08rem;
-  text-align: center;
-}
-.benefits-block th {
-  background: #e3f2d3;
-  color: #27542a;
-}
-.benefits-block td {
-  color: #445934;
-}
-
-/* "Что ещё делают..." */
-.extra-block {
-  background: #eafae4;
-  border: 2px solid #9fcf9b;
-  box-shadow: 0 1.5px 8px 0 rgba(100, 175, 100, 0.08);
-}
-.extra-block h2 {
-  color: #377f2a;
-}
-.extra-block ul {
-  margin-left: 20px;
-}
-.extra-block li {
-  margin-bottom: 7px;
-  font-size: 1.09rem;
-}
-.extra-block .sources {
-  color: #497f3e;
-  font-size: 1.03rem;
-  margin-top: 7px;
-}
-
-/* FAQ */
-.faq-section {
-  background: #f6fbe4;
-  border: none;
-  box-shadow: none;
-  margin-top: 28px;
-}
-
-.faq-block {
-  background: #f5faef;
-  border-left: 6px solid #47c36d;
-  border-radius: 18px;
-  box-shadow: 0 2px 10px 0 rgba(99,180,120,0.06);
-  margin-bottom: 24px;
-  padding: 24px 28px 20px 24px;
-}
-
-.faq-block .faq-q {
-  color: #26753f;
-  font-size: 1.32rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.faq-block .faq-a {
-  color: #444;
-  font-size: 1.09rem;
-}
-
-/* Блок "Как заказать" */
-.order-block {
-  background: #fbfae8;
-  border: 2px solid #d3e5b3;
-  box-shadow: 0 2px 12px 0 rgba(180, 180, 100, 0.05);
-}
-.order-block h2 {
-  color: #384c23;
-}
-
-.order-block ul {
   padding-left: 21px;
-  margin-bottom: 0;
+  font-size: 1.11em;
 }
-
-.order-block b {
-  color: #22674b;
+.block-advantage li {
+  margin-bottom: 7px;
 }
-
-/* About, Partner, Reviews */
-.about-block, .partner-block, .reviews-block {
-  background: #fcf7e8;
-  border: 1.5px solid #e3d8ba;
+.sources {
+  font-size: 0.98em;
+  color: var(--accent-hover);
+  margin-bottom: 8px;
 }
-.about-block h2, .partner-block h2, .reviews-block h2 {
-  color: #463b1c;
+.table-wrapper {
+  margin: 18px 0 5px 0;
 }
-
-/* Подвал */
-.footer {
-  background: linear-gradient(180deg, #f8f1ce 80%, #d7e6d1 100%);
-  color: #716b4c;
+table {
+  width: 100%;
+  background: #fff;
+  border-radius: 18px;
+  border-collapse: collapse;
+  box-shadow: 0 1px 9px 0 rgba(110,128,91,0.04);
+  font-size: 1em;
+}
+th, td {
+  padding: 11px 12px;
   text-align: center;
-  font-size: 1.05rem;
-  padding: 30px 12px 14px 12px;
-  margin-top: 60px;
-  border-radius: 26px 26px 0 0;
-  box-shadow: 0 -1px 22px 0 rgba(160, 180, 80, 0.08);
+  border-bottom: 1px solid #ede9cd;
+}
+th { color: var(--accent-hover); font-weight: 700; background: #f3f9ed; }
+tr:last-child td { border-bottom: none; }
+.subtle-text {
+  margin-top: 11px;
+  font-size: 0.97em;
+  color: var(--text-muted);
+}
+
+/* === Альтернативные использования (что ещё делают) === */
+.block-altuses {
+  background: var(--altuses-card);
+}
+.block-altuses h2 { color: #22616a; }
+.block-altuses ul { margin-top: 13px; margin-bottom: 17px; padding-left: 21px; }
+.block-altuses li { margin-bottom: 6px; }
+
+/* === Как заказать === */
+.block-order {
+  background: var(--block-green);
+}
+.block-order ul {
+  margin-top: 6px; margin-bottom: 16px; padding-left: 21px;
+}
+.price {
+  margin-top: 7px;
+  font-size: 1.12em;
+  color: var(--accent-hover);
+}
+.price span { font-size: 0.98em; color: var(--text-muted); }
+
+/* === FAQ === */
+.block-faq {
+  background: var(--faq-card);
+}
+.faq-block {
+  background: #fff;
+  border-left: 7px solid var(--faq-border);
+  border-radius: 19px;
+  padding: 18px 22px 15px 22px;
+  margin-bottom: 19px;
+  box-shadow: 0 3px 16px 0 rgba(80, 135, 80, 0.05);
+}
+.faq-q {
+  font-weight: 700;
+  color: #248a37;
+  font-size: 1.13em;
+  margin-bottom: 7px;
+}
+.faq-a {
+  font-size: 1.04em;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+.faq-a ul { margin: 0; padding-left: 20px; }
+
+/* === Блоки "О нас", партнёр, отзывы === */
+.block-about, .block-partner, .block-reviews {
+  background: var(--block-yellow);
+  margin-bottom: 22px;
+}
+.block-about h2,
+.block-partner h2,
+.block-reviews h2 {
+  font-size: 1.37em;
+  margin-bottom: 8px;
+}
+
+/* === Иконка 💩 (winkpoop) === */
+.winkpoop {
+  font-size: 2.3em;
+  text-align: center;
+  margin: 10px auto 0 auto;
+  line-height: 1;
+}
+
+/* === Footer === */
+.footer {
+  margin-top: 36px;
+  background: var(--block-yellow);
+  border-radius: 30px 30px 0 0;
+  padding: 20px 10px 18px 10px;
+  font-size: 1.01em;
+  text-align: center;
+  color: var(--text-muted);
+  box-shadow: 0 -2px 20px 0 rgba(110,128,91,0.09);
 }
 .footer a {
-  color: #24b066;
+  color: var(--accent-hover);
   text-decoration: underline;
 }
 
-.winkpoop {
-  font-size: 2.8rem;
-  text-align: center;
-  margin: 16px 0 0 0;
-  user-select: none;
+/* === Responsive: для мобильных === */
+@media (max-width: 850px) {
+  .container { padding: 10px 2vw 0 2vw; }
+  .vitirina { flex-direction: column; align-items: center; gap: 20px; }
+  .card { width: 96vw; max-width: 355px; min-width: 0; }
+  .hero-text { padding: 32px 0 42px 0; }
+  section[class^="block-"], .block-faq, .block-altuses { padding: 21px 8px; }
+}
+@media (max-width: 530px) {
+  .hero-text { border-radius: 0 0 19px 19px; font-size: 1em; }
+  .block-about, .block-partner, .block-reviews, .block-order, .block-advantage, .block-altuses, .block-faq { border-radius: 19px; }
+  .footer { border-radius: 19px 19px 0 0; font-size: 0.97em; }
 }
 
-/* Мобильная адаптация */
-@media (max-width: 900px) {
-  .container {
-    max-width: 98vw;
-    padding: 16px 2vw 0 2vw;
-  }
-  .vitirina {
-    flex-direction: column;
-    gap: 20px;
-  }
-  .card {
-    min-width: unset;
-    max-width: 100%;
-  }
-  .footer {
-    font-size: 0.99rem;
-    padding: 22px 6px 10px 6px;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero-video-wrap {
-    padding: 60px 0 30px 0;
-  }
-  .hero-text h1 {
-    font-size: 2.1rem;
-  }
-  .hero-text .subtitle {
-    font-size: 1rem;
-  }
-  section, .faq-section, .benefits-block, .faq-block, .extra-block, .about-block, .partner-block, .reviews-block {
-    padding: 15px 8px;
-    margin-bottom: 20px;
-    border-radius: 14px;
-  }
-  .vitirina {
-    gap: 13px;
-  }
-  .card {
-    padding: 16px 6px 15px 6px;
-    border-radius: 12px;
-  }
-  .buy-btn {
-    padding: 10px 11px;
-    font-size: 1rem;
-    border-radius: 16px;
-  }
-}
