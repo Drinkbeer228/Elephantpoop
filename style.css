@@ -1,360 +1,335 @@
-/* === Базовые переменные цветов === */
 :root {
-  --bg-main: #f6f6ee;           /* Общий фон: мягкий, природный */
-  --bg-hero: #e8e3c9;           /* Шапка: светлый песочный */
-  --block-yellow: #fdf8e4;      /* Блоки: тёплый желтоватый */
-  --block-green: #eaf7e0;       /* Блоки: светло-зелёный */
-  --block-blue: #e8f4fa;        /* Блоки: голубой (если нужен) */
-  --faq-card: #f7f9e9;          /* FAQ: мягкий травянистый */
-  --faq-border: #49a35f;        /* FAQ: насыщенная зелёная окантовка */
-  --altuses-card: #e8f4fa;      /* "Что ещё делают из навоза?" — голубой */
-  --text-main: #3c392a;         /* Тёмно-оливковый */
-  --text-muted: #6c7753;        /* Серовато-зелёный */
-  --accent: #49a35f;            /* Основной зелёный (кнопки, ссылки) */
-  --accent-hover: #389249;
-  --shadow: 0 6px 32px 0 rgba(110, 128, 91, 0.07);
-}
-
-/* === Общие стили и reset === */
-html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background: var(--bg-main);
-  color: var(--text-main);
-  font-family: 'Montserrat', Arial, sans-serif;
-  font-size: 1.17em;
-  min-height: 100vh;
+  --bg: #f8f7ee;
+  --header: #e9e4cc;
+  --accent: #2f6631;
+  --accent-dark: #245222;
+  --card: #f9f7e0;
+  --faq-bg: #f4f8ea;
+  --faq-border: #37b24d;
+  --faq-q: #217138;
+  --altuse-bg: #f7efe1;
+  --altuse-border: #b89c53;
+  --about-bg: #f9f7e0;
+  --table-bg: #fffdfa;
+  --subtle-text: #746d58;
+  --cloud: #f6faff;
 }
 
 body {
-  position: relative;
-  z-index: 1;
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.15em;
+  color: #362f19;
 }
 
-h1, h2, h3 {
-  font-family: inherit;
-  color: var(--text-main);
-  margin-top: 0.4em;
-  margin-bottom: 0.3em;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-}
-h1 { font-size: 2.6em; }
-h2 { font-size: 2em; }
-h3 { font-size: 1.3em; }
-
-a {
-  color: var(--accent);
-  text-decoration: none;
-  transition: color 0.18s;
-}
-a:hover {
-  color: var(--accent-hover);
-  text-decoration: underline;
-}
-
-b, strong {
-  color: var(--accent-hover);
-  font-weight: 700;
-}
-
-/* === "Живое небо" (анимированные облака) === */
-.sky-bg {
-  width: 100vw;
-  height: 260px;
-  position: absolute;
-  left: 0; top: 0;
-  z-index: 0;
-  background: linear-gradient(180deg, #bfe7fa 60%, var(--bg-hero) 100%);
-  overflow: hidden;
-}
-.cloud {
-  position: absolute;
-  background: #fff;
-  opacity: 0.77;
-  border-radius: 50%;
-  box-shadow: 60px 0px 0 -20px #fff, 120px 0px 0 -30px #fff;
-  width: 110px; height: 60px;
-  top: 45px;
-  left: 10vw;
-  animation: cloudmove1 44s linear infinite;
-}
-.cloud-2 {
-  width: 70px; height: 36px;
-  top: 100px; left: 62vw;
-  opacity: 0.7;
-  animation: cloudmove2 53s linear infinite;
-}
-.cloud-3 {
-  width: 90px; height: 44px;
-  top: 170px; left: 35vw;
-  opacity: 0.64;
-  animation: cloudmove3 66s linear infinite;
-}
-@keyframes cloudmove1 {
-  0% { left: -15vw; }
-  100% { left: 110vw; }
-}
-@keyframes cloudmove2 {
-  0% { left: 105vw; }
-  100% { left: -18vw; }
-}
-@keyframes cloudmove3 {
-  0% { left: -20vw; }
-  100% { left: 100vw; }
-}
-
-/* === Шапка === */
 header {
-  width: 100%;
-  min-height: 280px;
-  background: transparent;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-  margin-bottom: -60px;
-}
-.hero-text {
-  background: var(--bg-hero);
-  padding: 48px 0 56px 0;
-  border-radius: 0 0 40px 40px;
-  box-shadow: var(--shadow);
+  background: var(--header);
+  padding: 70px 0 50px 0;
   text-align: center;
-  margin: 0 auto;
-  width: 100%;
-  max-width: 880px;
+  position: relative;
+  z-index: 2;
 }
-.subtitle {
+
+.hero-text h1 {
+  font-size: 2.7em;
+  margin: 0 0 16px 0;
+  font-weight: 700;
+  color: var(--accent-dark);
+}
+
+.subtitle, .subtitle-center {
   font-size: 1.28em;
-  font-weight: 400;
-  color: var(--text-muted);
-  margin-top: 14px;
+  color: #564c2a;
+  margin-bottom: 15px;
+}
+
+.subtitle-center {
+  text-align: center;
+  margin-top: 35px;
 }
 
 .container {
   max-width: 980px;
   margin: 0 auto;
-  padding: 24px 8px 0 8px;
-  position: relative;
-  z-index: 2;
+  padding: 0 8px 60px 8px;
 }
 
-section {
-  margin: 28px 0 0 0;
-}
-
-.vitirina, .product-showcase .vitirina {
+.vitirina {
   display: flex;
-  gap: 36px;
+  justify-content: space-between;
+  gap: 28px;
+  margin: 32px 0 40px 0;
   flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 12px;
 }
-
 .card {
-  background: #fff;
-  border-radius: 30px;
-  box-shadow: var(--shadow);
-  padding: 30px 22px 32px 22px;
-  width: 270px;
-  min-height: 340px;
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: 0 2px 14px 2px #ece8d0c7;
+  padding: 27px 22px 28px 22px;
+  flex: 1 1 260px;
+  min-width: 230px;
+  max-width: 325px;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform .2s, box-shadow .2s;
-}
-.card:hover {
-  transform: translateY(-7px) scale(1.025);
-  box-shadow: 0 10px 36px 0 rgba(70,120,60,0.12);
 }
 .card img {
-  width: 84px;
-  height: 84px;
+  border-radius: 30px;
+  width: 95px;
+  height: 55px;
   object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 14px;
-  margin-top: 6px;
-  box-shadow: 0 2px 12px 0 rgba(100, 160, 60, 0.09);
+  margin-bottom: 12px;
+  margin-top: -10px;
 }
-.card h3 { margin: 10px 0 8px 0; }
+.card h3 {
+  margin: 7px 0 12px 0;
+  font-size: 1.18em;
+  color: var(--accent-dark);
+}
 .card .desc {
-  font-size: 1.07em;
-  color: var(--text-muted);
-  margin-bottom: 1.7em;
-  min-height: 54px;
-  text-align: center;
+  font-size: 0.97em;
+  margin-bottom: 20px;
+  color: #5a532c;
+  min-height: 47px;
 }
 .buy-btn {
-  display: block;
+  display: inline-block;
   background: var(--accent);
   color: #fff;
-  font-weight: 700;
-  padding: 12px 24px;
-  border-radius: 40px;
-  margin-top: auto;
-  box-shadow: 0 2px 10px 0 rgba(56,160,80,0.09);
-  transition: background 0.2s, color 0.15s;
-  text-align: center;
-  font-size: 1.1em;
-}
-.buy-btn:hover { background: var(--accent-hover); color: #fff; }
-
-.subtitle-center {
-  text-align: center;
-  color: var(--text-main);
-  margin-bottom: 8px;
-  font-size: 1.17em;
-}
-
-/* === Блоки: общий стиль === */
-section[class^="block-"], .block-faq, .block-altuses {
-  background: var(--block-yellow);
+  padding: 12px 30px;
   border-radius: 30px;
-  box-shadow: var(--shadow);
-  padding: 32px 28px;
-  margin-bottom: 28px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.05em;
+  margin-top: auto;
+  transition: background 0.2s;
+  box-shadow: 0 2px 10px 1px #d8e3d5a9;
+}
+.buy-btn:hover { background: #1c5025; }
+
+.block-advantage, .block-altuses, .block-order, .block-faq, .block-about, .block-reviews {
+  background: var(--card);
+  border-radius: 25px;
+  margin: 32px 0 0 0;
+  box-shadow: 0 2px 16px 2px #f0e9c2c5;
+  padding: 38px 36px 30px 36px;
+  position: relative;
+}
+.block-advantage h2, .block-altuses h2, .block-order h2, .block-about h2, .block-reviews h2 {
+  margin-top: 0;
+}
+.block-advantage ul, .block-altuses ul {
+  margin-top: 13px;
+}
+.block-advantage .sources {
+  font-size: 0.93em;
+  color: var(--accent-dark);
+  margin: 12px 0 0 0;
+}
+.block-advantage .subtle-text {
+  font-size: 0.98em;
+  color: var(--subtle-text);
+  margin-top: 10px;
 }
 
-/* === Преимущества (научно-обоснованные) === */
-.block-advantage {
-  background: var(--block-yellow);
-}
-.block-advantage ul {
-  margin-top: 10px;
-  margin-bottom: 18px;
-  padding-left: 21px;
-  font-size: 1.11em;
-}
-.block-advantage li {
-  margin-bottom: 7px;
-}
-.sources {
-  font-size: 0.98em;
-  color: var(--accent-hover);
-  margin-bottom: 8px;
-}
 .table-wrapper {
-  margin: 18px 0 5px 0;
+  margin: 25px 0 10px 0;
+  overflow-x: auto;
 }
 table {
   width: 100%;
-  background: #fff;
-  border-radius: 18px;
+  background: var(--table-bg);
   border-collapse: collapse;
-  box-shadow: 0 1px 9px 0 rgba(110,128,91,0.04);
-  font-size: 1em;
+  margin-bottom: 0;
+  font-size: 1.08em;
 }
 th, td {
-  padding: 11px 12px;
-  text-align: center;
-  border-bottom: 1px solid #ede9cd;
+  padding: 9px 11px;
+  text-align: left;
 }
-th { color: var(--accent-hover); font-weight: 700; background: #f3f9ed; }
-tr:last-child td { border-bottom: none; }
-.subtle-text {
-  margin-top: 11px;
-  font-size: 0.97em;
-  color: var(--text-muted);
+th {
+  background: #e7e6cd;
+  color: var(--accent-dark);
+  font-size: 1.02em;
+}
+tr:nth-child(even) td {
+  background: #f5f3de;
 }
 
-/* === Альтернативные использования (что ещё делают) === */
 .block-altuses {
-  background: var(--altuses-card);
+  background: var(--altuse-bg);
+  border: 2.5px solid var(--altuse-border);
+  font-size: 0.97em;
+  margin-top: 32px;
 }
-.block-altuses h2 { color: #22616a; }
-.block-altuses ul { margin-top: 13px; margin-bottom: 17px; padding-left: 21px; }
-.block-altuses li { margin-bottom: 6px; }
+.block-altuses h2 {
+  color: #594910;
+}
+.block-altuses ul li {
+  margin-bottom: 5px;
+}
+.block-altuses ul {
+  margin-bottom: 0;
+}
+.block-altuses {
+  font-size: 0.97em;
+}
 
-/* === Как заказать === */
-.block-order {
-  background: var(--block-green);
+.block-order .price {
+  margin-top: 10px;
+  color: var(--accent-dark);
+  font-size: 1.04em;
 }
-.block-order ul {
-  margin-top: 6px; margin-bottom: 16px; padding-left: 21px;
-}
-.price {
-  margin-top: 7px;
-  font-size: 1.12em;
-  color: var(--accent-hover);
-}
-.price span { font-size: 0.98em; color: var(--text-muted); }
 
-/* === FAQ === */
 .block-faq {
-  background: var(--faq-card);
+  background: var(--faq-bg);
+  border-radius: 28px;
+  margin-top: 36px;
+  padding: 33px 35px 20px 35px;
+  box-shadow: 0 2px 13px 2px #b2e2b2a1;
 }
+.block-faq h2 {
+  text-align: center;
+  font-size: 2em;
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
 .faq-block {
   background: #fff;
-  border-left: 7px solid var(--faq-border);
-  border-radius: 19px;
-  padding: 18px 22px 15px 22px;
-  margin-bottom: 19px;
-  box-shadow: 0 3px 16px 0 rgba(80, 135, 80, 0.05);
+  border-radius: 18px;
+  border-left: 6px solid var(--faq-border);
+  margin-bottom: 18px;
+  box-shadow: 0 2px 10px 0 #d0ebd9ba;
+  padding: 21px 24px 13px 24px;
 }
 .faq-q {
   font-weight: 700;
-  color: #248a37;
-  font-size: 1.13em;
+  font-size: 1.22em;
+  color: var(--faq-q); /* насыщенный зелёный */
   margin-bottom: 7px;
+  letter-spacing: 0.02em;
 }
 .faq-a {
-  font-size: 1.04em;
-  color: var(--text-main);
-  margin-bottom: 2px;
-}
-.faq-a ul { margin: 0; padding-left: 20px; }
-
-/* === Блоки "О нас", партнёр, отзывы === */
-.block-about, .block-partner, .block-reviews {
-  background: var(--block-yellow);
-  margin-bottom: 22px;
-}
-.block-about h2,
-.block-partner h2,
-.block-reviews h2 {
-  font-size: 1.37em;
-  margin-bottom: 8px;
-}
-
-/* === Иконка 💩 (winkpoop) === */
-.winkpoop {
-  font-size: 2.3em;
-  text-align: center;
-  margin: 10px auto 0 auto;
-  line-height: 1;
-}
-
-/* === Footer === */
-.footer {
-  margin-top: 36px;
-  background: var(--block-yellow);
-  border-radius: 30px 30px 0 0;
-  padding: 20px 10px 18px 10px;
+  color: #423f2a;
   font-size: 1.01em;
+}
+
+.block-about {
+  background: var(--about-bg);
+  margin-top: 35px;
+  border-radius: 25px;
+  box-shadow: 0 2px 14px 2px #ede3c3b3;
+  padding: 30px 32px 17px 32px;
+  font-size: 1.08em;
+}
+.block-about h2 {
+  margin-top: 0;
+  margin-bottom: 9px;
+}
+
+.block-reviews {
+  background: var(--about-bg);
+  border-radius: 25px;
+  margin-top: 34px;
+  box-shadow: 0 2px 14px 2px #ede3c3b3;
+  padding: 29px 30px 18px 30px;
+}
+.block-reviews h2 {
+  margin-top: 0;
+}
+
+.winkpoop {
+  font-size: 2.7em;
   text-align: center;
-  color: var(--text-muted);
-  box-shadow: 0 -2px 20px 0 rgba(110,128,91,0.09);
+  margin-top: 10px;
+  margin-bottom: 0;
 }
-.footer a {
-  color: var(--accent-hover);
+
+.footer {
+  background: #e5e2c5;
+  text-align: center;
+  font-size: 1.08em;
+  color: #746d58;
+  padding: 32px 8px 25px 8px;
+  margin-top: 20px;
+  border-radius: 30px 30px 0 0;
+  letter-spacing: 0.01em;
+}
+
+a {
+  color: var(--accent);
   text-decoration: underline;
+  transition: color 0.17s;
+}
+a:hover { color: #1d431c; }
+
+@media (max-width: 900px) {
+  .vitirina {
+    flex-direction: column;
+    gap: 18px;
+  }
+  .card {
+    max-width: 99vw;
+  }
+  .block-advantage, .block-altuses, .block-order, .block-faq, .block-about, .block-reviews {
+    padding: 19px 8px 13px 8px;
+  }
+  .container {
+    padding: 0 3px 30px 3px;
+  }
 }
 
-/* === Responsive: для мобильных === */
-@media (max-width: 850px) {
-  .container { padding: 10px 2vw 0 2vw; }
-  .vitirina { flex-direction: column; align-items: center; gap: 20px; }
-  .card { width: 96vw; max-width: 355px; min-width: 0; }
-  .hero-text { padding: 32px 0 42px 0; }
-  section[class^="block-"], .block-faq, .block-altuses { padding: 21px 8px; }
-}
-@media (max-width: 530px) {
-  .hero-text { border-radius: 0 0 19px 19px; font-size: 1em; }
-  .block-about, .block-partner, .block-reviews, .block-order, .block-advantage, .block-altuses, .block-faq { border-radius: 19px; }
-  .footer { border-radius: 19px 19px 0 0; font-size: 0.97em; }
+@media (max-width: 600px) {
+  .hero-text h1 { font-size: 1.6em; }
+  .container { padding: 0 1vw 18vw 1vw; }
+  .footer { font-size: 0.97em; padding: 19px 2px 15px 2px; }
+  .block-advantage, .block-altuses, .block-order, .block-faq, .block-about, .block-reviews {
+    margin: 13px 0 0 0;
+    border-radius: 18px;
+  }
 }
 
+.sky-bg {
+  position: absolute;
+  left: 0; top: 0; width: 100vw; height: 250px;
+  z-index: 0;
+  background: linear-gradient(180deg, #bed6e1 55%, transparent 100%);
+  overflow: hidden;
+  pointer-events: none;
+}
+.cloud {
+  position: absolute;
+  top: 60px; left: 13vw;
+  width: 140px; height: 60px;
+  background: var(--cloud);
+  border-radius: 80px 80px 60px 60px;
+  opacity: 0.65;
+  box-shadow: 80px 10px 50px 0 #d2e4f6, 20px 14px 33px 0 #e6eff7;
+  animation: cloud-move 38s linear infinite;
+}
+.cloud-2 {
+  top: 90px; left: 58vw; width: 170px; height: 62px;
+  opacity: 0.58;
+  animation: cloud-move2 59s linear infinite;
+}
+.cloud-3 {
+  top: 125px; left: 80vw; width: 120px; height: 45px;
+  opacity: 0.40;
+  animation: cloud-move3 44s linear infinite;
+}
+@keyframes cloud-move {
+  0% { left: 13vw; }
+  100% { left: 95vw; }
+}
+@keyframes cloud-move2 {
+  0% { left: 58vw; }
+  100% { left: -18vw; }
+}
+@keyframes cloud-move3 {
+  0% { left: 80vw; }
+  100% { left: 5vw; }
+}
