@@ -1,92 +1,86 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
-    line-height: 1.6;
-    scroll-behavior: smooth;
+  background: url('elephant-dung-bg.jpg') repeat;
+  font-family: Arial, sans-serif;
+  color: #333;
 }
+
+header {
+  text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.hero-text h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
 .section {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
+  background: url('paper-texture.jpg') repeat;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 1000px;
+}
+
+.cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 300px;
+  margin: 10px;
+  padding: 10px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.buy-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .cards {
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 60px 20px; /* больше пространства сверху/снизу */
-    background-size: cover;
-    background-position: center;
-    color: white;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-}
-.section::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.4);
-    z-index: 0;
-}
-.section > * {
-    position: relative;
-    z-index: 1;
-}
-.why {
-    background-image: url('nature-bg.jpg');
-    color: #333;
-    text-shadow: none;
-}
-.why::before {
-    background: none;
-}
-h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-}
-p {
-    font-size: 24px;
-    max-width: 800px;
-    margin: 0 auto 1.5em;
-}
-.btn {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 20px;
-    transition: background-color 0.3s;
-    cursor: pointer;
-    margin: 10px;
-}
-.btn:hover {
-    background-color: #45a049;
-}
-.scroll-down {
-    position: absolute;
-    bottom: 20px;
-    font-size: 18px;
-    color: white;
-    text-decoration: none;
-}
-.how-steps {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-.step {
-    width: 200px;
-    margin: 15px;
-}
-.step img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
-.join .btn {
-    margin: 0 10px;
+  }
+  .card {
+    width: 90%;
+  }
 }
