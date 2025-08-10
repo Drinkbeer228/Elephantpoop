@@ -1,86 +1,301 @@
-body {
-  background: url('elephant-dung-bg.jpg') repeat;
-  font-family: Arial, sans-serif;
-  color: #333;
+/* ===== CSS переменные и базис ===== */
+:root{
+  --bg: #f9f9f9;
+  --fg: #333;
+  --muted: #6b6b6b;
+  --brand: #4CAF50;
+  --brand-hover: #45a049;
+  --white: #fff;
+  --overlay: rgba(0,0,0,0.45);
+
+  --title: clamp(28px, 5vw, 56px);
+  --subtitle: clamp(24px, 4vw, 40px);
+  --lead: clamp(18px, 2.2vw, 22px);
+
+  --radius: 12px;
+  --space: 24px;
+  --maxw: 1080px;
 }
 
-header {
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin: 0;
+  color: var(--fg);
+  background: var(--bg);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Доступность: пропуск к контенту */
+.skip__link{
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+.skip__link:focus{ left: 8px; top: 8px; z-index: 10000; }
+
+/* Типографика */
+.title{
+  margin: 0 0 16px;
+  font-size: var(--title);
+  color: var(--white);
+  letter-spacing: 0.3px;
+  text-wrap: balance;
+}
+.subtitle{
+  margin: 0 0 12px;
+  font-size: var(--subtitle);
+  text-wrap: balance;
+}
+.lead{
+  margin: 0 auto 20px;
+  font-size: var(--lead);
+  max-width: 820px;
+}
+
+/* Секции */
+.section{
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
   text-align: center;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.8);
+  padding: 72px 20px;
+  color: var(--white);
+  background-size: cover;
+  background-position: center;
+  isolation: isolate;
+  overflow: clip;
+}
+.section::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--overlay);
+  z-index: -1;
+}
+.section__content{
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: 12px;
 }
 
-.hero-text h1 {
-  font-size: 36px;
+/* Фоны */
+.section--intro{ background-image: url("elephant-sochi.jpg"); }
+.section--why{
+  color: var(--fg);
+  text-shadow: none;
+  background-image: url("nature-bg.jpg");
+}
+.section--why::before{ background: none; }
+
+.section--how{ background-image: url("process-bg.jpg"); }
+.section--join{ background-image: url("community-bg.jpg"); }
+
+/* Светлые секции (скелет будущих блоков) */
+.section--light{
+  background: var(--bg);
+  color: var(--fg);
+  min-height: auto;
+  padding: 64px 20px;
+}
+.section--light::before{ display: none; }
+
+/* Кнопки */
+.btn{
+  display: inline-block;
+  padding: 14px 22px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--white);
+  background: var(--brand);
+  border: 2px solid var(--brand);
+  border-radius: var(--radius);
+  transition: transform .06s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+  cursor: pointer;
+  margin: 8px;
+  will-change: transform;
+}
+.btn:hover,
+.btn:focus-visible{
+  background: var(--brand-hover);
+  border-color: var(--brand-hover);
+  transform: translateY(-1px);
+  outline: none;
+  box-shadow: 0 8px 24px rgba(76,175,80,0.25);
+}
+.btn:active{ transform: translateY(0); }
+.btn--outline{
+  color: var(--white);
+  background: transparent;
+  border-color: var(--white);
+}
+.btn--outline:hover,
+.btn--outline:focus-visible{
+  background: rgba(255,255,255,0.1);
+}
+
+/* Лёгкий импульс на hero CTA */
+.btn--pulse{
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{ box-shadow: 0 0 0 0 rgba(76,175,80,0.0); }
+  50%{ box-shadow: 0 0 0 12px rgba(76,175,80,0.12); }
+}
+
+/* Стрелка вниз */
+.scroll-down{
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  color: var(--white);
+  text-decoration: none;
+  opacity: 0.9;
+}
+.scroll-down:hover{ opacity: 1; }
+
+/* Лёгкий «зерно»-оверлей */
+.grain{
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url('grain.png'); /* мелкое зерно 1–2% opacity */
+  opacity: 0.06;
+  mix-blend-mode: soft-light;
+  z-index: -1;
+}
+
+/* Шаги процесса */
+.how-steps{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 22px auto 0;
+}
+.step{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius);
+  padding: 12px;
+  backdrop-filter: blur(2px);
+  transform-origin: center 80%;
+}
+.step img{
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
   margin-bottom: 10px;
 }
+.step p{ margin: 0; }
 
-.subtitle {
-  font-size: 18px;
-  margin-bottom: 20px;
+/* Контакты */
+.contact{ margin-top: 14px; }
+.contact a{
+  color: currentColor;
+  text-underline-offset: 3px;
 }
 
-nav ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-nav a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-}
-
-.section {
-  background: url('paper-texture.jpg') repeat;
-  padding: 20px;
-  border-radius: 10px;
-  margin: 20px auto;
-  max-width: 1000px;
-}
-
-.cards {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.card {
-  width: 300px;
-  margin: 10px;
-  padding: 10px;
-  background: white;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+/* Footer */
+.footer{
   text-align: center;
+  color: var(--muted);
+  padding: 24px 16px 40px;
+  font-size: 14px;
 }
 
-.buy-btn {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #4CAF50;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-top: 10px;
-}
+/* ===== Scroll-driven анимации (CSS View Timelines) ===== */
+.reveal{ opacity: 0; }
 
-footer {
-  text-align: center;
-  padding: 10px;
-  background: rgba(255, 255, 255, 0.8);
-  margin-top: 20px;
-}
-
-@media (max-width: 768px) {
-  .cards {
-    flex-direction: column;
-    align-items: center;
+@supports (animation-timeline: view()) {
+  /* Временная шкала прокрутки для каждого reveal */
+  .reveal{
+    animation-fill-mode: both;
   }
-  .card {
-    width: 90%;
+
+  /* Привязываем анимации к видимости элемента */
+  .reveal[data-animate="fade-up"]{
+    animation-name: kf-fade-up;
+    animation-duration: 1ms; /* игнорируется, реально рулит timeline */
+    animation-timeline: view();
+    animation-range: entry 10% cover 30%;
   }
+  .reveal[data-animate="fade-in"]{
+    animation-name: kf-fade-in;
+    animation-duration: 1ms;
+    animation-timeline: view();
+    animation-range: entry 0% cover 25%;
+  }
+  .reveal[data-animate="rise"]{
+    animation-name: kf-rise;
+    animation-duration: 1ms;
+    animation-timeline: view();
+    animation-range: entry 10% cover 35%;
+  }
+  .reveal[data-animate="card"]{
+    animation-name: kf-card;
+    animation-duration: 1ms;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+
+  /* Стагер для карточек: небольшие смещения по оси Y */
+  .how-steps .step:nth-child(1){ animation-delay: 0ms; }
+  .how-steps .step:nth-child(2){ animation-delay: 60ms; }
+  .how-steps .step:nth-child(3){ animation-delay: 120ms; }
+  .how-steps .step:nth-child(4){ animation-delay: 180ms; }
+}
+
+/* Кифреймы */
+@keyframes kf-fade-up{
+  from{ opacity: 0; transform: translateY(24px); filter: saturate(0.9); }
+  to{ opacity: 1; transform: translateY(0); filter: saturate(1); }
+}
+@keyframes kf-fade-in{
+  from{ opacity: 0; }
+  to{ opacity: 1; }
+}
+@keyframes kf-rise{
+  from{ opacity: 0; transform: translateY(28px) scale(.98); }
+  to{ opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes kf-card{
+  from{ opacity: 0; transform: translateY(16px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+/* Fallback: когда IntersectionObserver добавил .in-view */
+.reveal.in-view{
+  opacity: 1;
+  transform: none;
+  transition: opacity .5s ease, transform .5s ease;
+}
+
+/* Адаптив */
+@media (max-width: 1024px){
+  .how-steps{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px){
+  .how-steps{ grid-template-columns: 1fr; }
+  .title{ letter-spacing: 0; }
+}
+
+/* Меньше движухи для тех, кто просит */
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+}
+
+/* View Transition полировка (если поддерживается) */
+@view-transition {
+  navigation: auto;
 }
