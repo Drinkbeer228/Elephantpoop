@@ -597,3 +597,41 @@ section.visible, .card.visible {
   font-size: 1.1rem;
   color: var(--text-main);
 }
+
+/* === UI Fix: выравнивание высоты карточек и стандартизация размера изображений === */
+
+/* 1. Магия Flexbox для одинаковой высоты карточек */
+.comp-card, 
+.usage-card, 
+.culture-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Карточка тянется на всю высоту ячейки грида */
+}
+
+/* 2. Идеально ровные картинки без искажений */
+.comp-card img, 
+.usage-card img, 
+.culture-card img {
+  width: 100%;
+  height: 220px; /* Строгая высота для всех изображений */
+  object-fit: cover; /* Заполнение области обрезкой лишнего (без сплющивания) */
+  border-radius: 14px; /* Единое аккуратное скругление */
+}
+
+/* 3. Заставляем текст заполнять пустоту, выравнивая нижний край */
+.comp-card ul, 
+.usage-card p {
+  flex-grow: 1; /* Текст или список растягивается, заполняя высоту */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 4. Центрируем текст в компактных карточках культур */
+.culture-card {
+  justify-content: space-between;
+}
+
+.culture-card h4 {
+  margin-top: 15px; /* Отступ от выровненной картинки */
+}
