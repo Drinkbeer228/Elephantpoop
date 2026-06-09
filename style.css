@@ -569,3 +569,31 @@ section.visible, .card.visible {
   box-shadow: 0 4px 10px rgba(73, 163, 95, 0.3);
   z-index: 2;
 }
+
+/* === Компактные карточки для блока культур === */
+.culture-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 15px rgba(110, 128, 91, 0.05);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.culture-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(110, 128, 91, 0.12);
+}
+
+.culture-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  object-fit: cover;
+}
+
+.culture-card h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-main);
+}
