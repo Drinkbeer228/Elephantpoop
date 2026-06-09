@@ -35,10 +35,6 @@ html, body {
 body {
   position: relative;
   z-index: 1;
-  /* Временно ставим мягкий градиент, пока не загрузим картинку дерева */
-  background: linear-gradient(to bottom, #e8f4fa 0%, #d4e5cb 20%, #8c7355 50%, #2c241b 100%);
-  background-attachment: scroll;
-  background-size: 100% auto;
   color: var(--text-main);
 }
 
@@ -126,6 +122,23 @@ header {
   position: relative;
   z-index: 1;
   margin-bottom: -60px;
+}
+
+/* === Параллакс-фоны для сторителлинг-скролла === */
+.hero-text {
+  background: url('../images/bg-sky.png') center/cover fixed;
+}
+
+#elephants {
+  background: url('../images/bg-ground.png') center/cover fixed;
+}
+
+#about, #usage {
+  background: url('../images/bg-soil.png') center/cover fixed;
+}
+
+#science, #faq, .footer {
+  background: url('../images/bg-deep.png') center/cover fixed;
 }
 
 /* === Липкое меню навигации === */
