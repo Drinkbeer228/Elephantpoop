@@ -35,6 +35,11 @@ html, body {
 body {
   position: relative;
   z-index: 1;
+  /* Временно ставим мягкий градиент, пока не загрузим картинку дерева */
+  background: linear-gradient(to bottom, #e8f4fa 0%, #d4e5cb 20%, #8c7355 50%, #2c241b 100%);
+  background-attachment: scroll;
+  background-size: 100% auto;
+  color: var(--text-main);
 }
 
 h1, h2, h3 {
@@ -247,10 +252,13 @@ section {
 .comp-card {
   flex: 1;
   min-width: 280px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   padding: 25px;
   border-radius: 24px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -404,12 +412,15 @@ tr:last-child td { border-bottom: none; }
   background: var(--faq-card);
 }
 .faq-block {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   border-left: 7px solid var(--faq-border);
   border-radius: 19px;
   padding: 18px 22px 15px 22px;
   margin-bottom: 19px;
-  box-shadow: 0 3px 16px 0 rgba(80, 135, 80, 0.05);
 }
 .faq-q {
   font-weight: 700;
@@ -514,10 +525,13 @@ section.visible, .card.visible {
 }
 
 .usage-card {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 4px 20px rgba(110, 128, 91, 0.08);
   text-align: center;
   margin-bottom: 0;
   box-sizing: border-box;
@@ -572,10 +586,13 @@ section.visible, .card.visible {
 
 /* === Компактные карточки для блока культур === */
 .culture-card {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   padding: 16px;
-  box-shadow: 0 4px 15px rgba(110, 128, 91, 0.05);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -596,6 +613,18 @@ section.visible, .card.visible {
   margin: 0;
   font-size: 1.1rem;
   color: var(--text-main);
+}
+
+/* === Секция "Научно доказано" (Корни) - темный стиль для подземной части === */
+#science .culture-card {
+  background: rgba(20, 20, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f6f6ee;
+}
+
+#science .culture-card h3, 
+#science .culture-card p {
+  color: #f6f6ee;
 }
 
 /* === UI Fix: выравнивание высоты карточек и стандартизация размера изображений === */
