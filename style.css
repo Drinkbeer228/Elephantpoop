@@ -469,6 +469,15 @@ tr:last-child td { border-bottom: none; }
 }
 
 /* === Responsive: для мобильных === */
+@media (max-width: 768px) {
+  section {
+    background-attachment: scroll !important; /* Фикс бага iOS */
+  }
+  .culture-card, .card {
+    backdrop-filter: blur(5px) !important; /* Уменьшаем нагрузку на батарею */
+    -webkit-backdrop-filter: blur(5px) !important;
+  }
+}
 @media (max-width: 850px) {
   .container { padding: 10px 2vw 0 2vw; }
   .vitirina { flex-direction: column; align-items: center; gap: 20px; }
