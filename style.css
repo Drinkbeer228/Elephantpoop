@@ -612,15 +612,29 @@ section.visible, .card.visible {
 }
 
 /* === Секция "Научно доказано" (Корни) - темный стиль для подземной части === */
-#science .culture-card {
-  background: rgba(20, 20, 20, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #f6f6ee;
+/* Темная полупрозрачная подложка для эффекта подземелья */
+#science .culture-card,
+#science .card {
+    background: rgba(30, 30, 30, 0.6); 
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
-#science .culture-card h3, 
-#science .culture-card p {
-  color: #f6f6ee;
+/* Кристально белый для заголовков */
+#science .culture-card h3,
+#science .culture-card .card-title,
+#science .card .card-title {
+    color: #FFFFFF !important; 
+    font-weight: 600;
+}
+
+/* Мягкий светло-серый для описания (чтобы не "кричал", но хорошо читался) */
+#science .culture-card p,
+#science .culture-card .card-text,
+#science .card .card-text {
+    color: #E5E5E5 !important; 
+    opacity: 0.9;
 }
 
 /* === UI Fix: выравнивание высоты карточек и стандартизация размера изображений === */
