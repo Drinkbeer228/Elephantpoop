@@ -675,3 +675,29 @@ section.visible, .card.visible {
 .culture-card h4 {
   margin-top: 15px; /* Отступ от выровненной картинки */
 }
+
+/* === Адаптивность для изображений в карточках === */
+/* Гарантируем, что все изображения в карточках адаптивны и не вылезает за границы */
+.culture-card img,
+.usage-card img,
+.comp-card img,
+.card img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Для секций с инструкциями */
+#eco-paper .culture-card,
+#compost .culture-card {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+#eco-paper .culture-card img,
+#compost .culture-card img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
