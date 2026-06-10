@@ -704,3 +704,26 @@ section.visible, .card.visible {
   margin: 0 auto;
   box-sizing: border-box;
 }
+
+/* 1. Sнимаем жесткие рамки и обрезку с контейнеров инфографики */
+#eco-paper .culture-card,
+#compost-guide .culture-card {
+    width: 100% !important;
+    max-width: 900px !important; /* Ограничиваем ширину на ПК */
+    height: auto !important; /* Позволяем контейнеру тянуться вниз за картинкой */
+    overflow: visible !important; /* УБИРАЕМ ОБРЕЗКУ! */
+    margin: 0 auto !important;
+    padding: 10px !important; /* Уменьшаем отступы, чтобы картинке было больше места */
+}
+
+/* 2. Заставляем сами картинки идеально вписываться */
+#eco-paper .culture-card img,
+#compost-guide .culture-card img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    object-fit: contain !important; /* Гарантирует, что картинка покажется целиком */
+    display: block !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+}
