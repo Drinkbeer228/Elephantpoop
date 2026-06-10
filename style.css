@@ -685,19 +685,22 @@ section.visible, .card.visible {
   max-width: 100%;
   height: auto;
   display: block;
+  box-sizing: border-box;
 }
 
 /* Для секций с инструкциями */
 #eco-paper .culture-card,
-#compost .culture-card {
+#compost-guide .culture-card {
   max-width: 100%;
+  width: 100%;
   overflow: hidden;
 }
 
 #eco-paper .culture-card img,
-#compost .culture-card img {
+#compost-guide .culture-card img {
   max-width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
+  box-sizing: border-box;
 }
