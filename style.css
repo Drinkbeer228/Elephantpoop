@@ -705,7 +705,7 @@ section.visible, .card.visible {
   box-sizing: border-box;
 }
 
-/* 1. Sнимаем жесткие рамки и обрезку с контейнеров инфографики */
+/* 1. Снимаем жесткие рамки и обрезку с контейнеров инфографики */
 #eco-paper .culture-card,
 #compost-guide .culture-card {
     width: 100% !important;
@@ -715,6 +715,8 @@ section.visible, .card.visible {
     overflow: visible !important; /* УБИРАЕМ ОБРЕЗКУ! */
     margin: 0 auto !important;
     padding: 24px !important; /* Аккуратные отступы вокруг картинки */
+    justify-content: flex-start !important; /* Отключаем space-between */
+    aspect-ratio: auto !important; /* Убираем принудительный квадрат */
 }
 
 /* 2. Заставляем сами картинки идеально вписываться */
@@ -727,4 +729,5 @@ section.visible, .card.visible {
     display: block !important;
     margin: 0 auto !important;
     box-sizing: border-box !important;
+    aspect-ratio: auto !important; /* Убираем принудительный квадрат для картинок */
 }
