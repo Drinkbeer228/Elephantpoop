@@ -711,9 +711,10 @@ section.visible, .card.visible {
     width: 100% !important;
     max-width: 900px !important; /* Ограничиваем ширину на ПК */
     height: auto !important; /* Позволяем контейнеру тянуться вниз за картинкой */
+    min-height: min-content !important; /* Убираем распорки */
     overflow: visible !important; /* УБИРАЕМ ОБРЕЗКУ! */
     margin: 0 auto !important;
-    padding: 10px !important; /* Уменьшаем отступы, чтобы картинке было больше места */
+    padding: 24px !important; /* Аккуратные отступы вокруг картинки */
 }
 
 /* 2. Заставляем сами картинки идеально вписываться */
