@@ -1,0 +1,12 @@
+{
+  "name": "elephantpoop",
+  "version": "1.0.0",
+  "description": "Elephant manure online store",
+  "private": true,
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
