@@ -1,420 +1,1124 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Плодородный Слон — Премиальное органическое удобрение (г. Сочи)</title>
-  <meta name="description" content="Плодородный Слон — уникальные органические удобрения, эко-бумага и сувениры из навоза индийских слонов в Сочи.">
-  <meta property="og:title" content="Плодородный Слон — Экосувениры и удобрения">
-  <meta property="og:description" content="Уникальные органические удобрения и эко-бумага из навоза сочинских слонов. 100% органика.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="images/organic.jpg">
+  <title>Elephant Poop Science &amp; Bio-Lab + Слонология.EDU — Академическая база знаний</title>
+  <meta name="description" content="Академическая научная база знаний, био-лаборатория и образовательная платформа Слонология.EDU (51 модуль, симуляторы компостирования и делигнификации, расчёт C:N и гидрологии).">
+  <meta property="og:title" content="Elephant Poop Science &amp; Bio-Lab · Слонология.EDU">
+  <meta property="og:description" content="Исследование биохимии, лигноцеллюлозной матрицы (C:N 30:1–50:1), почвенной гидрологии, лабораторных протоколов и 51 академического модуля Слонология.EDU.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="images/cites-elephant-habitat.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231B5E3A'/%3E%3Cpath d='M20 44V22h10c6 0 10 3.5 10 9s-4 9-10 9h-5v4h-5zm5-9h5c3 0 5-1.5 5-4s-2-4-5-4h-5v8z' fill='%23F8F7F2'/%3E%3Ccircle cx='44' cy='42' r='5' fill='%23D6CEBE'/%3E%3C/svg%3E">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Плодородный Слон",
-    "description": "Экологически чистое органическое удобрение из навоза слонов.",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Сочи",
-      "addressCountry": "RU"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "500.00",
-      "priceCurrency": "RUB",
-      "name": "Мешок органического удобрения (50 л)"
+    "@type": "ScholarlyArticle",
+    "headline": "Elephant Poop Science & Bio-Lab + Слонология.EDU: Биохимия, структура клетчатки и циркулярная экономика слоновьего субстрата",
+    "description": "Комплексное исследование физико-химических констант, лигноцеллюлозной матрицы (50–65%), почвенной мелиорации, лабораторных протоколов и курса из 51 модуля Слонология.EDU.",
+    "author": {
+      "@type": "Organization",
+      "name": "Research Station — Кафедра элефантологии и биогеохимии (Слонология.EDU)"
     }
   }
   </script>
 </head>
 <body>
 
-<!-- Навигационное меню -->
-<nav class="sticky-menu">
-  <a href="#elephants">Наши слоны</a>
-  <a href="#about">О навозе</a>
-  <a href="#usage">Как применять</a>
-  <a href="#eco">Эко-сувениры</a>
-  <a href="#order">Доставка</a>
-  <a href="#faq">FAQ</a>
-</nav>
+  <!-- Верхняя навигационная панель (Top Bar Contract: 3 зоны) -->
+  <header class="top-bar" id="site-header">
+    <a href="#top" class="brand-wordmark">Elephant Poop Science &amp; Bio-Lab</a>
 
-<!-- Hero секция -->
-<div class="hero-text">
-  <h1>Плодородный Слон</h1>
-  <div class="subtitle">
-    Органическое удобрение от настоящих слонов — выбирайте своего любимца!
-  </div>
-  <a href="#about" class="buy-btn" style="margin-top: 15px; display: inline-block;">Почему это работает?</a>
-</div>
+    <nav class="primary-nav" aria-label="Навигация по научной базе">
+      <a href="#biochemistry">Биохимия</a>
+      <a href="#soil-science">Почвоведение</a>
+      <a href="#agronomy">Калькуляторы C:N и WHC</a>
+      <a href="#protocols">Лабораторные симуляторы</a>
+      <a href="#slonologia-edu">Слонология.EDU (51)</a>
+    </nav>
 
-<!-- Основной контент -->
-<div class="container">
+    <div class="header-action">
+      <button type="button" id="theme-toggle" class="action-btn" aria-label="Переключить тему оформления">
+        Тёмная тема
+      </button>
+    </div>
+  </header>
 
-  <section id="elephants">
-    <h2>Выберите своего слона! Каждый мешок — с именной биркой производителя.</h2>
-    <p style="text-align: center; margin-bottom: 30px; font-size: 1.1em; color: var(--text-main);">Физически состав одинаков, но мы верим, что характер производителя передается урожаю 🐘</p>
-    <div class="vitirina">
-      <!-- Карточка: Претти -->
-      <div class="card">
-        <img src="images/pretti.jpg" alt="Слониха Претти">
-        <h3>Претти, 30 лет</h3>
-        <div class="desc">Мудрая матриарх нашего стада. Производит классическую, богатую волокнами органику. Её продукт — идеальный выбор для мульчирования клумб, кустарников и посадки плодовых деревьев.</div>
-        <a href="https://t.me/FertileElephant" target="_blank" rel="noopener noreferrer" class="buy-btn">Купить в Telegram</a>
-      </div>
-
-      <!-- Карточка: Марго -->
-      <div class="card">
-        <img src="images/margo.jpg" alt="Слониха Марго">
-        <h3>Марго, 20 лет</h3>
-        <div class="desc">Душа компании, выросла с собаками. Выдает стабильную структуру с около 66% полезной клетчатки (целлюлоза и гемицеллюлоза). Этот навоз работает как губка: отлично спасет высохший газон и удержит влагу у корней даже в самую сильную жару.</div>
-        <a href="https://t.me/FertileElephant" target="_blank" rel="noopener noreferrer" class="buy-btn">Купить в Telegram</a>
-      </div>
-
-      <!-- Карточка: Одри -->
-      <div class="card">
-        <img src="images/odri.jpg" alt="Слониха Одри">
-        <h3>Одри, 10 лет</h3>
-        <div class="desc">Самая молодая и энергичная участница нашей эко-фабрики. Её продукт богат питательными веществами и превосходно подходит для подготовки тяжелой почвы к зиме или создания мощного, дышащего компоста. Выбор настоящих эко-энтузиастов!</div>
-        <a href="https://t.me/FertileElephant" target="_blank" rel="noopener noreferrer" class="buy-btn">Купить в Telegram</a>
+  <!-- Панель интеграции для режима встраивания (?embedded=1) -->
+  <div class="embedded-ribbon" id="embedded-ribbon" hidden>
+    <div class="embedded-ribbon-inner">
+      <span class="mono-meta">RESEARCH-STATION OVERLAY · MODULE: SUBSTRATE-BIO-LAB &amp; SLONOLOGIA.EDU</span>
+      <div class="embedded-links">
+        <a href="#biochemistry">01. Биохимия</a>
+        <span aria-hidden="true">·</span>
+        <a href="#soil-science">02. Гидрология</a>
+        <span aria-hidden="true">·</span>
+        <a href="#agronomy">03. Калькуляторы</a>
+        <span aria-hidden="true">·</span>
+        <a href="#protocols">04. Симуляторы</a>
+        <span aria-hidden="true">·</span>
+        <a href="#slonologia-edu">05. Слонология.EDU</a>
       </div>
     </div>
-  </section>
-
-  <section id="about" class="block-advantage">
-    <h2>Почему это работает? Органика против Химии</h2>
-    <div class="comparison-cards">
-  
-      <!-- Карточка: Обычная химия -->
-      <div class="comp-card bad">
-        <img src="images/chemistry.jpg" alt="Вред химических удобрений" loading="lazy">
-        <h3>🧪 Обычная химия</h3>
-        <ul>
-          <li><span>❌</span> <span>Вымывается за пару дождей</span></li>
-          <li><span>❌</span> <span>Есть риск передозировки и ожога корней</span></li>
-          <li><span>❌</span> <span>Синтетические NPK-элементы</span></li>
-        </ul>
-      </div>
-
-      <!-- Карточка: Обычный навоз -->
-      <div class="comp-card neutral">
-        <img src="images/horse.jpg" alt="Особенности обычного навоза" loading="lazy">
-        <h3>🐴 Обычный навоз</h3>
-        <ul>
-          <li><span>❌</span> <span><b>Риск ожогов:</b> агрессивный аммиак и семена сорняков</span></li>
-          <li><span>⚠️</span> <span><b>Слёживается в ком:</b> перекрывает кислород к корням</span></li>
-          <li><span>⚠️</span> <span><b>Долгая подготовка:</b> должен перепревать до 12 месяцев</span></li>
-        </ul>
-      </div>
-
-      <!-- Карточка: Плодородный Слон -->
-      <div class="comp-card good">
-        <img src="images/organic.jpg" alt="Польза органического слоновьего навоза" loading="lazy">
-        <h3>🐘 Плодородный Слон</h3>
-        <ul>
-          <li><span>✅</span> <span>Питает почву до 2–3 лет за счет структуры волокон</span></li>
-          <li><span>✅</span> <span>Мягче коровьего. Благодаря нейтральному pH, он идеален для быстрого перепревания и создания безопасного биогумуса.</span></li>
-          <li><span>✅</span> <span>Богатый комплекс: травы, кора, около 66% полезной клетчатки (целлюлоза и гемицеллюлоза)</span></li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="usage" style="margin: 80px 0;">
-  <h2 style="text-align: center; font-size: 2.2rem; margin-top: 1.8rem; margin-bottom: 1rem; color: var(--text-main);">Инструкция: от мешка до урожая</h2>
-  <p style="text-align: center; margin-bottom: 50px; color: var(--text-muted); max-width: 600px; margin-left: auto; margin-right: auto;">Четкий алгоритм действий. Органика работает мягко, но требует правильного подхода для максимального результата.</p>
-  
-  <div class="usage-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-    
-    <!-- Шаг 1 -->
-    <div class="usage-card" style="position: relative;">
-      <div class="step-badge">1</div>
-      <img src="images/step1.jpg" alt="Приемка и хранение мешка" loading="lazy">
-      <h3 style="font-size: 1.25rem;">📦 Приемка и хранение</h3>
-      <p style="font-size: 0.95rem;">Вы получаете плотный мешок с чистой органической массой. Если не планируете использовать её сразу, оставьте мешок в сухом, проветриваемом месте или отправьте в компост.</p>
-    </div>
-
-    <!-- Шаг 2 -->
-    <div class="usage-card" style="position: relative;">
-      <div class="step-badge">2</div>
-      <img src="images/step2.jpg" alt="Смешивание субстрата" loading="lazy">
-      <h3 style="font-size: 1.25rem;">🧪 Безопасная пропорция</h3>
-      <p style="font-size: 0.95rem;">Не вносите свежую массу в чистом виде под корни рассады (из-за аммиака). Смешайте её с обычным садовым грунтом в пропорции от 1:10 до 1:20 в зависимости от нежности культуры.</p>
-    </div>
-
-    <!-- Шаг 3 -->
-    <div class="usage-card" style="position: relative;">
-      <div class="step-badge">3</div>
-      <img src="images/step3.jpg" alt="Мульчирование почвы" loading="lazy">
-      <h3 style="font-size: 1.25rem;">🛠️ Закладка и мульча</h3>
-      <p style="font-size: 0.95rem;">Перекопайте смесь с грядкой перед посадкой, добавьте в лунки деревьям или просто разложите слоем (2–3 см) поверх земли как защитную эко-мульчу, удерживающую влагу.</p>
-    </div>
-
-    <!-- Шаг 4 -->
-    <div class="usage-card" style="position: relative;">
-      <div class="step-badge">4</div>
-      <img src="images/step4.jpg" alt="Результат питания корней" loading="lazy">
-      <h3 style="font-size: 1.25rem;">🔄 Работа на перспективу</h3>
-      <p style="font-size: 0.95rem;">Обильно полейте грядку. Благодаря плотной структуре целлюлозы и коры (около 66% полезной клетчатки), удобрение будет порционно питать почву в течение следующих 2–3 лет.</p>
-    </div>
-
-  </div>
-</section>
-
-<section id="cultures" style="margin: 60px 0 80px 0;">
-  <h2 style="text-align: center; font-size: 2rem; margin-bottom: 1rem; color: var(--text-main);">Для каких культур подходит?</h2>
-  <p style="text-align: center; margin-bottom: 40px; color: var(--text-muted);">Идеальный баланс и структура для любого уголка вашего участка.</p>
-  
-  <div class="culture-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-    
-    <!-- Культура 1 -->
-    <div class="culture-card">
-      <img src="images/seedlings.jpg" alt="Томаты" loading="lazy">
-      <h4>🌱 Рассада и томаты</h4>
-    </div>
-
-    <!-- Культура 2 -->
-    <div class="culture-card">
-      <img src="images/flowers.jpg" alt="Цветы" loading="lazy">
-      <h4>🌷 Цветы и клумбы</h4>
-    </div>
-
-    <!-- Культура 3 -->
-    <div class="culture-card">
-      <img src="images/lawn.jpg" alt="Газон" loading="lazy">
-      <h4>🌿 Газон</h4>
-    </div>
-
-    <!-- Культура 4 -->
-    <div class="culture-card">
-      <img src="images/trees.jpg" alt="Деревья" loading="lazy">
-      <h4>🌳 Деревья и кусты</h4>
-    </div>
-
-  </div>
-</section>
-
-  <section id="eco" class="block-altuses" style="text-align: center;">
-    <h2>Не только удобрение: бумага и сувениры</h2>
-    <img src="images/paper.jpg" alt="Производство эко-бумаги из слоновьего навоза" loading="lazy" style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; margin: 20px auto 30px auto; box-shadow: 0 4px 15px rgba(0,0,0,0.08); display: block; margin-left: auto; margin-right: auto;">
-    <p style="max-width: 800px; margin: 0 auto 20px auto; text-align: left;">В странах Азии слоновий навоз давно используют не только на грядках. Из-за того, что пищеварительная система слона усваивает пищу лишь наполовину, на выходе получается чистая, измельченная целлюлоза (по сути — прессованное сено).</p>
-    <ul style="max-width: 800px; margin: 0 auto; text-align: left; display: inline-block;">
-      <li><b>Эко-бумага:</b> Навоз промывают, варят и прессуют в листы. Получается невероятно фактурная крафтовая бумага без запаха.</li>
-      <li><b>Сувениры:</b> Блокноты, открытки и экологичная упаковка.</li>
-      <li><b>Сохранение лесов:</b> Использование такой бумаги спасает деревья от вырубки, ведь слон — это живая фабрика по переработке древесной коры и травы.</li>
-    </ul>
-  </section>
-
-  <!-- Секция: Ручной сбор и бережная фасовка -->
-  <section id="harvest-process" style="padding: 60px 20px; text-align: center;">
-    <div class="container" style="max-width: 900px; margin: 0 auto;">
-      <h2 style="margin-bottom: 15px;">Ручной сбор и бережная фасовка</h2>
-      <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem; line-height: 1.6;">
-        Мы контролируем качество на каждом этапе. Свежий материал собирается вручную специальным инвентарем, чтобы исключить попадание лишней земли и мусора. Затем он сразу фасуется в плотные 50-литровые мешки — это позволяет сохранить естественную влажность и полезную микрофлору. Вы получаете на 100% чистый, щедро упакованный продукт, готовый к самовывозу!
-      </p>
-      
-      <div class="culture-card" style="padding: 20px; border-radius: 16px;">
-         <img src="images/harvest-process.jpg" alt="4 этапа сбора и фасовки удобрения" loading="lazy" style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-      </div>
-    </div>
-  </section>
-
-  <section id="order" class="block-order" style="text-align: center;">
-    <h3 style="margin-top: 40px; margin-bottom: 20px;">Оптовые цены</h3>
-    <div class="vitirina">
-      <div class="card">
-        <h3>1 мешок (50 л)</h3>
-        <div class="desc">Идеально для небольшого участка или пробной партии</div>
-        <div class="price" style="font-size: 1.5em; color: var(--accent-hover); font-weight: bold; margin: 15px 0;">500 ₽</div>
-        <div style="color: #2e7d32; font-weight: bold; font-size: 0.95em; margin-bottom: 10px;">10 ₽/литр</div>
-        <a href="https://t.me/FertileElephant" target="_blank" rel="noopener noreferrer" class="buy-btn">Купить в Telegram</a>
-        <a href="https://t.me/FertileElephant" target="_blank" rel="noopener noreferrer" style="display: block; margin-top: 10px; font-size: 0.85em; color: var(--text-muted); text-decoration: none;">Задать вопрос</a>
-      </div>
-      
-      <div class="card">
-        <h3>5 мешков (250 л)</h3>
-        <div class="desc">Выгода 500 ₽ — отличное решение для среднего участка</div>
-        <div class="price" style="font-size: 1.5em; color: var(--accent-hover); font-weight: bold; margin: 15px 0;">2 000 ₽</div>
-        <div style="color: #2e7d32; font-weight: bold; font-size: 0.95em; margin-bottom: 10px;">8 ₽/литр (Выгода 20%)</div>
-        <a href="https://t.me/FertileElephant" target="_blank" rel="noopener noreferrer" class="buy-btn">Купить в Telegram</a>
-        <a href="https://t.me/FertileElephant" target="_blank" rel="noopener noreferrer" style="display: block; margin-top: 10px; font-size: 0.85em; color: var(--text-muted); text-decoration: none;">Задать вопрос</a>
-      </div>
-      
-      <div class="card">
-        <h3>10 мешков (500 л)</h3>
-        <div class="desc">Выгода 1 500 ₽ — максимальная экономия для крупных заказов</div>
-        <div class="price" style="font-size: 1.5em; color: var(--accent-hover); font-weight: bold; margin: 15px 0;">3 500 ₽</div>
-        <div style="color: #2e7d32; font-weight: bold; font-size: 0.95em; margin-bottom: 10px;">7 ₽/литр (Выгода 30%)</div>
-        <a href="https://t.me/FertileElephant" target="_blank" rel="noopener noreferrer" class="buy-btn">Купить в Telegram</a>
-        <a href="https://t.me/FertileElephant" target="_blank" rel="noopener noreferrer" style="display: block; margin-top: 10px; font-size: 0.85em; color: var(--text-muted); text-decoration: none;">Задать вопрос</a>
-      </div>
-    </div>
-
-    <div class="delivery-info" style="margin-top: 40px; padding: 30px; background: rgba(0,0,0,0.03); border-radius: 12px; text-align: left;">
-      <h3 style="margin-bottom: 15px; font-size: 1.4rem;">Где и как забрать удобрение?</h3>
-      <p style="color: var(--text-muted); margin-bottom: 15px; line-height: 1.6;">
-        🐘 Наши слоны живут в Парке слонов в Сочи, а летом участвуют в передвижных эко-экспедициях по городам России. Вы можете забрать готовые 50-литровые мешки самовывозом из нашего парка или в городах нашего маршрута.
-      </p>
-      <p style="color: var(--text-muted); margin-bottom: 15px; line-height: 1.6;">
-        🚚 <strong>Доставка по городу:</strong> от 300 ₽ (рассчитывается индивидуально в зависимости от объема и удаленности).
-      </p>
-      <p style="color: var(--text-muted); line-height: 1.6;">
-        🏷️ <strong>Бонус:</strong> Каждый мешок снабжается именной биркой, чтобы вы точно знали, кто из наших слонов (Претти, Марго или Одри) постарался для вашего урожая!
-      </p>
-    </div>
-    
-    <div style="text-align: center; margin-top: 30px;">
-      <span style="font-size:0.98em;color:#555;">
-        Пишите нам в Telegram для уточнения текущего местоположения слонов и расчета доставки!
-      </span>
-    </div>
-  </section>
-
-  <section id="science" style="margin: 80px 0; padding: 60px 0; border-radius: 30px;">
-  <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 1rem; color: var(--text-main);">Научно доказано: Мировой опыт</h2>
-  <p style="text-align: center; margin-bottom: 50px; color: var(--text-muted); max-width: 800px; margin-left: auto; margin-right: auto; padding: 0 20px;">Данные исследований аграрных институтов Шри-Ланки, Индии и Таиланда подтверждают уникальные свойства слоновьего субстрата для органического земледелия.</p>
-  
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-    
-    <!-- Факт 1 -->
-    <div class="culture-card" style="text-align: left; padding: 30px; justify-content: flex-start;">
-      <img src="images/science1.jpg" alt="Идеальный C:N индекс" loading="lazy" style="margin-bottom: 15px;">
-      <h3 style="font-size: 1.3rem; margin-bottom: 15px; color: var(--text-main);">Идеальный C:N индекс</h3>
-      <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">Уникальное соотношение углерода к азоту (21–25) гарантирует медленное высвобождение макроэлементов. Удобрение питает почву порционно до 3 лет, полностью исключая риск ожога корней.</p>
-    </div>
-
-    <!-- Факт 2 -->
-    <div class="culture-card" style="text-align: left; padding: 30px; justify-content: flex-start;">
-      <img src="images/science2.jpg" alt="Полезная клетчатка" loading="lazy" style="margin-bottom: 15px;">
-      <h3 style="font-size: 1.3rem; margin-bottom: 15px; color: var(--text-main);">Около 66% полезной клетчатки</h3>
-      <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">Содержит целлюлозу и гемицеллюлозу. Работает как мощная эко-губка, удерживая влагу в засуху, и служит эталонным питанием для полезных почвенных бактерий.</p>
-    </div>
-
-    <!-- Факт 3 -->
-    <div class="culture-card" style="text-align: left; padding: 30px; justify-content: flex-start;">
-      <img src="images/science3.jpg" alt="Дождевые черви и микрофлора" loading="lazy" style="margin-bottom: 15px;">
-      <h3 style="font-size: 1.3rem; margin-bottom: 15px; color: var(--text-main);">Буст микрофлоры в 8 раз</h3>
-      <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">В Азии применяется как премиум-субстрат для рассады. Агрономические исследования показали: внесение массы в почву увеличивает популяцию полезных дождевых червей в 7–8 раз за один сезон!</p>
-    </div>
-
-  </div>
-  </section>
-
-  <div class="scientific-references" style="margin-top: 40px; font-size: 0.85rem; color: #888; text-align: left; padding: 20px; background: rgba(0,0,0,0.05); border-radius: 8px;">
-    <p style="margin-bottom: 10px; font-weight: bold;">Научное обоснование:</p>
-    <ol style="margin-left: 20px; line-height: 1.5;">
-      <li>McCarthy et al., "Chemical analysis of elephant dung as a potential organic fertilizer...", Discover Agriculture, 2025.</li>
-      <li>Deepthi M.P. et al., "Beneficial influence of elephant dung on conventional vermicomposting technology", J. Adv. Sci. Res., 2019.</li>
-      <li>Rekha V.R. Nair et al., "Elephant dung: A promising organic source for tropical soils", Journal of Pharmacognosy and Phytochemistry, 2019.</li>
-    </ol>
   </div>
 
-  <!-- Секция: Создание эко-бумаги -->
-  <section id="eco-paper" style="padding: 60px 20px; text-align: center;">
-    <div class="container" style="max-width: 900px; margin: 0 auto;">
-      <h2 style="margin-bottom: 15px;">DIY: создаем бумагу из навоза</h2>
-      <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem; line-height: 1.6;">
-        Слоны усваивают лишь часть пищи, поэтому их навоз богат чистой непереваренной клетчаткой. Наше удобрение настолько экологично, что вы можете найти ему и творческое применение! Промойте волокна и сварите их при 100°C (это полностью убивает бактерии и убирает любой запах). Выложите массу на сетку, высушите на солнце — и вы получите абсолютно безопасную крафтовую бумагу ручной работы. Отличный эко-эксперимент без вырубки деревьев!
-      </p>
-      
-      <div class="culture-card" style="padding: 20px;">
-         <img src="images/paper-instruction.jpg" alt="Процесс создания бумаги из навоза" loading="lazy" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+  <main id="top" class="main-workspace">
+
+    <!-- ГЛАВНЫЙ ЭКРАН (HERO) -->
+    <section class="hero-section visible">
+      <div class="hero-container">
+        <div class="editorial-kicker">
+          <span>Монография и лабораторный практикум</span>
+          <span aria-hidden="true">·</span>
+          <span>Объект: <em>Elephas maximus</em> &amp; <em>Loxodonta africana</em></span>
+          <span aria-hidden="true">·</span>
+          <span>Платформа: Слонология.EDU (51 академический модуль)</span>
+        </div>
+
+        <h1 class="hero-title">
+          Elephant Poop Science &amp; Bio-Lab: Исследование биохимии, структуры клетчатки и циркулярной экономики слоновьего субстрата
+        </h1>
+
+        <p class="hero-lead">
+          Академическая база знаний и интерактивная био-лаборатория: математические модели углерод-азотного баланса <span class="mono-num">(C:N)<sub>mix</sub></span>, экспоненциальное затухание эвапотранспирации Пенмана-Монтейта, тренажёры термофильной санации бурта и щелочной делигнификации целлюлозы, а также полный курс из 51 модуля <strong>Слонология.EDU</strong>.
+        </p>
+
+        <div class="hero-toolbar">
+          <a href="#calculator-panel" class="btn-primary">Калькулятор (C:N)<sub>mix</sub> и азотной компенсации</a>
+          <a href="#protocols" class="btn-secondary">Тренажёры компоста и эко-бумаги</a>
+          <a href="#slonologia-edu" class="btn-secondary">Платформа Слонология.EDU (51 модуль)</a>
+          <button type="button" id="preview-embedded-btn" class="btn-ghost" title="Проверить отображение в оверлее станции (?embedded=1)">
+            Режим оверлея (?embedded=1)
+          </button>
+        </div>
+
+        <!-- Ключевые константы субстрата (Сводная телеметрия) -->
+        <div class="metrics-strip" role="region" aria-label="Ключевые физико-химические константы">
+          <div class="metric-cell">
+            <div class="metric-label">Усвоение сухого вещества</div>
+            <div class="metric-value">40–50<span class="metric-unit">% (~44%)</span></div>
+            <div class="metric-sub">Транзит химуса: 24–48 ч · pH 6.2–6.8</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-label">Индекс C:N (влажный / сухой сезон)</div>
+            <div class="metric-value">30:1–50:1<span class="metric-unit">индекс</span></div>
+            <div class="metric-sub">После компостирования: ~15:1–20:1</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-label">Полная влагоёмкость волокна (WHC)</div>
+            <div class="metric-value">350–500<span class="metric-unit">% с.в.</span></div>
+            <div class="metric-sub">Адсорбция: 3.5–5.0 л H₂O / кг с.в.</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-label">Деградация испарения (мульча 3 см)</div>
+            <div class="metric-value">−68.0<span class="metric-unit">% (E₀ → E)</span></div>
+            <div class="metric-sub">Экстинкция пара β = 0.38 см⁻¹</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- РАЗДЕЛ 01: БИОХИМИЯ И СОСТАВ -->
+    <section id="biochemistry" class="science-section visible">
+      <div class="section-header">
+        <div class="section-kicker">01. Физиологический базис и аналитическая химия (Трек I · Модули 01–13)</div>
+        <h2>Биохимия субстрата, индекс C:N и минеральный профиль</h2>
+        <p class="section-intro">
+          Слоны (<em>Elephas maximus</em>, <em>Loxodonta africana</em>) относятся к моногастричным травоядным животным со стратегией заднекишечной ферментации (<em>hindgut fermenters</em>). В отличие от жвачных (<em>Ruminantia</em>), обладающих четырехкамерным желудком и ферментирующих 50–70% сухого вещества, относительно короткий ЖКТ слона (превышающий длину тела лишь в 3 раза против 12 раз у лошадей) определяет уникальную сохранность клеточных стенок растений на выходе.
+        </p>
+      </div>
+
+      <div class="academic-grid-2">
+        <article class="academic-panel">
+          <h3>Физико-химические константы и буферная система слепой кишки</h3>
+          <p>
+            По классическим данным Ф. Бенедикта (<em>Benedict, 1936</em>), химический состав слоновьего субстрата идентичен грубому сену низкого качества. За счет быстрого пассажа пищи (24–48 часов) и отсутствия преджелудочной мацерации азиатский слон переваривает в среднем лишь <strong>44% сухого органического вещества</strong>.
+          </p>
+          <dl class="spec-list">
+            <div class="spec-row">
+              <dt>Морфология и гранулометрия</dt>
+              <dd>Крупнопористая, сильно лигнифицированная волокнистая масса с низкой насыпной плотностью; сохраняются интактные фрагменты побегов, сосудов ксилемы, коры и семян.</dd>
+            </div>
+            <div class="spec-row">
+              <dt>Кинетика дефекации</dt>
+              <dd><span class="mono-num">12–18</span> актов в сутки дискретными влажными болюсами по <span class="mono-num">~10 кг</span> (суммарно <span class="mono-num">120–150 кг/сут</span> от взрослой особи).</dd>
+            </div>
+            <div class="spec-row">
+              <dt>Водородный показатель (pH)</dt>
+              <dd><span class="mono-num">pH 6.2–6.8</span> (слабокислый / околонейтральный). Поддерживается в слепой кишке буферным метаногенезом архей семейства <em>Methanobacteriaceae</em>.</dd>
+            </div>
+            <div class="spec-row">
+              <dt>Профиль летучих жирных кислот (ЛЖК / VFA)</dt>
+              <dd>Ацетат <span class="mono-num">~65–70%</span> · Пропионат <span class="mono-num">~15–20%</span> · Бутират <span class="mono-num">~10–12%</span>.</dd>
+            </div>
+          </dl>
+        </article>
+
+        <article class="academic-panel">
+          <h3>Сезонные константы влажности (W), углерода (C) и азота (N)</h3>
+          <p>
+            Для точного инженерного расчёта почвенных смесей и компостных буртов используются три эталонных аналитических профиля субстрата:
+          </p>
+          <div class="season-comparison">
+            <div class="season-box">
+              <div class="season-title">1. Сырой субстрат влажного сезона (C₄-гразерство)</div>
+              <p>
+                До 75–90% рациона составляют злаковые травы. Влажность <span class="mono-num">W = 0.75–0.80</span>, органический углерод <span class="mono-num">C<sub>sub</sub> = 45% (0.45)</span>, общий азот <span class="mono-num">N<sub>sub</sub> = 2.5% (0.025)</span>, результирующий <span class="mono-num">C:N ≈ 30:1</span>.
+              </p>
+            </div>
+            <div class="season-box">
+              <div class="season-title">2. Сырой субстрат сухого сезона (C₃-browse / веточный корм)</div>
+              <p>
+                Питание корой, ветками и корнями при падении сырого протеина в флоре ниже 5%. Влажность <span class="mono-num">W = 0.65–0.70</span>, углерод <span class="mono-num">C<sub>sub</sub> = 50% (0.50)</span>, азот падает до <span class="mono-num">N<sub>sub</sub> = 1.0% (0.010)</span>, индекс смещается к <span class="mono-num">C:N ≈ 50:1</span>.
+              </p>
+            </div>
+            <div class="season-box highlight-box">
+              <div class="season-title">3. Термофильно компостированный субстрат (Биогумус)</div>
+              <p>
+                После прохождения термофильной санации (+55…+65 °C, 14–21 сут.) и мезофильной стабилизации: влажность <span class="mono-num">W = 0.45–0.50</span>, углерод <span class="mono-num">C<sub>sub</sub> = 42% (0.42)</span>, азот <span class="mono-num">N<sub>sub</sub> = 2.8% (0.028)</span>, индекс <span class="mono-num">C:N ≈ 15:1</span> (полное отсутствие азотной иммобилизации).
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Химический профиль макро- и микроэлементов (Таблица) -->
+      <div class="table-panel">
+        <div class="table-header">
+          <h3>Аналитический профиль макро- и микроэлементов в сухом веществе</h3>
+          <span class="mono-meta">Источник: Трофическая экология и кинетика транзита Elephas maximus</span>
+        </div>
+        <div class="table-scroll">
+          <table class="science-table">
+            <thead>
+              <tr>
+                <th>Элемент / Фракция</th>
+                <th>Концентрация / Статус</th>
+                <th>Химическая форма и источник в рационе</th>
+                <th>Функциональная роль в биоценозе и почве</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Азот (N)</strong></td>
+                <td class="mono-num">1.0 – 3.0% с.в.</td>
+                <td>Непереваренный растительный белок + микробная биомасса слепой кишки (<em>Fibrobacter succinogenes</em>, <em>Ruminococcus albus</em>, грибы <em>Neocallimastix</em>, инфузории)</td>
+                <td>Пролонгированное высвобождение без аммонийного осмотического шока и химического ожога корней</td>
+              </tr>
+              <tr>
+                <td><strong>Фосфор (P)</strong></td>
+                <td class="mono-num">Стабильная фракция</td>
+                <td>Неорганические фосфаты и связанные органические соединения, аккумулированные из растительности саванн и лесов</td>
+                <td>Ключевой вектор переноса дефицитного фосфора в тропических почвах; стимуляция раннего корнеобразования</td>
+              </tr>
+              <tr>
+                <td><strong>Калий (K)</strong></td>
+                <td class="mono-num">Высокая (избыток)</td>
+                <td>Водорастворимая зольная фракция, транзитом проходящая из тканей C₃ и C₄-растений</td>
+                <td>Природный калийный мелиорант; мгновенно переходит в почвенный раствор в первые 1–3 месяца</td>
+              </tr>
+              <tr>
+                <td><strong>Кальций (Ca)</strong></td>
+                <td class="mono-num">Высокая + CaCO₃</td>
+                <td>Древесная кора (пектины), геофагия карбонатных почв + экскреция мочи (50–150 л/сут), насыщенной кристаллами CaCO₃</td>
+                <td>Раскисление почвенного поглощающего комплекса, стабилизация клеточных стенок и нейтрализация кислотности</td>
+              </tr>
+              <tr>
+                <td><strong>Натрий (Na)</strong></td>
+                <td class="mono-num">Базальный минимум</td>
+                <td>Дефицитный элемент в флоре (потребность слона 75–100 г NaCl/сут восполняется геофагией глин и термитников)</td>
+                <td>Низкий уровень натрия исключает вторичное засоление грунта при многолетнем внесении субстрата</td>
+              </tr>
+              <tr>
+                <td><strong>Кобальт (Co) и вит. B₁₂</strong></td>
+                <td class="mono-num">Микроэлемент</td>
+                <td>Листья пальм (<em>Caryota urens</em>) поставляют кобальт для синтеза цианокобаламина (B₁₂) симбионтами слепой кишки</td>
+                <td>Биостимуляция ризосферных бактерий; в природе служит фактором обязательной копрофагии молодняка</td>
+              </tr>
+              <tr>
+                <td><strong>Кремнезем (SiO₂)</strong></td>
+                <td class="mono-num">Минеральная примесь</td>
+                <td>Заглатывание кварцевого песка и минеральных частиц при выдергивании корней и геофагии</td>
+                <td>Укрепление механических тканей эпидермиса растений, дренирование тяжелых глинистых субстратов</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Научная инфографика раздела 01 -->
+      <div class="infographic-showcase single-col" style="margin-bottom: 2.5rem;">
+        <figure class="lab-figure">
+          <img src="images/hindgut-fermentation-ru.jpg" alt="Биомеханика и микробное расщепление целлюлозы в заднем отделе кишечника слона" loading="lazy" referrerpolicy="no-referrer">
+          <figcaption>Рис. 1. Биомеханика заднекишечной ферментации (<em>Hindgut Fermentation</em>) у слона: анатомический транзит 24–48 ч, микробный консорциум слепой кишки (<em>Fibrobacter</em>, <em>Ruminococcus</em>, простейшие и анаэробные грибы) и образование ЛЖК.</figcaption>
+        </figure>
+        <figure class="lab-figure">
+          <img src="images/biochem-cn-ratio-ru.jpg" alt="Раздел 01: Биохимия и соотношение C:N, распределение NPK и активность микроорганизмов" loading="lazy" referrerpolicy="no-referrer">
+          <figcaption>Рис. 2. Профиль почвенного разреза: распределение макроэлементов NPK, углерод-азотные молекулярные связи (C:N 30:1–50:1) и стимуляция ризосферной микробиоты.</figcaption>
+        </figure>
+      </div>
+
+      <!-- Сравнительный анализ с другими видами удобрений -->
+      <div class="comparison-section">
+        <h3>Сравнительная характеристика с синтетическими туками и навозом жвачных (Ruminantia)</h3>
+        <div class="comparison-cards">
+          <article class="comp-card">
+            <div class="comp-meta">МИНЕРАЛЬНЫЕ СОЛИ · NPK</div>
+            <h4>Синтетические агрохимикаты</h4>
+            <ul class="scientific-list">
+              <li><strong>Быстрое вымывание:</strong> водорастворимые нитраты и фосфаты покидают корнеобитаемый горизонт за 2–3 цикла обильных осадков, вызывая эвтрофикацию вод.</li>
+              <li><strong>Осмотический стресс:</strong> высокая солевая концентрация провоцирует плазмолиз корневых волосков и подавляет аборигенную микоризу.</li>
+              <li><strong>Нулевая структурная ценность:</strong> отсутствие органического углерода приводит к деградации гумуса и уплотнению почвы.</li>
+            </ul>
+          </article>
+
+          <article class="comp-card">
+            <div class="comp-meta">RUMINANTIA · C:N 15:1–25:1</div>
+            <h4>Навоз КРС и мелкого рогатого скота</h4>
+            <ul class="scientific-list">
+              <li><strong>Глубокая мацерация (50–70%):</strong> четырехкамерный желудок разрушает длинные фибриллы целлюлозы, превращая массу в мелкодисперсную пасту.</li>
+              <li><strong>Высокий уровень свободного аммиака:</strong> агрессивные азотистые метаболиты требуют выдержки до 6–12 месяцев во избежание химического ожога.</li>
+              <li><strong>Риск кольматации пор:</strong> плотная консистенция склонна к слеживанию и формированию анаэробных зон в тяжелых суглинках.</li>
+            </ul>
+          </article>
+
+          <article class="comp-card featured-comp">
+            <div class="comp-meta">HINDGUT FERMENTER · C:N 30:1–50:1</div>
+            <h4>Слоновий лигноцеллюлозный субстрат</h4>
+            <ul class="scientific-list">
+              <li><strong>Макропористый каркас (50–65% клетчатки):</strong> сохраняет неразрушенную капиллярную сеть сосудов ксилемы, обеспечивая газообмен O₂/CO₂.</li>
+              <li><strong>Безопасный связанный азот (1.0–3.0%):</strong> азот депонирован в микробной биомассе и растительных белках при мягком pH 6.2–6.8.</li>
+              <li><strong>Пролонгированная гумификация:</strong> трехфазный распад целлюлозы и лигнина питает почвенный биоценоз на протяжении 24–36 месяцев.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- РАЗДЕЛ 02: ПОЧВОВЕДЕНИЕ, ГИДРОЛОГИЯ И СТРУКТУРА КЛЕТЧАТКИ -->
+    <section id="soil-science" class="science-section visible">
+      <div class="section-header">
+        <div class="section-kicker">02. Биофизика почв и гидрология (Трек II · Модули 14–26)</div>
+        <h2>Лигноцеллюлозная матрица, влагоёмкость (WHC 350–500%) и модель Пенмана-Монтейта</h2>
+        <p class="section-intro">
+          Непереваренная лигноцеллюлозная матрица формирует <strong>50–65% сухого остатка</strong>. За счет сохранения ксилемной капиллярности 1 кг сухого волокна адсорбирует <strong>3.5–5.0 л воды</strong> (<span class="mono-num">WHC = 350–500%</span>), а внесение 10–15% компоста снижает объемную плотность суглинка с <span class="mono-num">1.45 г/см³</span> до оптимальных <span class="mono-num">1.10–1.20 г/см³</span> (общая пористость 55–60%).
+        </p>
+      </div>
+
+      <div class="academic-grid-2">
+        <article class="academic-panel">
+          <h3>Фракционная архитектура клеточных стенок (50–65% с.в.)</h3>
+          <p>
+            Поскольку лигнин не подвергается анаэробному расщеплению бактериальными ферментами за 24–48 часов транзита через ЖКТ, он выходит в неизменном виде, механически экранируя часть кристаллических фибрилл целлюлозы.
+          </p>
+
+          <div class="fiber-bars">
+            <div class="fiber-item">
+              <div class="fiber-label-row">
+                <span><strong>Целлюлоза</strong> (гидрофильные фибриллы)</span>
+                <span class="mono-num">25 – 35% с.в.</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill fill-cellulose" style="width: 60%;"></div></div>
+              <p class="fiber-note">Основа водоудерживающей капиллярной сетки (WHC до 500%) и главный субстрат для почвенных актиномицетов во 2-й фазе минерализации.</p>
+            </div>
+
+            <div class="fiber-item">
+              <div class="fiber-label-row">
+                <span><strong>Гемицеллюлоза</strong> (полиозный матрикс)</span>
+                <span class="mono-num">15 – 20% с.в.</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill fill-hemi" style="width: 38%;"></div></div>
+              <p class="fiber-note">Ферментируется симбиотическими инфузориями (<em>Cycloposthium</em>, <em>Entodinium</em>) и почвенными бактериями в первые месяцы.</p>
+            </div>
+
+            <div class="fiber-item">
+              <div class="fiber-label-row">
+                <span><strong>Лигнин</strong> (ароматический биополимер, фракция ADF)</span>
+                <span class="mono-num">10 – 20% с.в.</span>
+              </div>
+              <div class="progress-track"><div class="progress-fill fill-lignin" style="width: 30%;"></div></div>
+              <p class="fiber-note">Окисляется базидиомицетами (лигнинпероксидазы и лакказы) за 24–36 мес., переходя в стабильный гумус с высокой ЕКО.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="academic-panel">
+          <h3>Математические модели полевой влагоёмкости и эвапотранспирации</h3>
+          <p>
+            Полевая влагоемкость модифицированного грунта (<span class="mono-num">FC<sub>mix</sub></span>) и суточный расход влаги на испарение (<span class="mono-num">E</span>, мм/сут) через мульчирующий слой рассчитываются по следующим уравнениям:
+          </p>
+          <div class="formula-block">
+            <div class="formula-title">1. Полевая влагоёмкость модифицированного грунта (FC<sub>mix</sub>):</div>
+            <code class="formula-code">FC_mix = FC_soil · (1 − X_org) + WHC_sub · X_org</code>
+            <div class="formula-caption">где X_org — массовая доля сухого органического субстрата в почвенной смеси, WHC_sub = 350–500%.</div>
+          </div>
+          <div class="formula-block">
+            <div class="formula-title">2. Затухание потенциальной эвапотранспирации Пенмана-Монтейта (E):</div>
+            <code class="formula-code">E = E_0 · exp(−β · h_mulch)</code>
+            <div class="formula-caption">где E_0 — фоновое испарение (5–8 мм/сут), h_mulch — толщина слоя (см), β = 0.35–0.42 см⁻¹ — коэффициент экстинкции пара. При h = 3 см и β = 0.38 испарение падает с 6.0 до 1.92 мм/сут (−68%).</div>
+          </div>
+          <div class="hydrology-callout">
+            <h4>Симбиотический консорциум слепой кишки</h4>
+            <p>
+              Первичную деструкцию клеточных стенок осуществляют анаэробные хитридиомицеты (<em>Neocallimastix frontalis</em>, <em>Piromyces</em> spp.), целлюлозолитические бактерии (<em>Fibrobacter succinogenes</em>, <em>Ruminococcus albus</em>, <em>R. flavefaciens</em>) и инфузории (<em>Cycloposthium</em>).
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Научная визуализация гидрологии и ризосферы -->
+      <div class="infographic-showcase single-col" style="margin-bottom: 2.5rem;">
+        <figure class="lab-figure">
+          <img src="images/capillary-hydrology-ru.jpg" alt="Сосудистые пучки, капиллярное удержание воды и снижение испарения поверхностью мульчи" loading="lazy" referrerpolicy="no-referrer">
+          <figcaption>Рис. 3. Механизм гидравлического депонирования влаги: капиллярное удержание в сосудах ксилемы и экспоненциальное подавление испарения пористым мульчирующим слоем (−68% при толщине 3 см).</figcaption>
+        </figure>
+      </div>
+
+      <!-- Трёхфазный биохимический механизм пролонгированного действия (2–3 года) -->
+      <div class="phases-container">
+        <h3>Биохимический механизм пролонгированного действия в почве (24–36 месяцев)</h3>
+        <div class="phases-grid">
+          <div class="phase-card">
+            <div class="phase-meta">ФАЗА I · 1–3 МЕСЯЦА</div>
+            <h4>Элюирование водорастворимого пула и микробный старт</h4>
+            <p>
+              В почвенный раствор первыми переходят водорастворимый калий (<span class="mono-num">K⁺</span>), летучие жирные кислоты (ацетат, пропионат, бутират), витамины группы B (включая <span class="mono-num">B₁₂</span>) и простые сахара. Происходит мягкая активация ризосферных гетеротрофов без осмотического шока.
+            </p>
+          </div>
+          <div class="phase-card">
+            <div class="phase-meta">ФАЗА II · 4–12 МЕСЯЦЕВ</div>
+            <h4>Мезофильный гидролиз целлюлозы и гемицеллюлозы</h4>
+            <p>
+              Почвенные актиномицеты и сапротрофные грибы послойно разрушают целлюлозную матрицу (25–35% массы). Поскольку часть фибрилл экранирована гидрофобным лигнином, ферменты целлюлазы получают доступ к субстрату дозированно, равномерно высвобождая связанный азот и фосфор.
+            </p>
+          </div>
+          <div class="phase-card">
+            <div class="phase-meta">ФАЗА III · 24–36 МЕСЯЦЕВ</div>
+            <h4>Окислительная гумификация лигнина и рост ЕКО</h4>
+            <p>
+              Ароматический полимер лигнин (10–20%) минерализуется специализированными базидиальными грибами (белая гниль) при участии лигнинпероксидаз и лакказ. Продукты неполного окисления лигнина связываются с глинистыми минералами, формируя долговечный гумус с высокой емкостью катионного обмена (ЕКО).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- РАЗДЕЛ 03: АГРОНОМИЯ И МАТЕМАТИЧЕСКИЕ КАЛЬКУЛЯТОРЫ (C:N + PENMAN-MONTEITH) -->
+    <section id="agronomy" class="science-section visible">
+      <div class="section-header">
+        <div class="section-kicker">03. Математическое моделирование ризосферы и агрохимия</div>
+        <h2>Инженерные калькуляторы: баланс (C:N)<sub>mix</sub>, компенсация азота (ΔN) и гидрология</h2>
+        <p class="section-intro">
+          При <span class="mono-num">(C:N)<sub>mix</sub> &gt; 25:1–30:1</span> гетеротрофная микробиота иммобилизует почвенные нитраты (<span class="mono-num">NO₃⁻</span>) и аммоний (<span class="mono-num">NH₄⁺</span>). Для рассады и овощных культур целевой оптимум составляет <strong><span class="mono-num">15:1 ≤ (C:N)<sub>target</sub> ≤ 20:1</span></strong>. Используйте точные аналитические модели ниже для расчёта смеси, дозировки карбамида/селитры и влагоудержания.
+        </p>
+      </div>
+
+      <!-- ИНТЕРАКТИВНЫЙ ЛАБОРАТОРНЫЙ КАЛЬКУЛЯТОР МАССОВОГО БАЛАНСА C:N И PENMAN-MONTEITH -->
+      <div id="calculator-panel" class="calculator-box">
+        <div class="calc-header">
+          <div>
+            <div class="section-kicker">Модуль 1 · Аналитический расчёт по формулам баланса масс</div>
+            <h3>Лабораторный калькулятор (C:N)<sub>mix</sub>, дефицита азота (ΔN) и эвапотранспирации (E)</h3>
+          </div>
+          <span class="mono-meta">ENGINE: MASS-BALANCE &amp; PENMAN-MONTEITH V3</span>
+        </div>
+
+        <div class="calc-grid">
+          <div class="calc-controls">
+            <div class="control-group">
+              <label for="calc-state">1. Тип и сезонный профиль вносимого слоновьего субстрата</label>
+              <select id="calc-state" class="lab-select">
+                <option value="composted">Термофильно компостированный (W = 48%, C = 42%, N = 2.8%, C:N = 15:1)</option>
+                <option value="raw-wet">Сырой субстрат влажного сезона C₄ (W = 78%, C = 45%, N = 1.5%, C:N = 30:1)</option>
+                <option value="raw-dry" selected>Сырой субстрат сухого сезона C₃ (W = 70%, C = 50%, N = 1.0%, C:N = 50:1)</option>
+              </select>
+            </div>
+
+            <div class="control-group">
+              <div class="slider-label-row">
+                <label for="calc-soil-mass">2. Сухая масса базового суглинка (M<sub>soil</sub>, C = 1.16%, N = 0.10%)</label>
+                <span id="calc-soil-display" class="mono-num">10 кг</span>
+              </div>
+              <input type="range" id="calc-soil-mass" class="lab-slider" min="0" max="100" step="2" value="10">
+            </div>
+
+            <div class="control-group">
+              <div class="slider-label-row">
+                <label for="calc-sub-mass">3. Масса вносимого сырого слоновьего субстрата (M<sub>sub</sub>)</label>
+                <span id="calc-sub-display" class="mono-num">5 кг</span>
+              </div>
+              <input type="range" id="calc-sub-mass" class="lab-slider" min="1" max="50" step="1" value="5">
+            </div>
+
+            <div class="control-group">
+              <div class="slider-label-row">
+                <label for="calc-target-cn">4. Целевой индекс (C:N)<sub>target</sub> для расчёта компенсации ΔN</label>
+                <span id="calc-target-cn-display" class="mono-num">20:1</span>
+              </div>
+              <input type="range" id="calc-target-cn" class="lab-slider" min="15" max="25" step="1" value="20">
+            </div>
+
+            <div class="control-group">
+              <div class="slider-label-row">
+                <label for="calc-mulch-h">5. Толщина мульчи (h<sub>mulch</sub>) при фоновом испарении E₀ = 6.0 мм/сут (β = 0.38 см⁻¹)</label>
+                <span id="calc-mulch-display" class="mono-num">3.0 см</span>
+              </div>
+              <input type="range" id="calc-mulch-h" class="lab-slider" min="0" max="6" step="0.5" value="3.0">
+            </div>
+          </div>
+
+          <div class="calc-output" aria-live="polite">
+            <div class="calc-metrics-row">
+              <div class="calc-stat">
+                <span class="calc-stat-label">Результирующий (C:N)<sub>mix</sub></span>
+                <span id="out-cn" class="calc-stat-val mono-num">27.3:1</span>
+                <span id="out-cn-status" class="calc-stat-sub status-warn">▲ Порог иммобилизации азота</span>
+              </div>
+              <div class="calc-stat">
+                <span class="calc-stat-label">Дефицит чистого азота (ΔN)</span>
+                <span id="out-delta-n" class="calc-stat-val mono-num">22.50 г N</span>
+                <span id="out-fert-urea" class="calc-stat-sub">Карбамид (46%): 48.91 г | Селитра: 66.18 г</span>
+              </div>
+              <div class="calc-stat">
+                <span class="calc-stat-label">Суточное испарение E (Пенман-Монтейт)</span>
+                <span id="out-evap" class="calc-stat-val mono-num">1.92 мм/сут</span>
+                <span id="out-whc" class="calc-stat-sub">Снижение испарения: −68.0% | FC_mix: 58.4%</span>
+              </div>
+            </div>
+
+            <div class="formula-live-preview mono-meta" id="out-formula-trace">
+              M_sub,dry = 1.50 кг · C_total = 0.866 кг · N_total = 0.0250 кг · ρ_b: 1.45 → 1.16 г/см³
+            </div>
+
+            <div id="out-recommendation" class="calc-recommendation">
+              <strong>Лабораторное заключение:</strong> Рассчитывается...
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 этапа полевого применения и целевые культуры -->
+      <div class="usage-grid" style="margin-top: 2.5rem;">
+        <article class="usage-card">
+          <div class="step-header">
+            <span class="mono-step">ЭТАП 01</span>
+            <span class="step-tag">Кондиционирование</span>
+          </div>
+          <h3>Термофильная стабилизация сырья</h3>
+          <p>
+            Сырой субстрат содержит жизнеспособные скарифицированные семена и высокий индекс углерода. Перед внесением под рассаду масса проходит горячее компостирование при <span class="mono-num">+55…+65 °C</span> для снижения <span class="mono-num">C:N</span> до <span class="mono-num">15:1–20:1</span>.
+          </p>
+        </article>
+
+        <article class="usage-card">
+          <div class="step-header">
+            <span class="mono-step">ЭТАП 02</span>
+            <span class="step-tag">Нормирование объёма</span>
+          </div>
+          <h3>Объёмное дозирование по типу грунта</h3>
+          <p>
+            Для закрытого грунта, контейнеров и рассады зрелый компост смешивают с базовым субстратом в пропорции <strong>1:5 – 1:10</strong> (10–15% объёма). Для открытых грядок и посадочных ям многолетников — в пропорции <strong>1:3 – 1:4</strong>.
+          </p>
+        </article>
+
+        <article class="usage-card">
+          <div class="step-header">
+            <span class="mono-step">ЭТАП 03</span>
+            <span class="step-tag">Инкорпорация и мульча</span>
+          </div>
+          <h3>Заделка в ризосферу и мульчирование</h3>
+          <p>
+            При сплошном внесении субстрат распределяют слоем <span class="mono-num">3–5 см</span> с заделкой на глубину <span class="mono-num">10–15 см</span>. В приствольных кругах деревьев допустимо поверхностное мульчирование слоем <span class="mono-num">2–4 см</span> (снижение испарения на 65–75%).
+          </p>
+        </article>
+
+        <article class="usage-card">
+          <div class="step-header">
+            <span class="mono-step">ЭТАП 04</span>
+            <span class="step-tag">Гидратация матрицы</span>
+          </div>
+          <h3>Зарядка капиллярного гидроаккумулятора</h3>
+          <p>
+            Первичное обильное увлажнение насыщает сосуды ксилемы водой (<span class="mono-num">3.5–5.0 л/кг с.в.</span>), запускает активность целлюлозолитиков и формирует устойчивую структуру гумусового горизонта на 24–36 месяцев.
+          </p>
+        </article>
+      </div>
+
+      <div class="cultures-section">
+        <h3>Агрономическая эффективность по группам культур и типам почв</h3>
+        <div class="culture-grid">
+          <article class="culture-card">
+            <div class="culture-body">
+              <div class="comp-meta">SOLANACEAE · ПРОПОРЦИЯ 1:5–1:10</div>
+              <h4>Паслёновые (томаты, перец) и рассада</h4>
+              <p>
+                Применяется <strong>исключительно после термофильной фазы компостирования</strong> (девитализация семян сорняков и плесневых грибов). Обеспечивает рыхлую структуру и плавное питание калием и фосфором.
+              </p>
+            </div>
+          </article>
+
+          <article class="culture-card">
+            <div class="culture-body">
+              <div class="comp-meta">FLORICULTURE · МУЛЬЧА 2–3 СМ</div>
+              <h4>Декоративные многолетники и розарии</h4>
+              <p>
+                Нейтральный <span class="mono-num">pH 6.2–6.8</span> и обилие карбоната кальция предотвращают закисление клумб, а волокнистая мульча защищает корневую шейку от перегрева и эрозии.
+              </p>
+            </div>
+          </article>
+
+          <article class="culture-card">
+            <div class="culture-body">
+              <div class="comp-meta">TURF &amp; ARID SOILS · ГИДРОДЕПО</div>
+              <h4>Песчаные, истощённые грунты и дернина</h4>
+              <p>
+                Выступает структурным гидромелиорантом: целлюлозная губка связывает влагу в верхнем горизонте, предотвращая иссушение дернины и ветровую эрозию легких песчаных почв.
+              </p>
+            </div>
+          </article>
+
+          <article class="culture-card">
+            <div class="culture-body">
+              <div class="comp-meta">ARBORICULTURE · ПРОПОРЦИЯ 1:3–1:4</div>
+              <h4>Древесно-кустарниковые и плодовые сады</h4>
+              <p>
+                Эволюционно нативный субстрат для укоренения древесных пород. Высокая доля лигнина (10–20%) формирует в посадочных ямах долговечный аэрируемый дренажный каркас.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- РАЗДЕЛ 04: ЛАБОРАТОРНЫЕ ПРОТОКОЛЫ И ИНТЕРАКТИВНЫЕ СИМУЛЯТОРЫ -->
+    <section id="protocols" class="science-section visible">
+      <div class="section-header">
+        <div class="section-kicker">04. Инженерная биотехнология и интерактивные тренажёры (Трек III · Модули 27–39)</div>
+        <h2>Технологические карты и симуляторы: Термофильный бурт и Эко-бумага</h2>
+        <p class="section-intro">
+          Изучите пошаговые технологические регламенты с критическими контрольными точками (CCP) и проведите лабораторные испытания в интерактивных симуляторах. Успешное выполнение критериев санации и прочности полотна разблокирует академические достижения платформы <strong>Слонология.EDU</strong>.
+        </p>
+      </div>
+
+      <!-- Интерактивные вкладки выбора протокола -->
+      <div class="protocol-tabs" role="tablist" aria-label="Выбор технологического протокола и симулятора">
+        <button type="button" class="proto-tab active" role="tab" aria-selected="true" aria-controls="panel-compost" id="tab-compost" data-protocol="compost">
+          Протокол А + Симулятор: Термофильная санация бурта
+        </button>
+        <button type="button" class="proto-tab" role="tab" aria-selected="false" aria-controls="panel-paper" id="tab-paper" data-protocol="paper">
+          Протокол Б + Симулятор: Щелочная делигнификация эко-бумаги
+        </button>
+      </div>
+
+      <!-- ПАНЕЛЬ ПРОТОКОЛА А: КОМПОСТИРОВАНИЕ + СИМУЛЯТОР -->
+      <div id="panel-compost" class="protocol-panel active" role="tabpanel" aria-labelledby="tab-compost">
+        <!-- Пошаговая технологическая карта термофильной санации -->
+        <div class="table-panel">
+          <div class="table-header">
+            <h3>Технологическая карта аэробной термофильной санации бурта (90 суток)</h3>
+            <span class="mono-meta">CCP: ≥ +55 °C не менее 14 суток · Девитализация Fasciola jacksoni и семян</span>
+          </div>
+          <div class="table-scroll">
+            <table class="science-table">
+              <thead>
+                <tr>
+                  <th>Сутки</th>
+                  <th>Фаза процесса</th>
+                  <th>Температурный коридор</th>
+                  <th>Влажность</th>
+                  <th>Технологические операции, контроль и триггеры ошибок</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="mono-num"><strong>1–3</strong></td>
+                  <td><strong>Мезофильная индукция</strong></td>
+                  <td class="mono-num">+25 → +45 °C</td>
+                  <td class="mono-num">60–65%</td>
+                  <td>Закладка бурта: слоновий субстрат + карбамид для доведения стартового <code>C:N</code> до 28:1–30:1. Первичное увлажнение.</td>
+                </tr>
+                <tr>
+                  <td class="mono-num"><strong>4–18</strong></td>
+                  <td><strong>Термофильная санация (CCP)</strong></td>
+                  <td class="mono-num"><strong>+55…+65 °C</strong></td>
+                  <td class="mono-num">50–60%</td>
+                  <td><strong>Критическая контрольная точка:</strong> удержание ≥ +55 °C не менее 14 суток (100% гибель яиц <em>Fasciola jacksoni</em> и скарифицированных семян). Ворошение каждые 3–4 дня для притока O₂.</td>
+                </tr>
+                <tr>
+                  <td class="mono-num"><strong>19–35</strong></td>
+                  <td><strong>Деградация целлюлозы</strong></td>
+                  <td class="mono-num">+45 → +35 °C</td>
+                  <td class="mono-num">50–55%</td>
+                  <td>Колонизация актиномицетами и базидиомицетами. Гидролиз устойчивых волокон. Ворошение 1 раз в 7 дней.</td>
+                </tr>
+                <tr>
+                  <td class="mono-num"><strong>36–90</strong></td>
+                  <td><strong>Мезофильное созревание и вермикультура</strong></td>
+                  <td class="mono-num">+20…+25 °C</td>
+                  <td class="mono-num">60–65%</td>
+                  <td>Интродукция <em>Eisenia fetida</em> / <em>Eudrilus eugeniae</em>. Стабилизация гумуса при итоговом <code>C:N 14:1–18:1</code>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ИНТЕРАКТИВНЫЙ ТРЕНАЖЁР ТЕРМОФИЛЬНОГО БУРТА -->
+        <div class="simulator-box" id="compost-simulator">
+          <div class="calc-header">
+            <div>
+              <div class="section-kicker">Интерактивный тренажёр · CompostingSimulationState</div>
+              <h3>Симулятор управления термофильным буртом (Цель: 14+ суток при 55–65 °C, C:N 14–18:1)</h3>
+            </div>
+            <span class="mono-meta" id="compost-sim-badge-status">Ачивка «Мастер термофильного бурта»: В процессе</span>
+          </div>
+
+          <div class="sim-telemetry-grid">
+            <div class="sim-metric">
+              <span class="sim-label">День ферментации</span>
+              <span class="sim-val mono-num" id="sim-c-day">День 1 / 45</span>
+              <span class="sim-sub" id="sim-c-phase">Фаза: Мезофильная индукция</span>
+            </div>
+            <div class="sim-metric">
+              <span class="sim-label">Температура ядра</span>
+              <span class="sim-val mono-num" id="sim-c-temp">+32.0 °C</span>
+              <span class="sim-sub" id="sim-c-thermo-days">Термофильных дней (≥55°C): 0 / 14</span>
+            </div>
+            <div class="sim-metric">
+              <span class="sim-label">Влажность и аэрация</span>
+              <span class="sim-val mono-num" id="sim-c-moisture">58.0%</span>
+              <span class="sim-sub" id="sim-c-turns">Ворошений: 0 (дней без O₂: 1)</span>
+            </div>
+            <div class="sim-metric">
+              <span class="sim-label">Индекс C:N и запах (VFA)</span>
+              <span class="sim-val mono-num" id="sim-c-cn">34.0:1</span>
+              <span class="sim-sub" id="sim-c-odor">Индекс запаха ЛЖК: 28.0</span>
+            </div>
+            <div class="sim-metric">
+              <span class="sim-label">Гибель яиц F. jacksoni</span>
+              <span class="sim-val mono-num" id="sim-c-fasciola">0%</span>
+              <span class="sim-sub" id="sim-c-seeds">Гибель семян сорняков: 0%</span>
+            </div>
+            <div class="sim-metric">
+              <span class="sim-label">Статус биореактора</span>
+              <span class="sim-val mono-num status-ok" id="sim-c-state">● Аэробная норма</span>
+              <span class="sim-sub" id="sim-c-vermi">Вермикультура: Ожидание</span>
+            </div>
+          </div>
+
+          <div class="sim-actions-bar">
+            <button type="button" class="btn-secondary sim-c-btn" data-action="ADD_NITROGEN_UREA">
+              + Внести карбамид (−C:N, +нагрев)
+            </button>
+            <button type="button" class="btn-secondary sim-c-btn" data-action="TURN_PILE">
+              ↻ Ворошение бурта (+O₂, дегазация)
+            </button>
+            <button type="button" class="btn-secondary sim-c-btn" data-action="ADD_WATER">
+              + Полив водой (+8% влажности)
+            </button>
+            <button type="button" class="btn-secondary sim-c-btn" data-action="ADD_BULKING_STRAW">
+              + Внести сухую солому (−влажность)
+            </button>
+            <button type="button" class="btn-primary sim-c-btn" data-action="REST_DAY">
+              Следующий шаг (+3 суток) →
+            </button>
+            <button type="button" class="btn-ghost" id="sim-c-auto">
+              Эталонный прогон (Авто-протокол)
+            </button>
+            <button type="button" class="btn-ghost" id="sim-c-reset">
+              Сброс
+            </button>
+          </div>
+
+          <div class="calc-recommendation" id="sim-c-log">
+            <strong>Журнал биореактора (День 1):</strong> Бурт заложен из сырого субстрата (C:N 34:1, влажность 58%). Внесите карбамид для снижения C:N до ~28:1 и запуска термофильного разогрева выше +55 °C.
+          </div>
+        </div>
+
+        <div class="infographic-showcase single-col" style="margin-top: 2rem;">
+          <figure class="lab-figure">
+            <img src="images/bioreactor-rig-ru.jpg" alt="Инженерный чертёж аэробного термофильного биореактора в разрезе" loading="lazy" referrerpolicy="no-referrer">
+            <figcaption>Рис. 4. Техническая схема аэробного термофильного биореактора: изолированный резервуар с датчиками температуры, аэрационным коллектором от воздуходувки, панелью ПЛК и узлом фильтрации.</figcaption>
+          </figure>
+          <figure class="lab-figure">
+            <img src="images/vermicompost-microscopy.jpg" alt="Макросъёмка вермикомпоста с Eisenia fetida и белыми гифами актиномицетов" loading="lazy" referrerpolicy="no-referrer">
+            <figcaption>Рис. 5. Мезофильная фаза дозревания (вермикомпостирование с <em>Eisenia fetida</em>) после прохождения термофильной санации (+55…+65 °C): активная колонизация волокон актиномицетами и стабилизация гумуса.</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <!-- ПАНЕЛЬ ПРОТОКОЛА Б: ЭКСТРАКЦИЯ ЦЕЛЛЮЛОЗЫ + СИМУЛЯТОР -->
+      <div id="panel-paper" class="protocol-panel" role="tabpanel" aria-labelledby="tab-paper" hidden>
+        <div class="table-panel">
+          <div class="table-header">
+            <h3>Технологическая карта экстракции целлюлозы (На 100 кг сырого навоза → 150–180 листов A4)</h3>
+            <span class="mono-meta">Гидромодуль 1:9 · 2.0% NaOH · 98–102 °C (5 ч) · Бленд Musa spp. 60:40</span>
+          </div>
+          <div class="table-scroll">
+            <table class="science-table">
+              <thead>
+                <tr>
+                  <th>Этап</th>
+                  <th>Операция</th>
+                  <th>Входные параметры и режим</th>
+                  <th>Критические контрольные точки (CCP)</th>
+                  <th>Выход полуфабриката</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="mono-num"><strong>Шаг 1</strong></td>
+                  <td><strong>Ситовая промывка и дешламация</strong></td>
+                  <td>100 кг сырого субстрата (W ~75%, 25 кг сухого волокна); вибросита 0.8–1.0 мм, гидромодуль 1:15</td>
+                  <td>Мутность промывной воды <code>&lt; 15 NTU</code>; полное удаление кварцевого песка SiO₂ и солей CaCO₃</td>
+                  <td class="mono-num">12–14 кг с.в. очищенного волокна</td>
+                </tr>
+                <tr>
+                  <td class="mono-num"><strong>Шаг 2</strong></td>
+                  <td><strong>Щелочная гидротермическая варка</strong></td>
+                  <td>12 кг с.в. волокна + 108 л воды (1:9) + <strong>2.0% NaOH</strong> (2.16 кг); <strong>+98…+102 °C, 5 часов (300 мин)</strong></td>
+                  <td>Удаление лигнина <code>≥ 70–75%</code>; гидролиз ЛЖК (индекс запаха <code>VFA ≤ 0.5</code>); потеря α-целлюлозы <code>≤ 8%</code></td>
+                  <td class="mono-num">8.5–9.0 кг стерильной целлюлозы</td>
+                </tr>
+                <tr>
+                  <td class="mono-num"><strong>Шаг 3</strong></td>
+                  <td><strong>Блендирование в ролле (Holland-beater)</strong></td>
+                  <td>60% слоновой целлюлозы + <strong>40% псевдостебля банана (<em>Musa sapientum</em>)</strong> + 0.5% крахмала</td>
+                  <td>Помол пульпы до <code>35–45 °ШР</code> (градусов Шоппер-Риглера) для армирования на разрыв</td>
+                  <td class="mono-num">Гомогенная пульпа</td>
+                </tr>
+                <tr>
+                  <td class="mono-num"><strong>Шаг 4–5</strong></td>
+                  <td><strong>Литьё (Deckle &amp; Mould) и каландрирование</strong></td>
+                  <td>Суспензия 0.3–0.5%, винтовой пресс 3.5–5.0 МПа, сушка при +80 °C, холодный каландр</td>
+                  <td>Прочность полотна на разрыв <code>≥ 28 МПа</code>; равномерный просвет без флокуляции</td>
+                  <td class="mono-num">150–180 листов A4 (120 г/м²)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ИНТЕРАКТИВНЫЙ СИМУЛЯТОР ЩЕЛОЧНОЙ ДЕЛИГНИФИКАЦИИ ЭКО-БУМАГИ -->
+        <div class="simulator-box" id="paper-simulator">
+          <div class="calc-header">
+            <div>
+              <div class="section-kicker">Интерактивный тренажёр · PaperDelignificationState</div>
+              <h3>Симулятор реактора щелочной делигнификации и испытания прочности листа</h3>
+            </div>
+            <span class="mono-meta" id="paper-sim-badge-status">Ачивка «Эксперт по эко-бумаге»: В процессе</span>
+          </div>
+
+          <div class="calc-grid">
+            <div class="calc-controls">
+              <div class="control-group">
+                <div class="slider-label-row">
+                  <label for="sim-p-naoh">1. Концентрация гидроксида натрия (NaOH, оптимум 1.5–2.5%)</label>
+                  <span id="sim-p-naoh-val" class="mono-num">2.0%</span>
+                </div>
+                <input type="range" id="sim-p-naoh" class="lab-slider" min="0.5" max="5.0" step="0.25" value="2.0">
+              </div>
+
+              <div class="control-group">
+                <div class="slider-label-row">
+                  <label for="sim-p-temp">2. Температура гидротермической варки (оптимум 98–102 °C)</label>
+                  <span id="sim-p-temp-val" class="mono-num">100 °C</span>
+                </div>
+                <input type="range" id="sim-p-temp" class="lab-slider" min="80" max="115" step="1" value="100">
+              </div>
+
+              <div class="control-group">
+                <div class="slider-label-row">
+                  <label for="sim-p-time">3. Время экспозиции в котле (оптимум 240–360 мин / 4–6 ч)</label>
+                  <span id="sim-p-time-val" class="mono-num">300 мин (5.0 ч)</span>
+                </div>
+                <input type="range" id="sim-p-time" class="lab-slider" min="60" max="480" step="30" value="300">
+              </div>
+
+              <div class="control-group">
+                <div class="slider-label-row">
+                  <label for="sim-p-musa">4. Доля армирующего волокна банана Musa sapientum (оптимум 0.35–0.45)</label>
+                  <span id="sim-p-musa-val" class="mono-num">0.40 (40%)</span>
+                </div>
+                <input type="range" id="sim-p-musa" class="lab-slider" min="0.10" max="0.60" step="0.05" value="0.40">
+              </div>
+            </div>
+
+            <div class="calc-output" aria-live="polite">
+              <div class="calc-metrics-row">
+                <div class="calc-stat">
+                  <span class="calc-stat-label">Удаление лигнина / Деструкция α</span>
+                  <span id="out-p-lignin" class="calc-stat-val mono-num">78.5%</span>
+                  <span id="out-p-damage" class="calc-stat-sub">Потеря α-целлюлозы: 4.8% (норма ≤ 8%)</span>
+                </div>
+                <div class="calc-stat">
+                  <span class="calc-stat-label">Индекс запаха ЛЖК (VFA)</span>
+                  <span id="out-p-odor" class="calc-stat-val mono-num">0.20</span>
+                  <span id="out-p-odor-status" class="calc-stat-sub status-ok">● Запах полностью устранён (≤ 0.5)</span>
+                </div>
+                <div class="calc-stat">
+                  <span class="calc-stat-label">Прочность полотна на разрыв</span>
+                  <span id="out-p-strength" class="calc-stat-val mono-num">31.4 МПа</span>
+                  <span id="out-p-yield" class="calc-stat-sub">Выход из 12 кг с.в.: 8.8 кг (168 листов A4)</span>
+                </div>
+              </div>
+
+              <div id="out-p-recommendation" class="calc-recommendation">
+                <strong>Результат лабораторного испытания:</strong> Режим варки соответствует эталонному протоколу.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="infographic-showcase single-col" style="margin-top: 2rem;">
+          <figure class="lab-figure">
+            <img src="images/paper-protocol-diagram-ru.jpg" alt="Пятиступенчатая схема цикла экстракции эко-целлюлозы по Протоколу Б" loading="lazy" referrerpolicy="no-referrer">
+            <figcaption>Рис. 6. Пятиступенчатая технологическая схема экстракции эко-целлюлозы (Протокол Б): промывка на ситах 0.5–1.0 мм, щелочная варка в 2% NaOH (100 °C, 5 ч), блендирование с волокном <em>Musa</em> spp. (60:40), формование <em>deckle &amp; mould</em> и каландрирование.</figcaption>
+          </figure>
+          <figure class="lab-figure">
+            <img src="images/paper-kraft-fibers.jpg" alt="Образцы крафтовой целлюлозы, растительных волокон и готовых бумажных листов из слоновьего субстрата" loading="lazy" referrerpolicy="no-referrer">
+            <figcaption>Рис. 7. Фактура готовых целлюлозных листов (120–220 г/м²) и выделенных лигноцеллюлозных волокон после щелочной делигнификации и каландрирования.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- РАЗДЕЛ 05: ОБРАЗОВАТЕЛЬНАЯ ПЛАТФОРМА СЛОНОЛОГИЯ.EDU (51 МОДУЛЬ, РАНГИ И АЧИВКИ) -->
+    <section id="slonologia-edu" class="science-section visible">
+      <div class="section-header">
+        <div class="section-kicker">05. Образовательная экосистема · Интеграция coursesData.ts и progress.ts</div>
+        <h2>Слонология.EDU: 51 академический модуль, ранги мастерства и верификация знаний</h2>
+        <p class="section-intro">
+          Интерактивная учебная консоль исследователя. Проходите аттестационные тесты по 4 академическим трекам, решайте инженерные кейсы в симуляторах, накапливайте опыт (<span class="mono-num">XP</span>) от ранга <em>Младшего лаборанта</em> до <em>Академика Высшего Совета Элефантологии</em> и открывайте 8 профильных научных достижений.
+        </p>
+      </div>
+
+      <!-- Панель прогресса исследователя (UserProgress & AcademicTiers) -->
+      <div class="edu-dashboard">
+        <div class="edu-rank-card">
+          <div class="edu-rank-top">
+            <div>
+              <div class="mono-meta" id="edu-rank-code">TIER 1 · TIER_LABORANT</div>
+              <h3 id="edu-rank-title">Младший лаборант подиатрических наблюдений</h3>
+              <p class="edu-perk" id="edu-rank-perk">Привилегия ранга: Доступ к базовым лекциям Трека 1 и расчётным моделям</p>
+            </div>
+            <div class="edu-xp-readout">
+              <div class="edu-xp-number mono-num" id="edu-total-xp">1 450 XP</div>
+              <div class="mono-meta" id="edu-next-tier">Следующий ранг: 4 500 XP</div>
+            </div>
+          </div>
+          <div class="progress-track" style="height: 10px; margin: 0.75rem 0;">
+            <div class="progress-fill fill-cellulose" id="edu-xp-bar" style="width: 32%;"></div>
+          </div>
+          <div class="edu-stats-strip mono-meta">
+            <span id="edu-modules-count">Завершено модулей: 6 / 51</span>
+            <span aria-hidden="true">·</span>
+            <span id="edu-badges-count">Открыто ачивок: 2 / 8</span>
+            <span aria-hidden="true">·</span>
+            <span id="edu-avg-score">Средний балл аттестации: 96.5%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Матрица из 8 академических достижений (ACADEMIC_ACHIEVEMENTS) -->
+      <div class="achievements-section">
+        <div class="table-header" style="padding: 0 0 1rem 0; border-bottom: none;">
+          <h3>Академические достижения (TypeScript-предикаты разблокировки)</h3>
+          <span class="mono-meta">Выполняйте условия в симуляторах и модулях для мгновенной разблокировки</span>
+        </div>
+        <div class="achievements-grid" id="achievements-grid">
+          <!-- Генерируется динамически из массива ACADEMIC_ACHIEVEMENTS в script.js -->
+        </div>
+      </div>
+
+      <!-- Каталог 51 академического модуля по 4 трекам + интерактивный практикум -->
+      <div class="curriculum-box">
+        <div class="calc-header">
+          <div>
+            <div class="section-kicker">Учебный план курса (Модули 01–51)</div>
+            <h3>Реестр модулей Слонология.EDU и интерактивная аттестация</h3>
+          </div>
+          <div class="track-filter-bar" role="tablist" aria-label="Фильтр академических треков">
+            <button type="button" class="track-btn active" data-track="ALL">Все (51)</button>
+            <button type="button" class="track-btn" data-track="TRACK_1_PHYSIOLOGY_AND_HINDGUT">Трек I: ЖКТ (01–13)</button>
+            <button type="button" class="track-btn" data-track="TRACK_2_SOIL_SCIENCE_AND_RHIZOSPHERE">Трек II: Почвы (14–26)</button>
+            <button type="button" class="track-btn" data-track="TRACK_3_LAB_PROTOCOLS_AND_BIOCHEM">Трек III: Протоколы (27–39)</button>
+            <button type="button" class="track-btn" data-track="TRACK_4_CIRCULAR_ECONOMY_AND_HEC">Трек IV: HEC и CITES (40–51)</button>
+          </div>
+        </div>
+
+        <div class="edu-workspace-grid">
+          <!-- Левая колонка: список 51 модуля -->
+          <div class="modules-list-container" id="modules-list" role="region" aria-label="Список академических модулей">
+            <!-- Заполняется из script.js (51 модуль) -->
+          </div>
+
+          <!-- Правая колонка: активный модуль, теория, квиз и кейс-стади -->
+          <div class="module-inspector" id="module-inspector" aria-live="polite">
+            <!-- Заполняется при выборе модуля -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- РАЗДЕЛ 06: МИРОВОЙ НАУЧНЫЙ ОПЫТ И БИБЛИОГРАФИЯ -->
+    <section id="scientific-experience" class="science-section visible">
+      <div class="section-header">
+        <div class="section-kicker">06. Эмпирическая верификация и источниковедение</div>
+        <h2>Мировой научный опыт, публикации и связь с корпусом Elephantology</h2>
+        <p class="section-intro">
+          Сводные результаты лабораторных и полевых исследований аграрных и зоологических институтов Индии, Шри-Ланки, Таиланда и США, верифицирующие биохимические и мелиоративные параметры слоновьего субстрата.
+        </p>
+      </div>
+
+      <div class="culture-grid">
+        <article class="culture-card">
+          <img src="images/cites-elephant-habitat.jpg" alt="Полевые исследования CITES и мониторинг Elephas maximus в субтропическом лесу" loading="lazy" referrerpolicy="no-referrer">
+          <div class="culture-body">
+            <div class="comp-meta">MCCARTHY ET AL., 2025 · C:N БАЛАНС</div>
+            <h4>Кинетика высвобождения NPK и полевой мониторинг</h4>
+            <p>
+              Химический анализ показывает, что высокий пул органического углерода (<span class="mono-num">C:N 30:1–50:1</span> в нативном сырье и <span class="mono-num">~15:1–20:1</span> после компостирования) обеспечивает постепенную минерализацию азота и фосфора в течение 2–3 лет при околонейтральном <span class="mono-num">pH 6.2–6.8</span>.
+            </p>
+          </div>
+        </article>
+
+        <article class="culture-card">
+          <img src="images/paper-kraft-fibers.jpg" alt="Лигноцеллюлозные волокна и образцы растительной бумаги" loading="lazy" referrerpolicy="no-referrer">
+          <div class="culture-body">
+            <div class="comp-meta">BENEDICT, 1936 / NAIR ET AL., 2019</div>
+            <h4>50–65% лигноцеллюлозного гидрокаркаса</h4>
+            <p>
+              Из-за 44%-ной эффективности пищеварения субстрат сохраняет интактные капилляры ксилемы (25–35% целлюлозы, 15–20% гемицеллюлозы, 10–20% лигнина), удерживая 3.5–5.0 л воды на 1 кг сухой массы.
+            </p>
+          </div>
+        </article>
+
+        <article class="culture-card">
+          <img src="images/soil-rhizosphere.jpg" alt="Макросъёмка мицелия грибов, актиномицетов и корней растений в гумусе" loading="lazy" referrerpolicy="no-referrer">
+          <div class="culture-body">
+            <div class="comp-meta">DEEPTHI ET AL., 2019 · ВЕРМИБИОТА</div>
+            <h4>Стимуляция микобиома и почвенной ризосферы</h4>
+            <p>
+              Включение предварительно ферментированного слоновьего субстрата в вермиреакторы (с участием <em>Eudrilus eugeniae</em> и <em>Eisenia fetida</em>) кратно ускоряет развитие гифов сапротрофных грибов, актиномицетов и популяций олигохет.
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <div class="academic-grid-2 biblio-grid">
+        <div class="academic-panel">
+          <h3>Реестр рецензируемых научных источников</h3>
+          <ol class="bibliography-list">
+            <li>
+              <strong>McCarthy et al. (2025).</strong> <em>"Chemical analysis of elephant dung as a potential organic fertilizer and soil conditioner"</em>. Discover Agriculture, Springer Nature.
+            </li>
+            <li>
+              <strong>Deepthi M.P. et al. (2019).</strong> <em>"Beneficial influence of elephant dung on conventional vermicomposting technology"</em>. Journal of Advanced Scientific Research (J. Adv. Sci. Res.), 10(3).
+            </li>
+            <li>
+              <strong>Rekha V.R. Nair et al. (2019).</strong> <em>"Elephant dung: A promising organic source for tropical soils"</em>. Journal of Pharmacognosy and Phytochemistry, 8(4).
+            </li>
+            <li>
+              <strong>Benedict F.G. (1936).</strong> <em>"The Physiology of the Elephant"</em>. Carnegie Institution of Washington, Publication No. 474.
+            </li>
+            <li>
+              <strong>Корпус полевых исследований эндозоохории и микробиологии ЖКТ (Elephas maximus / Loxodonta africana):</strong> симбиотический консорциум слепой кишки (<em>Neocallimastix frontalis</em>, <em>Fibrobacter succinogenes</em>, <em>Methanobacteriaceae</em>) и скарификация семян <em>Balanites wilsoniana</em>.
+            </li>
+          </ol>
+        </div>
+
+        <div class="academic-panel">
+          <h3>Перекрёстные связи с теоретическими главами библиотеки (Elephantology)</h3>
+          <p>
+            Данная лабораторная база интегрирована в единый научный контур станции <code>research-station</code> и курса <code>Слонология.EDU</code>:
+          </p>
+          <div class="cross-links-list">
+            <a href="info.html" class="cross-link-item">
+              <div class="cross-link-meta">ТЕОРЕТИЧЕСКАЯ СПРАВКА · INFO.HTML</div>
+              <div class="cross-link-title">Паспорт субстрата: морфология, геофагия и физиология пищеварения Hindgut Fermenters →</div>
+            </a>
+            <a href="blog.html" class="cross-link-item">
+              <div class="cross-link-meta">ПОЛЕВЫЕ НАБЛЮДЕНИЯ · BLOG.HTML</div>
+              <div class="cross-link-title">Агроботанические очерки: влияние лигноцеллюлозной матрицы на паслёновые, пальмы и виноградники →</div>
+            </a>
+            <a href="#slonologia-edu" class="cross-link-item">
+              <div class="cross-link-meta">ОБРАЗОВАТЕЛЬНЫЙ КОНТУР · СЛОНОЛОГИЯ.EDU</div>
+              <div class="cross-link-title">Перейти к интерактивному реестру из 51 академического модуля и системе аттестации →</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- РАЗДЕЛ 07: МЕТОДОЛОГИЧЕСКИЙ СПРАВОЧНИК (FAQ) -->
+    <section id="faq" class="science-section visible">
+      <div class="section-header">
+        <div class="section-kicker">07. Методологический справочник</div>
+        <h2>Частые научные и технологические вопросы</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="faq-item" open>
+          <summary class="faq-question">Почему свежий слоновий субстрат вызывает азотную иммобилизацию при (C:N)<sub>mix</sub> &gt; 25:1?</summary>
+          <div class="faq-answer">
+            При внесении некомпостированного субстрата сухого сезона (<span class="mono-num">C:N ≈ 50:1</span>, <span class="mono-num">C = 50%</span>, <span class="mono-num">N = 1.0%</span>) гетеротрофная почвенная микробиота начинает активно разлагать целлюлозу и гемицеллюлозу. Поскольку для построения микробного белка бактериям требуется соотношение <span class="mono-num">C:N ≈ 8:1–12:1</span>, они поглощают свободные ионы <span class="mono-num">NH₄⁺</span> и <span class="mono-num">NO₃⁻</span> из почвенного раствора. Чтобы компенсировать дефицит на 1 кг сырого субстрата сухого сезона (при доведении до целевого <span class="mono-num">C:N = 20:1</span>), требуется <span class="mono-num">ΔN = 4.5 г</span> чистого азота (<span class="mono-num">9.78 г</span> карбамида или <span class="mono-num">13.24 г</span> аммиачной селитры).
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">За счёт каких биохимических процессов при варке целлюлозы полностью исчезает специфический запах?</summary>
+          <div class="faq-answer">
+            Специфический запах свежего субстрата обусловлен летучими жирными кислотами (ацетатом ~65–70%, пропионатом ~15–20%, бутиратом/масляной кислотой ~10–12%). На Шаге 1 промывка на виброситах (<span class="mono-num">0.8–1.0 мм</span>, гидромодуль 1:15) снижает мутность ниже <span class="mono-num">15 NTU</span>, а на Шаге 2 пятичасовая варка при <span class="mono-num">98–102 °C</span> с <span class="mono-num">2.0% NaOH</span> (гидромодуль 1:9) переводит летучие кислоты в растворимые натриевые соли и снижает индекс запаха до <span class="mono-num">VFA ≤ 0.2</span> без использования хлора.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">Какие триггеры ошибок возникают при нарушении регламента термофильного компостирования?</summary>
+          <div class="faq-answer">
+            В тренажёре и реальной практике выделяются два критических сбоя: 1) <strong>Анаэробное закисание</strong> (влажность <span class="mono-num">&gt; 70%</span> или отсутствие ворошения более 5 суток в горячую фазу) ведёт к падению <span class="mono-num">O₂ &lt; 5%</span>, выделению <span class="mono-num">H₂S</span> и падению <span class="mono-num">pH &lt; 5.5</span> — устраняется внесением сухой соломы и экстренным ворошением; 2) <strong>Остановка ферментации</strong> (падение температуры <span class="mono-num">&lt; +45 °C</span> на 6–10 сутки из-за дефицита азота или иссушения <span class="mono-num">&lt; 40%</span>), при которой яйца <em>Fasciola jacksoni</em> не погибают — устраняется проливом раствором мочевины и доведением влажности до 55%.
+          </div>
+        </details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <div class="footer-brand">Elephant Poop Science &amp; Bio-Lab · Слонология.EDU</div>
+        <p class="footer-desc">
+          Академическая научная база знаний, био-лаборатория и образовательная платформа (51 модуль) по биохимии, почвоведению и циркулярной переработке лигноцеллюлозного субстрата слонов.
+        </p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-heading">Разделы и симуляторы</div>
+        <div class="footer-links">
+          <a href="#biochemistry">01. Биохимия и константы C:N</a>
+          <a href="#soil-science">02. Гидрология WHC и модель Пенмана-Монтейта</a>
+          <a href="#agronomy">03. Калькулятор (C:N)<sub>mix</sub> и компенсации ΔN</a>
+          <a href="#protocols">04. Тренажёры компоста и эко-бумаги</a>
+          <a href="#slonologia-edu">05. Платформа Слонология.EDU (51 модуль)</a>
+          <a href="info.html">Паспорт субстрата (info.html)</a>
+          <a href="blog.html">Агроботанические очерки (blog.html)</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-heading">Архитектура данных</div>
+        <p class="footer-note">
+          Математические модели и TypeScript-спецификации синхронизированы с модулями <code>src/coursesData.ts</code> и <code>src/progress.ts</code> в составе исследовательской станции <code>research-station</code>.
+        </p>
       </div>
     </div>
-  </section>
+  </footer>
 
-  <!-- Секция: Как получить максимум: рецепт идеального компоста -->
-  <section id="compost-guide" style="padding: 60px 20px; text-align: center;">
-    <div class="container" style="max-width: 900px; margin: 0 auto;">
-      <h2 style="margin-bottom: 15px;">Как получить максимум: рецепт идеального компоста</h2>
-      <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.1rem; line-height: 1.6;">
-        Мы поставляем вам свежий, 100% натуральный продукт. Вы можете использовать его сразу, но чтобы создать биогумус премиум-класса прямо на вашем участке, мы рекомендуем этот простой рецепт. Смешайте наш продукт с сухой листвой, добавьте дождевых червей и оставьте на 30–45 дней. Естественная ферментация многократно повысит доступность азота, фосфора и калия для ваших растений!
-      </p>
-      
-      <div class="culture-card" style="padding: 20px; border-radius: 16px;">
-         <img src="images/compost-instruction.jpg" alt="4 этапа создания компоста" loading="lazy" style="max-width: 100%; height: auto; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
-      </div>
-    </div>
-  </section>
-
-  <section id="faq" class="block-faq">
-    <h2>FAQ</h2>
-    
-    <details class="faq-block">
-      <summary class="faq-q">Можно ли использовать навоз сразу после покупки?</summary>
-      <div class="faq-a">
-        Свежий навоз рекомендуется выдержать 3–6 месяцев на компостной куче или смешивать с землёй (1:10).  
-        Если внести навоз сразу, возможен «ожог» молодых растений: избыточный аммиак и органика вредят рассаде. Лучше дать вызреть или использовать с осени.
-      </div>
-    </details>
-
-    <details class="faq-block">
-      <summary class="faq-q">Чем питаются наши слоны?</summary>
-      <div class="faq-a">
-        Свежая трава, сено, овощи, фрукты, завтраки из каш, мюсли, овсянки и отрубей.  
-        Без химии и ГМО.
-      </div>
-    </details>
-
-    <details class="faq-block">
-      <summary class="faq-q">Чем отличается навоз каждого слона?</summary>
-      <div class="faq-a">
-        В реальности отличий почти нет — все наши слоны живут в одинаковых условиях и едят одно и то же.  
-        Каждый мешок бережно собран от конкретного слона, и мы маркируем его именной биркой, чтобы вы знали, от кого именно ваше удобрение.
-      </div>
-    </details>
-
-    <details class="faq-block">
-      <summary class="faq-q">Безопасно ли использовать такой навоз?</summary>
-      <div class="faq-a">
-        Это естественный продукт. Требует стандартных правил хранения и компостирования.  
-        Продаётся только как органическая масса для компоста. Используйте по инструкции!
-      </div>
-    </details>
-  </section>
-
-  <section style="text-align: center; margin: 60px 0;">
-    <h2 style="font-size: 2rem; color: var(--text-main); margin-bottom: 20px;">Готовы поддержать эко-проект?</h2>
-    <p style="color: var(--text-muted); margin-bottom: 30px;">Закажите экологически чистые удобрения или уникальные сувениры прямо сейчас.</p>
-    <a href="https://t.me/FertileElephant" target="_blank" rel="noopener noreferrer" class="buy-btn" style="display: inline-block;">Сделать заказ в Telegram</a>
-  </section>
-
-</div>
-
-<footer class="footer">
-  © 2026 Плодородный Слон<br>
-  <span style="font-size:0.9em;">
-    Слоны отдыхают здесь: <a href="https://slonsochi.ru" target="_blank" rel="noopener noreferrer" style="color: var(--text-main); font-weight: bold; text-decoration: underline;">Парк слонов в Сочи</a>
-  </span>
-  <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid rgba(0,0,0,0.1);">
-    <p style="margin: 10px 0; font-size: 0.95em;">Свяжитесь с нами по любым вопросам оптовых закупок или сотрудничества.</p>
-    <p style="margin: 5px 0; font-size: 0.95em;">
-      Email: <a href="mailto:hello@fertile-elephant.ru" style="color: var(--accent-hover);">hello@fertile-elephant.ru</a>
-    </p>
-    <p style="margin: 5px 0; font-size: 0.95em;">
-      Телефон: <a href="tel:+79991234567" style="color: var(--accent-hover);">+7 (999) 123-45-67</a>
-    </p>
-  </div>
-  <p style="font-size: 0.8rem; color: #666; margin-top: 15px;">
-    Официальный дистрибьютор Парка слонов. Проект реализуется в рамках поддержки эко-инициатив.<br>
-    Самозанятый / ИП (ИНН: 123456789012, ОГРНИП: 123456789012345)
-  </p>
-  <p style="font-size: 0.8rem; color: #666; margin-top: 15px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 15px;">
-    <strong>Условия использования:</strong> продукт поставляется в свежем виде и продается исключительно как органическая масса для самостоятельного компостирования по рекомендациям, указанным на сайте.
-  </p>
-</footer>
-
-<!-- Подключаем наш новый скрипт -->
-<script src="script.js"></script>
-
+  <script src="lab-math.js"></script>
+  <script src="modules-data.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
