@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let isEmbeddedMode = urlParams.get('embedded') === '1';
   applyEmbeddedState(isEmbeddedMode);
+  // Внутри Research Station: протокол станции и кнопка «На станцию» (station-link.js).
+  if (window.ErsStation) window.ErsStation.connect(document);
 
   if (previewEmbeddedBtn) {
     previewEmbeddedBtn.addEventListener('click', () => {
@@ -319,6 +321,8 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (e) {
       // ignore storage quota errors
     }
+    // Сводка для формуляра станции (station-link.js).
+    if (window.ErsStation) window.ErsStation.writeSummary(userProgress);
 
     // Update Dashboard DOM
     const rankCodeEl = document.getElementById('edu-rank-code');
