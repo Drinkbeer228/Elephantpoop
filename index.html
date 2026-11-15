@@ -31,10 +31,10 @@
     <a href="#top" class="brand-wordmark">Эко-лаборатория · Elephant Research Station</a>
 
     <nav class="primary-nav" aria-label="Навигация по крыльям лаборатории и архиву">
-      <a href="#coprology">Стол 1 и Стол 2 (Мастерская Алисы)</a>
-      <a href="#agronomy">Калькуляторы C:N и WHC</a>
-      <a href="#protocols">Реакторы компоста и варки</a>
-      <a href="#slonologia-edu">Слонология.EDU (51)</a>
+      <a href="#coprology">2D Лаборатория</a>
+      <a href="#agronomy">Калькуляторы C:N</a>
+      <a href="#protocols">Реакторы</a>
+      <a href="#slonologia-edu">Слонология.EDU</a>
       <a href="#biochemistry">Монография</a>
     </nav>
 
@@ -50,7 +50,7 @@
     <div class="embedded-ribbon-inner">
       <span class="mono-meta">БИО-ЛАБОРАТОРИЯ СТАНЦИИ · ВЕДУЩИЙ БИОХИМИК АЛИСА</span>
       <div class="embedded-links">
-        <a href="#coprology">01. Стол 1 и Стол 2</a>
+        <a href="#coprology">01. 2D Эколаборатория</a>
         <span aria-hidden="true">·</span>
         <a href="#agronomy">02. Калькуляторы</a>
         <span aria-hidden="true">·</span>
@@ -63,50 +63,29 @@
     </div>
   </div>
 
-  <main id="top" class="main-workspace">
+  <main id="top" class="main-workspace biolab-2d-workspace">
 
-    <!-- ГЛАВНЫЙ ЭКРАН И ИНТЕРАКТИВНАЯ БИО-ЛАБОРАТОРИЯ АЛИСЫ -->
-    <section class="hero-section visible">
-      <div class="hero-container">
-        <div class="editorial-kicker">
-          <span>Корпус биохимии и вторичной целлюлозы · Elephant Research Station</span>
-          <span aria-hidden="true">·</span>
-          <span>Объект: <em>Elephas maximus</em> &amp; <em>Loxodonta africana</em></span>
-          <span aria-hidden="true">·</span>
-          <span>Наставник крыла: биохимик Алиса</span>
-        </div>
+    <!-- ЖИВОЙ 2D-СИМУЛЯТОР ЭКОЛАБОРАТОРИИ (CANVAS 2D · WALK ↔ INTERACTING) -->
+    <section id="coprology" class="biolab-stage-section visible" aria-labelledby="coprology-title">
+      <h1 id="coprology-title" class="sr-only">Эколаборатория — 2D-симулятор биохимии и отливки бумаги</h1>
+      <div id="coprology-lab" class="copro-lab copro-lab-2d">
+        <noscript><p>Для работы с 2D-симулятором Эколаборатории требуется JavaScript.</p></noscript>
+      </div>
+    </section>
 
-        <h1 class="hero-title">
-          Био-лаборатория станции и цех «Слоновьей бумаги»: копрограмма, вибросита и ручной отлив целлюлозы
-        </h1>
-
-        <p class="hero-lead">
-          Тактильная лабораторная мастерская разделена на два рабочих стола под руководством биохимика Алисы: <strong>Стол 1 (Крыло А)</strong> — приёмка пробы из бункера Манежа, промывка на каскаде сит, микроскопия с окулярной линейкой и экспресс-тест pH; <strong>Стол 2 (Крыло Б)</strong> — ручной отлив архивной и гербовой бумаги из промытой клетчатки для нужд станции и Итогового Диплома.
-        </p>
-
-        <div class="hero-toolbar">
-          <a href="#coprology" class="btn-primary">Заняться пробой у Стола 1 и Стола 2</a>
-          <a href="#calculator-panel" class="btn-secondary">Калькулятор (C:N)<sub>mix</sub> и компенсации ΔN</a>
-          <a href="#protocols" class="btn-secondary">Реакторы бурта и варки пульпы</a>
-          <a href="#slonologia-edu" class="btn-secondary">Курс Слонология.EDU (51 модуль)</a>
-          <button type="button" id="preview-embedded-btn" class="btn-ghost" title="Переключить компактный режим планшета станции">
-            Режим планшета станции
-          </button>
-        </div>
-
-        <!-- ИНТЕРАКТИВНАЯ МАСТЕРСКАЯ АЛИСЫ: СТОЛ 1 (АНАЛИЗ) И СТОЛ 2 (ОТЛИВ БУМАГИ) -->
-        <div id="coprology" class="biolab-primary-anchor" aria-labelledby="coprology-title">
-          <div class="section-header" style="margin-top: 1.5rem; margin-bottom: 1rem;">
-            <div class="section-kicker">Практикум стажёра · Задачи C3 и C4 · Связь с Кормокухней, Клиникой и Архивом</div>
-            <h2 id="coprology-title">Лабораторные столы биохимика Алисы: Копрограмма и Бумажная мастерская</h2>
+    <!-- СПРАВОЧНИК ЛАБОРАНТА (КОМПАКТНЫЙ ВЫДВИЖНОЙ АРХИВ СТАТЕЙ, КАЛЬКУЛЯТОРОВ И СЛОНОЛОГИЯ.EDU) -->
+    <aside id="lab-guide-drawer" class="lab-guide-drawer" hidden aria-label="Справочник лаборанта">
+      <div class="lab-guide-backdrop" onclick="window.__BIOLAB_SIM__ && window.__BIOLAB_SIM__.toggleGuideDrawer(false)"></div>
+      <div class="lab-guide-panel" id="lab-guide-sections">
+        <div class="lab-guide-header">
+          <div>
+            <div class="section-kicker">Архив методических указаний · Слонология.EDU (51 модуль)</div>
+            <h2>Справочник лаборанта</h2>
           </div>
-          <div id="coprology-lab" class="copro-lab">
-            <noscript><p>Для работы с приборами био-лаборатории требуется поддержка сценариев.</p></noscript>
-          </div>
+          <button type="button" id="close-lab-guide-btn" class="btn-secondary">Закрыть (Esc)</button>
         </div>
 
-        <!-- Ключевые константы субстрата (Сводная телеметрия) -->
-        <div class="metrics-strip" role="region" aria-label="Ключевые физико-химические константы">
+        <div class="metrics-strip" role="region" aria-label="Ключевые физико-химические константы" style="margin-bottom: 1.5rem;">
           <div class="metric-cell">
             <div class="metric-label">Усвоение сухого вещества</div>
             <div class="metric-value">40–50<span class="metric-unit">% (~44%)</span></div>
@@ -128,8 +107,6 @@
             <div class="metric-sub">Экстинкция пара β = 0.38 см⁻¹</div>
           </div>
         </div>
-      </div>
-    </section>
 
     <!-- РАЗДЕЛ 01: БИОХИМИЯ И СОСТАВ -->
     <section id="biochemistry" class="science-section visible">
@@ -1095,37 +1072,10 @@
       </div>
     </section>
 
-  </main>
+      </div>
+    </aside>
 
-  <footer class="site-footer" id="site-footer">
-    <div class="footer-inner">
-      <div class="footer-col">
-        <div class="footer-brand">Эко-лаборатория станции · Слонология.EDU</div>
-        <p class="footer-desc">
-          Академическая научная база знаний, био-лаборатория и образовательная платформа (51 модуль) по биохимии, почвоведению и циркулярной переработке лигноцеллюлозного субстрата слонов.
-        </p>
-      </div>
-      <div class="footer-col">
-        <div class="footer-heading">Разделы и рабочие столы</div>
-        <div class="footer-links">
-          <a href="#coprology">01. Стол 1 (Анализ) и Стол 2 (Бумажная мастерская)</a>
-          <a href="#biochemistry">02. Биохимия и константы C:N</a>
-          <a href="#soil-science">03. Гидрология WHC и модель Пенмана-Монтейта</a>
-          <a href="#agronomy">04. Калькулятор (C:N)<sub>mix</sub> и компенсации ΔN</a>
-          <a href="#protocols">05. Реакторы компоста и эко-бумаги</a>
-          <a href="#slonologia-edu">06. Платформа Слонология.EDU (51 модуль)</a>
-          <a href="info.html">Паспорт субстрата</a>
-          <a href="blog.html">Агроботанические очерки</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <div class="footer-heading">Связь со службами станции</div>
-        <p class="footer-note">
-          Протоколы ситового анализа, pH-метрии и отливки целлюлозы передаются в Кормокухню («СлоноВет»), Ветеринарную клинику, Читальный зал и зачётную книжку стажёра.
-        </p>
-      </div>
-    </div>
-  </footer>
+  </main>
 
   <script src="ers-progress.js"></script>
   <script src="biolab-core.js"></script>

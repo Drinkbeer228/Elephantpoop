@@ -156,6 +156,9 @@
         return false;
       }
       const normalized = Object.assign({}, item, { at: nowIso });
+      if (Array.isArray(item.flags)) {
+        normalized.flags = Array.from(new Set(item.flags.filter((f) => typeof f === 'string' && ID_RE.test(f))));
+      }
       if (
         prev &&
         prev.status === 'done' &&
@@ -199,8 +202,9 @@
   }
 
   /**
-   * Комплексная запись вердикта Стола 1 (Научный анализ пробы).
-   * Сохраняет `analysis` и `coprology/fiber-analysis`, а также обновляет флаг `ration-violation`.
+   * Комплексная запись вердикта научного анализа пробы (Стол 1 и Стол 2).
+   * Сохраняет `analysis` и `coprology/fiber-analysis` со свойством `flags` на самих элементах
+   * (включая `ration-violation`, `long-fibers`, `low-ph`), а также обновляет корневой массив `flags`.
    */
   function recordAnalysisVerdict(verdict, storage) {
     if (!verdict || typeof verdict !== 'object') return false;
@@ -210,6 +214,22 @@
       const nowIso = verdict.at || new Date().toISOString();
       const score = typeof verdict.score === 'number' ? Math.round(verdict.score) : 100;
 
+      const longFibers = Boolean(verdict.longFibers || verdict.coarseFiber || (typeof verdict.meanFiberMm === 'number' && verdict.meanFiberMm > 20));
+      const lowPh = Boolean(verdict.lowPh || verdict.acidosis || (typeof verdict.ph === 'number' && verdict.ph < 6.2));
+      const hasViolation = Boolean(verdict.violation || longFibers || lowPh);
+
+      const itemFlags = [];
+      if (hasViolation) itemFlags.push('ration-violation');
+      if (longFibers) itemFlags.push('long-fibers');
+      if (lowPh) itemFlags.push('low-ph');
+      if (Array.isArray(verdict.flags)) {
+        for (const f of verdict.flags) {
+          if (typeof f === 'string' && ID_RE.test(f) && !itemFlags.includes(f)) {
+            itemFlags.push(f);
+          }
+        }
+      }
+
       const ok1 = recordItem(
         'analysis',
         {
@@ -217,7 +237,8 @@
           status: 'done',
           at: nowIso,
           score,
-          outcome: verdict.violation ? 'ration-violation' : 'norm'
+          outcome: hasViolation ? 'ration-violation' : 'norm',
+          flags: itemFlags
         },
         s
       );
@@ -227,25 +248,34 @@
           kind: 'analysis',
           status: 'done',
           at: nowIso,
-          score
+          score,
+          flags: itemFlags
         },
         s
       );
 
       const cur = readSummary(s) || createEmptySummary(nowIso);
-      const flags = new Set(Array.isArray(cur.flags) ? cur.flags : []);
-      if (verdict.violation) {
-        flags.add('ration-violation');
+      const rootFlags = new Set(Array.isArray(cur.flags) ? cur.flags : []);
+      if (hasViolation) {
+        rootFlags.add('ration-violation');
       } else {
-        flags.delete('ration-violation');
+        rootFlags.delete('ration-violation');
       }
-      cur.flags = Array.from(flags);
+      if (longFibers) rootFlags.add('long-fibers');
+      else rootFlags.delete('long-fibers');
+      if (lowPh) rootFlags.add('low-ph');
+      else rootFlags.delete('low-ph');
+
+      cur.flags = Array.from(rootFlags);
       cur.lastVerdict = {
-        batchId: verdict.batchId || 'regular',
+        batchId: verdict.batchId || 'margo-norm',
         meanFiberMm: verdict.meanFiberMm,
         ph: verdict.ph,
-        violation: Boolean(verdict.violation),
-        dispatchedTo: verdict.violation ? ['slonovet', 'clinic'] : ['paper-workshop'],
+        violation: hasViolation,
+        longFibers,
+        lowPh,
+        flags: itemFlags,
+        dispatchedTo: hasViolation ? ['slonovet', 'clinic'] : ['paper-workshop'],
         at: nowIso
       };
       cur.updatedAt = nowIso;
@@ -338,11 +368,69 @@
   }
 
   /**
-   * Попросить станцию закрыть планшет лаборатории (`close-request`).
-   * Если открыто автономно в режиме предпросмотра — переключает состояние.
+   * Читает свежую пробу из Манежа из `ers_station_v1` (или `ers_manege_v1`), если станция её передала.
+   * Возвращает объект с данными партии или `null` (тогда Алиса предлагает архивный образец со склада).
+   */
+  function readStationSample(storage) {
+    try {
+      const s = resolveStorage(storage);
+      if (!s) return null;
+      const rawStation = s.getItem('ers_station_v1');
+      if (!rawStation) return null;
+      const parsed = JSON.parse(rawStation);
+      if (!parsed || typeof parsed !== 'object') return null;
+
+      const candidate =
+        parsed.biolabSample ||
+        parsed.manegeSample ||
+        parsed.freshSample ||
+        parsed.pendingSample ||
+        (parsed.manege && parsed.manege.sample) ||
+        (Array.isArray(parsed.samples) && parsed.samples[0]) ||
+        null;
+
+      if (!candidate && !parsed.manegeBatchId && !parsed.sampleLabel) return null;
+
+      if (typeof candidate === 'string') {
+        return {
+          source: 'manege',
+          batchId: candidate,
+          label: parsed.sampleLabel || 'Проба: Марго, утренний выгул'
+        };
+      }
+
+      const obj = candidate || parsed;
+      const batchId = obj.batchId || obj.id || parsed.manegeBatchId || 'margo-norm';
+      const label = obj.label || obj.title || parsed.sampleLabel || 'Проба: Марго, утренний выгул';
+      return {
+        source: 'manege',
+        batchId,
+        label,
+        elephant: obj.elephant || 'Марго',
+        ph: typeof obj.ph === 'number' ? obj.ph : undefined,
+        meanFiberMm: typeof obj.meanFiberMm === 'number' ? obj.meanFiberMm : undefined
+      };
+    } catch (e) {
+      return null;
+    }
+  }
+
+  /**
+   * Попросить станцию закрыть планшет лаборатории (`close-request` и `ers:close-request`).
    */
   function requestClose() {
     post('close-request');
+    try {
+      if (typeof window !== 'undefined' && window.parent) {
+        const targetOrigin =
+          window.location && window.location.origin && window.location.origin !== 'null'
+            ? window.location.origin
+            : STATION_ORIGIN;
+        window.parent.postMessage({ type: 'ers:close-request', ers: 1, module: MODULE }, targetOrigin);
+      }
+    } catch (e) {
+      // Игнорируем ограничения cross-origin
+    }
     if (typeof CustomEvent !== 'undefined' && typeof window !== 'undefined') {
       window.dispatchEvent(new CustomEvent('ers:close-requested'));
     }
@@ -365,7 +453,7 @@
     }
     if (embedded()) {
       post('ready');
-      post('title', { title: 'Био-лаборатория субстрата' });
+      post('title', { title: 'Эколаборатория станции' });
     }
     if (typeof window !== 'undefined') {
       window.addEventListener('message', (e) => {
@@ -393,6 +481,7 @@
     setFlag,
     recordAnalysisVerdict,
     recordPaperCraft,
+    readStationSample,
     requestClose,
     navigateStation,
     embedded,

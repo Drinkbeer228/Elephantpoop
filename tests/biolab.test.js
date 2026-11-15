@@ -22,20 +22,36 @@ function createMockStorage() {
   };
 }
 
-test('ErsProgress: writes and reads ers.progress/1 under ers_progress_v1:biolab and manages ration-violation flag', () => {
+test('ErsProgress: writes ers.progress/1 under ers_progress_v1:biolab including items[id].flags and reads ers_station_v1', () => {
   const storage = createMockStorage();
 
-  // 1. Запись бракованной партии (> 25 мм или pH < 6.2) -> устанавливает флаг ration-violation
+  // 0. Чтение свежей пробы из Манежа (`ers_station_v1`) vs отсутствие пробы
+  assert.equal(ErsProgress.readStationSample(storage), null);
+  storage.setItem(
+    'ers_station_v1',
+    JSON.stringify({
+      manegeSample: {
+        batchId: 'margo-coarse',
+        label: 'Проба: Марго, утренний выгул'
+      }
+    })
+  );
+  const sample = ErsProgress.readStationSample(storage);
+  assert.ok(sample);
+  assert.equal(sample.source, 'manege');
+  assert.equal(sample.batchId, 'margo-coarse');
+  assert.equal(sample.label, 'Проба: Марго, утренний выгул');
+
+  // 1. Запись бракованной партии (> 20 мм или pH < 6.2) -> ставит flags прямо на items[id].flags и в корень flags
   const okViolation = ErsProgress.recordAnalysisVerdict(
     {
       batchId: 'margo-coarse',
-      batchTitle: 'Проба №14-Б (Марго — крупный недоруб)',
+      batchTitle: 'Проба: Марго (недоруб корма > 20 мм)',
       meanFiberMm: 29.0,
-      ph: 6.4,
+      ph: 6.5,
       violation: true,
-      coarseFiber: true,
-      acidosis: false,
-      dispatchedTo: ['Кормокухня «СлоноВет» (Тарас)', 'Ветеринарная клиника (Вера Павловна)'],
+      longFibers: true,
+      lowPh: false,
       score: 100,
       at: '2026-04-12T10:00:00.000Z'
     },
@@ -46,24 +62,25 @@ test('ErsProgress: writes and reads ers.progress/1 under ers_progress_v1:biolab 
   const raw1 = JSON.parse(storage.getItem('ers_progress_v1:biolab'));
   assert.equal(raw1.schema, 'ers.progress/1');
   assert.equal(raw1.module, 'biolab');
-  assert.ok(Array.isArray(raw1.flags));
   assert.ok(raw1.flags.includes('ration-violation'));
+  assert.ok(raw1.flags.includes('long-fibers'));
   assert.equal(raw1.items.analysis.status, 'done');
   assert.equal(raw1.items.analysis.outcome, 'ration-violation');
-  assert.equal(raw1.lastVerdict.violation, true);
-  assert.equal(raw1.items['coprology/fiber-analysis'].status, 'done');
+  assert.ok(Array.isArray(raw1.items.analysis.flags));
+  assert.ok(raw1.items.analysis.flags.includes('ration-violation'));
+  assert.ok(raw1.items.analysis.flags.includes('long-fibers'));
+  assert.ok(raw1.items['coprology/fiber-analysis'].flags.includes('ration-violation'));
 
-  // 2. Запись эталонной партии (14.5 мм, pH 6.8) -> снимает флаг ration-violation
+  // 2. Запись эталонной партии (16.5 мм <= 20 мм, pH 6.8) -> снимает флаги нарушения
   ErsProgress.recordAnalysisVerdict(
     {
       batchId: 'margo-norm',
-      batchTitle: 'Проба №14-А (Марго — штатный рацион)',
-      meanFiberMm: 14.5,
+      batchTitle: 'Проба: Марго, утренний выгул',
+      meanFiberMm: 16.5,
       ph: 6.8,
       violation: false,
-      coarseFiber: false,
-      acidosis: false,
-      dispatchedTo: ['Цех отливки бумаги (Стол 2)'],
+      longFibers: false,
+      lowPh: false,
       score: 100,
       at: '2026-04-12T10:05:00.000Z'
     },
@@ -73,17 +90,16 @@ test('ErsProgress: writes and reads ers.progress/1 under ers_progress_v1:biolab 
   const raw2 = JSON.parse(storage.getItem('ers_progress_v1:biolab'));
   assert.equal(raw2.flags.includes('ration-violation'), false);
   assert.equal(raw2.items.analysis.outcome, 'norm');
-  assert.equal(raw2.lastVerdict.violation, false);
+  assert.deepEqual(raw2.items.analysis.flags, []);
 
   // 3. Запись отлитого листа «слоновьей бумаги» (paper-craft)
   ErsProgress.recordPaperCraft(
     {
-      gradeId: 'diploma-sovereign',
-      gradeTitle: 'Гербовый лист для Итогового Диплома стажёра',
-      recipient: 'Деканат станции (Итоговый Диплом под 4 печати)',
-      gsm: 209,
+      gradeId: 'royal-grade',
+      gradeTitle: 'Королевский сорт',
+      recipient: 'Совет наставников станции',
+      gsm: 235,
       fiberG: 6.5,
-      pressMPa: 4.0,
       score: 100,
       at: '2026-04-12T10:10:00.000Z'
     },
@@ -92,118 +108,161 @@ test('ErsProgress: writes and reads ers.progress/1 under ers_progress_v1:biolab 
 
   const raw3 = JSON.parse(storage.getItem('ers_progress_v1:biolab'));
   assert.equal(raw3.items['paper-craft'].status, 'done');
-  assert.equal(raw3.items['paper-craft'].gradeId, 'diploma-sovereign');
-  assert.equal(raw3.items['paper-craft'].gsm, 209);
+  assert.equal(raw3.items['paper-craft'].gradeId, 'royal-grade');
+  assert.equal(raw3.items['paper-craft'].gsm, 235);
   assert.equal(raw3.items['coprology/paper-sheet'].status, 'done');
 });
 
-test('BiolabCore Table 1: enforces sieve order, water pressure bounds, microscope measurement, and pH verdict', () => {
-  const run = BiolabCore.createRun('margo-norm');
+test('BiolabCore 2D Scene (WALK): handles archive vs manege sample, movement, collision, and nearby station lookup', () => {
+  const archiveWorld = BiolabCore.createWorldState(null);
+  assert.equal(archiveWorld.mode, 'WALK');
+  assert.equal(archiveWorld.sampleSource, 'archive');
+  assert.match(archiveWorld.alisa.speech, /архивный образец/i);
 
-  // Попытка промыть сито 2 мм раньше 4 мм
-  const wrongOrder = BiolabCore.washSieve(run, 2, { pressure: 60, vibration: 55 });
-  assert.equal(wrongOrder.ok, false);
-  assert.equal(wrongOrder.reason, 'order');
+  const manegeWorld = BiolabCore.createWorldState({
+    source: 'manege',
+    batchId: 'margo-norm',
+    label: 'Проба: Марго, утренний выгул'
+  });
+  assert.equal(manegeWorld.sampleSource, 'manege');
+  assert.equal(manegeWorld.run.batchId, 'margo-norm');
 
-  // Слишком слабый напор воды (< 35%)
-  const lowPressure = BiolabCore.washSieve(run, 4, { pressure: 20, vibration: 55 });
-  assert.equal(lowPressure.ok, false);
-  assert.equal(lowPressure.reason, 'pressure-low');
+  // Проверка поиска ближайшей станции (приёмный бак рядом со стартовой позицией)
+  const nearBin = BiolabCore.findNearbyStation(manegeWorld.player, 74);
+  assert.ok(nearBin);
+  assert.equal(nearBin.id, 'bin');
 
-  // Слишком сильный напор воды (> 85%)
-  const highPressure = BiolabCore.washSieve(run, 4, { pressure: 95, vibration: 55 });
-  assert.equal(highPressure.ok, false);
-  assert.equal(highPressure.reason, 'pressure-high');
+  // Движение вправо/вверх в режиме WALK и удержание внутри границ зала
+  const startX = manegeWorld.player.x;
+  const startY = manegeWorld.player.y;
+  for (let i = 0; i < 15; i++) {
+    BiolabCore.stepWalkState(manegeWorld, { right: true, up: true }, 0.03);
+  }
+  assert.ok(manegeWorld.player.x > startX);
+  assert.ok(manegeWorld.player.y < startY);
 
-  // Штатная промывка 4 -> 2 -> 1 мм
-  assert.equal(BiolabCore.washSieve(run, 4, { pressure: 60, vibration: 55 }).ok, true);
-  assert.equal(BiolabCore.washSieve(run, 2, { pressure: 60, vibration: 55 }).ok, true);
-  assert.equal(BiolabCore.washSieve(run, 1, { pressure: 60, vibration: 55 }).ok, true);
-  assert.equal(run.step, 'microscope');
-
-  // Фокусировка и замер длины волокон (эталон 14.5 мм)
-  const focusRes = BiolabCore.adjustMicroscopeFocus(run, 54);
-  assert.equal(focusRes.ok, true);
-
-  const measureRes = BiolabCore.measureFiberLength(run, 14.5);
-  assert.equal(measureRes.ok, true);
-  assert.equal(measureRes.coarseViolation, false);
-  assert.equal(run.step, 'ph');
-
-  // Выдержка полоски 3 секунды и считывание pH 6.8
-  assert.equal(BiolabCore.dipPhStrip(run, 3.0).ok, true);
-  assert.equal(BiolabCore.readStrip(run, 6.8).ok, true);
-  assert.equal(run.step, 'reading');
-
-  // Вердикт: норма -> допуск на Стол 2
-  const verdictRes = BiolabCore.interpret(run, 'norm');
-  assert.equal(verdictRes.ok, true);
-  assert.equal(verdictRes.verdict.violation, false);
-  assert.equal(run.paperAllowed, true);
+  // Автоподход по клику к станции
+  const sievesSt = BiolabCore.ROOM_STATIONS.find((s) => s.id === 'sieves');
+  manegeWorld.player.x = sievesSt.interactX - 10;
+  manegeWorld.player.y = sievesSt.interactY;
+  manegeWorld.player.targetX = sievesSt.interactX;
+  manegeWorld.player.targetY = sievesSt.interactY;
+  manegeWorld.player.pendingInteractStation = 'sieves';
+  let arrived = null;
+  for (let i = 0; i < 20; i++) {
+    const step = BiolabCore.stepWalkState(manegeWorld, {}, 0.04);
+    if (step && step.arrivedStationId) {
+      arrived = step.arrivedStationId;
+      break;
+    }
+  }
+  assert.equal(arrived, 'sieves');
 });
 
-test('BiolabCore Table 1 Violation Cases: detects coarse fiber (> 25 mm) and acidic pH (< 6.2)', () => {
-  // Крупный недоруб (29 мм > 25 мм)
+test('BiolabCore Workbenches (1..4) Royal Flow: wash pressure, 3s pH + caliper <= 20 mm, bubble balance, flywheel & steam -> royal-grade', () => {
+  const run = BiolabCore.createRun('margo-norm');
+
+  // Стол 1: Мойка и вибросита (держим напор в зелёной зоне 42..76% без перехлёста)
+  for (let i = 0; i < 120; i++) {
+    const press = run.waterPressure < 64;
+    BiolabCore.stepWashPhysics(run, press, 0.05);
+    if (run.washDone) break;
+  }
+  assert.equal(run.washDone, true);
+  assert.equal(run.overflowCount, 0);
+
+  // Стол 2А: Тест-полоска pH ровно 3.0 с и выбор эталона 6.8 (шкала 5.5–7.5)
+  for (let i = 0; i < 30; i++) {
+    BiolabCore.stepPhDipTimer(run, true, 0.1);
+  }
+  const release = BiolabCore.stepPhDipTimer(run, false, 0.05);
+  assert.equal(release.event, 'dipped-ready');
+  assert.equal(run.stripDipped, true);
+
+  const phMatch = BiolabCore.selectPhScaleSwatch(run, 6.8);
+  assert.equal(phMatch.ok, true);
+  assert.equal(phMatch.lowPh, false);
+
+  // Стол 2Б: Фокус микроскопа + измерение двумя кликами (16.5 мм <= 20 мм)
+  assert.equal(BiolabCore.adjustMicroscopeFocus(run, 56).ok, true);
+  const cal = BiolabCore.measureCaliperPoints(run, { x: 480, y: 250 }, { x: 621, y: 250 }, 8.57);
+  assert.equal(cal.ok, true);
+  assert.equal(cal.longFibers, false);
+  assert.equal(run.done, true);
+  assert.equal(run.verdict.violation, false);
+
+  // Стол 3: Черпальная ванна — держим пузырёк по центру
+  for (let i = 0; i < 100; i++) {
+    BiolabCore.stepVatBalance(run, 0, 0.05, 0);
+    if (run.vatDone) break;
+  }
+  assert.equal(run.vatDone, true);
+  assert.equal(run.vatHasBaldSpot, false);
+
+  // Стол 4: Маховик до 100% + пар 3.5 с -> «Королевский сорт»
+  BiolabCore.advanceFlywheel(run, 100);
+  assert.equal(run.flywheelDone, true);
+  for (let i = 0; i < 35; i++) {
+    BiolabCore.stepPressSteam(run, true, 0.1);
+  }
+  const finished = BiolabCore.stepPressSteam(run, false, 0.05);
+  assert.equal(finished.event, 'finished');
+  assert.equal(finished.tierId, 'royal-grade');
+  assert.equal(finished.tier.title, 'Королевский сорт');
+});
+
+function holdTicks(fn, run, ticks, dt) {
+  for (let i = 0; i < ticks; i++) fn(run, true, dt || 0.1);
+  return fn(run, false, 0.05);
+}
+
+test('BiolabCore Workbenches Violation & Defects: overflow, >20mm long-fibers, <6.2 low-ph, baldSpot & scorch/tear -> scrap or standard-kraft', () => {
+  // 1. Крупный недоруб > 20 мм (margo-coarse: 29 мм) -> long-fibers + ration-violation -> Брак / вторичка
   const coarseRun = BiolabCore.createRun('margo-coarse');
-  BiolabCore.washSieve(coarseRun, 4, 60, 55);
-  BiolabCore.washSieve(coarseRun, 2, 60, 55);
-  BiolabCore.washSieve(coarseRun, 1, 60, 55);
-  BiolabCore.adjustMicroscopeFocus(coarseRun, 68);
-  const m = BiolabCore.measureFiberLength(coarseRun, 29.0);
-  assert.equal(m.ok, true);
-  assert.equal(m.coarseViolation, true);
-  BiolabCore.dipPhStrip(coarseRun, 3.0);
-  BiolabCore.readStrip(coarseRun, 6.2);
-  const vCoarse = BiolabCore.interpret(coarseRun, 'norm');
-  assert.equal(vCoarse.ok, true);
-  assert.equal(vCoarse.verdict.violation, true);
-  assert.ok(vCoarse.verdict.flags.includes('ration-violation'));
-  assert.equal(coarseRun.paperAllowed, false);
+  holdTicks(BiolabCore.stepPhDipTimer, coarseRun, 30, 0.1);
+  assert.equal(coarseRun.stripDipped, true);
+  BiolabCore.selectPhScaleSwatch(coarseRun, 6.5);
+  const calCoarse = BiolabCore.measureCaliperPoints(coarseRun, { x: 440, y: 250 }, { x: 688, y: 250 }, 8.57);
+  assert.equal(calCoarse.longFibers, true);
+  assert.equal(coarseRun.verdict.violation, true);
+  assert.ok(coarseRun.verdict.flags.includes('ration-violation'));
+  assert.ok(coarseRun.verdict.flags.includes('long-fibers'));
+  BiolabCore.advanceFlywheel(coarseRun, 100);
+  const coarsePaper = holdTicks(BiolabCore.stepPressSteam, coarseRun, 34, 0.1);
+  assert.equal(coarsePaper.tierId, 'scrap');
 
-  // Ацидоз (pH 5.6 < 6.2)
+  // 2. Ацидоз pH < 6.2 (pretty-acid: pH 5.8) -> low-ph + ration-violation
   const acidRun = BiolabCore.createRun('pretty-acid');
-  BiolabCore.washSieve(acidRun, 4, 60, 55);
-  BiolabCore.washSieve(acidRun, 2, 60, 55);
-  BiolabCore.washSieve(acidRun, 1, 60, 55);
-  BiolabCore.adjustMicroscopeFocus(acidRun, 60);
-  BiolabCore.measureFiberLength(acidRun, 16.0);
-  BiolabCore.dipPhStrip(acidRun, 3.0);
-  BiolabCore.readStrip(acidRun, 5.6);
-  const vAcid = BiolabCore.interpret(acidRun, 'acid');
-  assert.equal(vAcid.ok, true);
-  assert.equal(vAcid.verdict.violation, true);
-  assert.equal(vAcid.verdict.acidosis, true);
-  assert.ok(vAcid.verdict.flags.includes('ration-violation'));
-});
+  holdTicks(BiolabCore.stepPhDipTimer, acidRun, 30, 0.1);
+  const acidSw = BiolabCore.selectPhScaleSwatch(acidRun, 5.8);
+  assert.equal(acidSw.lowPh, true);
+  BiolabCore.measureCaliperPoints(acidRun, { x: 480, y: 250 }, { x: 625, y: 250 }, 8.57);
+  assert.equal(acidRun.verdict.violation, true);
+  assert.ok(acidRun.verdict.flags.includes('ration-violation'));
+  assert.ok(acidRun.verdict.flags.includes('low-ph'));
 
-test('BiolabCore Table 2: manual paper casting (deckle level, couching roller, screw thermal press)', () => {
-  const run = BiolabCore.createRun('margo-norm');
-  BiolabCore.washSieve(run, 4, 60, 55);
-  BiolabCore.washSieve(run, 2, 60, 55);
-  BiolabCore.washSieve(run, 1, 60, 55);
-  BiolabCore.adjustMicroscopeFocus(run, 64);
-  BiolabCore.measureFiberLength(run, 14.5);
-  BiolabCore.dipPhStrip(run, 3.0);
-  BiolabCore.readStrip(run, 6.8);
-  BiolabCore.interpret(run, 'norm');
+  // 3. Перехлёст воды (>80%, 1 сбой) без нарушения рациона -> Стандартный крафт
+  const stdRun = BiolabCore.createRun('margo-norm');
+  for (let i = 0; i < 40; i++) {
+    const res = BiolabCore.stepWashPhysics(stdRun, stdRun.overflowCount < 1, 0.05);
+    if (res.overflowTriggered) break;
+  }
+  assert.equal(stdRun.overflowCount, 1);
+  holdTicks(BiolabCore.stepPhDipTimer, stdRun, 30, 0.1);
+  BiolabCore.selectPhScaleSwatch(stdRun, 6.8);
+  BiolabCore.measureCaliperPoints(stdRun, { x: 480, y: 250 }, { x: 621, y: 250 }, 8.57);
+  BiolabCore.advanceFlywheel(stdRun, 100);
+  const stdPaper = holdTicks(BiolabCore.stepPressSteam, stdRun, 34, 0.1);
+  assert.equal(stdRun.pressTorn, false);
+  assert.equal(stdRun.pressScorched, false);
+  assert.equal(stdPaper.tierId, 'standard-kraft');
 
-  // 1. Черпальная ванна: перекос > 4° бракуется, 0° проходит
-  assert.equal(BiolabCore.performVatDip(run, 9.5).ok, false);
-  assert.equal(BiolabCore.performVatDip(run, 0.5).ok, true);
-  assert.equal(run.paperStep, 'couching');
-
-  // 2. Куширование валиком: 65% проходит
-  assert.equal(BiolabCore.performCouching(run, 25).ok, false);
-  assert.equal(BiolabCore.performCouching(run, 65).ok, true);
-  assert.equal(run.paperStep, 'press');
-
-  // 3. Винтовой термопресс: 4.0 МПа и 5.0 с дают готовый сортовой лист (209 г/м²)
-  assert.equal(BiolabCore.performThermalPress(run, 2.5, 5.0, 'archival-photo').ok, false);
-  const pressOk = BiolabCore.performThermalPress(run, 4.0, 5.0, 'diploma-sovereign');
-  assert.equal(pressOk.ok, true);
-  assert.equal(pressOk.gsm, 209);
-  assert.equal(run.paperCraft.completed, true);
-  assert.equal(run.paperCraft.gradeId, 'diploma-sovereign');
+  // 4. Недодержка пара (<2.7с) -> порыв листа -> Брак / вторичка
+  const tearRun = BiolabCore.createRun('margo-norm');
+  BiolabCore.advanceFlywheel(tearRun, 100);
+  const tearPaper = holdTicks(BiolabCore.stepPressSteam, tearRun, 15, 0.1);
+  assert.equal(tearRun.pressTorn, true);
+  assert.equal(tearPaper.tierId, 'scrap');
 });
 
 test('Zero Web-Leaks & Offline Autonomy: no external font CDNs or forbidden web terms in visible UI', () => {
