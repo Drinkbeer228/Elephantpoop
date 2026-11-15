@@ -28,10 +28,10 @@
 
   /** Экспресс-тест pH: цвет полоски по шкале и чтение результата. */
   const PH_SCALE = [
-    { ph: 5.6, color: '#d9822b', label: '5,6' },
-    { ph: 6.2, color: '#c9b22e', label: '6,2' },
-    { ph: 6.8, color: '#7aa53a', label: '6,8' },
-    { ph: 7.4, color: '#2f8a6e', label: '7,4' },
+    { ph: 5.6, color: '#d9822b', label: '5,6', name: 'оранжевая' },
+    { ph: 6.2, color: '#c9b22e', label: '6,2', name: 'жёлтая' },
+    { ph: 6.8, color: '#7aa53a', label: '6,8', name: 'травянисто-зелёная' },
+    { ph: 7.4, color: '#2f8a6e', label: '7,4', name: 'сине-зелёная' },
   ];
   const SAMPLE_PH = 6.8;
 

@@ -83,3 +83,8 @@ test('запись анализа в ers_progress_v1:biolab переживает
   assert.equal(ErsStation.recordItem('coprology/fiber-analysis', { kind: 'analysis', status: 'started', at: '2026-11-15T12:00:00.000Z' }, s), false);
   assert.equal(ErsStation.recordItem('bad id!', { kind: 'analysis', status: 'done', at: 'T' }, s), false);
 });
+
+test('у каждого цвета шкалы pH есть словесное название — для экранного диктора', () => {
+  for (const s of C.PH_SCALE) assert.ok(typeof s.name === 'string' && s.name.length > 3, s.label);
+  assert.equal(new Set(C.PH_SCALE.map((s) => s.name)).size, C.PH_SCALE.length);
+});

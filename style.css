@@ -1959,3 +1959,12 @@ html[data-theme="dark"] .btn-primary:hover {
 .copro-lab {
   scroll-margin-top: 5rem;
 }
+
+.copro-listing {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+.copro-listing ul {
+  columns: 3;
+  margin: 0.4rem 0 0;
+}

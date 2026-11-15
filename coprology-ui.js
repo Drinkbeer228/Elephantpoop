@@ -106,6 +106,13 @@
       svg.append(l);
     }
     p.append(svg);
+    // The same field as text, for a screen reader: each fiber's length in grid squares (one square — 5 mm).
+    const listing = el('details', 'copro-listing');
+    listing.append(el('summary', '', 'Волокна в поле зрения списком'));
+    const ul = el('ul', '');
+    for (const f of run.fibers) ul.append(el('li', '', `${String(Math.round((f.lengthMm / 5) * 10) / 10).replace('.', ',')} клетки`));
+    listing.append(ul);
+    p.append(listing);
     const choices = el('div', 'copro-choices');
     for (const c of C.LENGTH_CLASSES) {
       choices.append(
@@ -128,7 +135,8 @@
       p.append(el('p', 'copro-lead', 'Индикаторная полоска пролежала в фильтрате 30 секунд. Сравните её цвет со шкалой.'));
       const strip = el('div', 'copro-strip');
       strip.style.setProperty('--strip', sample.color);
-      strip.setAttribute('aria-label', 'Полоска после теста');
+      strip.setAttribute('role', 'img');
+      strip.setAttribute('aria-label', `Полоска после теста: ${sample.name}`);
       p.append(strip);
       const scale = el('div', 'copro-scale');
       for (const s of C.PH_SCALE) {
@@ -139,6 +147,7 @@
           render();
         });
         b.style.setProperty('--swatch', s.color);
+        b.setAttribute('aria-label', `pH ${s.label}, ${s.name}`);
         scale.append(b);
       }
       p.append(scale);
@@ -150,10 +159,8 @@
           btn('btn-secondary', r.label, () => {
             const res = C.interpret(run, r.id);
             if (!res.ok) say('Сверьтесь с нормой заднекишечных ферментеров: pH 6,2–7,0.', 'warn');
-            else {
-              save();
-              say(`Анализ завершён: ${res.score} баллов. Запись внесена в Студенческий билет.`, 'ok');
-            }
+            else if (save()) say(`Анализ завершён: ${res.score} баллов. Запись внесена в Студенческий билет.`, 'ok');
+            else say(`Анализ завершён: ${res.score} баллов, но запись в Студенческий билет не сохранилась — память браузера переполнена или закрыта.`, 'warn');
             render();
           }),
         );
@@ -187,8 +194,8 @@
         btn('btn-secondary', 'Отлить лист бумаги', () => {
           const r = C.castPaperSheet(run);
           if (r.ok) {
-            save();
-            say(`Лист готов: ${r.gsm} г/м², как плотная бумага ручного отлива.`, 'ok');
+            if (save()) say(`Лист готов: ${r.gsm} г/м², как плотная бумага ручного отлива.`, 'ok');
+            else say(`Лист готов: ${r.gsm} г/м², но в Студенческий билет он не записался — память браузера недоступна.`, 'warn');
           }
           render();
         }),
@@ -211,10 +218,13 @@
     return p;
   }
 
+  /** Writes the run's items to the station's summary; false when any write did not go through. */
   function save() {
-    if (!window.ErsStation) return;
+    if (!window.ErsStation) return false;
     const items = C.summaryItems(run, new Date().toISOString());
-    for (const [id, item] of Object.entries(items)) window.ErsStation.recordItem(id, item);
+    let ok = true;
+    for (const [id, item] of Object.entries(items)) ok = window.ErsStation.recordItem(id, item) && ok;
+    return ok;
   }
 
   let shown = false;
