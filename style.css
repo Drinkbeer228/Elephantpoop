@@ -5,19 +5,21 @@
 
 :root,
 html[data-theme="light"] {
-  --bg-canvas: #F8F7F2;          /* 60% Dominant Neutral Canvas: Archival Alabaster */
-  --bg-surface: #FFFFFF;         /* 30% Structural Surface: Crisp Paper Panel */
-  --bg-subtle: #F1EFE7;          /* Secondary Surface: Warm Limestone */
-  --border-hairline: #DDD9CE;    /* 1px Hairline Border */
-  --text-primary: #181D1A;       /* Deep Botanical Ink */
-  --text-secondary: #4A544E;     /* Muted Slate Prose */
-  --text-muted: #6E7771;         /* Metadata & Captions */
+  --bg-canvas: #E8E4DA;          /* 60% Dominant Station Canvas: Warm Archival Parchment */
+  --bg-surface: #F4F1EA;         /* 30% Structural Surface: Laboratory Workbench & Cards */
+  --bg-subtle: #DFD9CC;          /* Secondary Surface: Pressed Cellulose */
+  --border-hairline: #C8C1B2;    /* 1px Hairline Border */
+  --text-primary: #2C302E;       /* Deep Station Ink */
+  --text-secondary: #484E4B;     /* Muted Botanical Slate */
+  --text-muted: #646B67;         /* Metadata & Instrument Labels */
   --accent-primary: #1B5E3A;     /* 10% Accent: Chlorophyll Forest Ink */
   --accent-hover: #13462B;
-  --accent-soft: rgba(27, 94, 58, 0.08);
-  --status-warn: #9A3412;        /* Calibrated Terracotta for immobilization warnings */
+  --accent-soft: rgba(27, 94, 58, 0.10);
+  --lamp-amber: #B87333;         /* Warm Desk Lamp Brass Accent */
+  --lamp-glow: rgba(217, 155, 67, 0.16);
+  --status-warn: #9A3412;        /* Calibrated Terracotta for ration violations */
   --status-ok: #156534;
-  --shadow-subtle: 0 2px 12px rgba(24, 29, 26, 0.04);
+  --shadow-subtle: 0 3px 14px rgba(44, 48, 46, 0.06);
 }
 
 html[data-theme="dark"] {
@@ -31,6 +33,8 @@ html[data-theme="dark"] {
   --accent-primary: #34D399;     /* Calibrated Phosphor Chlorophyll */
   --accent-hover: #6EE7B7;
   --accent-soft: rgba(52, 211, 153, 0.12);
+  --lamp-amber: #F59E0B;
+  --lamp-glow: rgba(245, 158, 11, 0.14);
   --status-warn: #F59E0B;
   --status-ok: #34D399;
   --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.35);
@@ -51,7 +55,7 @@ body {
   padding: 0;
   background-color: var(--bg-canvas);
   color: var(--text-primary);
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.65;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
@@ -59,7 +63,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-  font-family: 'Fraunces', Georgia, serif;
+  font-family: 'Georgia', 'Times New Roman', serif;
   color: var(--text-primary);
   margin-top: 0;
   font-weight: 600;
@@ -92,7 +96,7 @@ strong, b {
 }
 
 code, .mono-num, .mono-meta, .mono-step {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: ui-monospace, 'SFMono-Regular', 'Menlo', 'Consolas', monospace;
   font-variant-numeric: tabular-nums;
 }
 
@@ -1756,16 +1760,162 @@ html[data-theme="dark"] .btn-primary:hover {
   }
 }
 
-/* === Копрограмма и ситовый анализ (лабораторная работа) === */
+/* === Копрограмма, ситовый анализ и Бумажная мастерская Алисы === */
+.biolab-primary-anchor {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+}
+
 .copro-lab {
   display: grid;
   gap: 1.25rem;
   padding: 1.5rem;
-  background: var(--bg-surface);
+  background:
+    radial-gradient(circle at 92% 6%, var(--lamp-glow), transparent 46%),
+    var(--bg-surface);
   border: 1px solid var(--border-hairline);
+  border-top: 3px solid var(--lamp-amber);
   border-radius: 10px;
   box-shadow: var(--shadow-subtle);
+  scroll-margin-top: 5rem;
 }
+
+/* --- Шапка с биохимиком Алисой --- */
+.alisa-banner {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 1.15rem;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-hairline);
+  border-left: 4px solid var(--accent-primary);
+  border-radius: 8px;
+}
+
+.alisa-banner.mood-alert,
+.alisa-banner.mood-skeptic {
+  border-left-color: var(--status-warn);
+}
+
+.alisa-banner.mood-proud {
+  border-left-color: var(--status-ok);
+}
+
+.alisa-avatar-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--lamp-amber);
+  background: #DFD9CC;
+  flex-shrink: 0;
+}
+
+.alisa-portrait-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.alisa-speech-box {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.alisa-header-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.alisa-name-badge {
+  font-family: 'Georgia', serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.alisa-mood-tag {
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-hairline);
+}
+
+.alisa-quote {
+  margin: 0;
+  font-size: 0.96rem;
+  line-height: 1.55;
+  color: var(--text-primary);
+  max-width: 85ch;
+}
+
+/* --- Верхняя панель выбора партии и переключения столов --- */
+.biolab-top-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 1rem;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-hairline);
+  border-radius: 8px;
+}
+
+.batch-selector-group {
+  display: grid;
+  gap: 0.35rem;
+  flex: 1 1 320px;
+}
+
+.batch-selector-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.wings-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.wing-tab-btn {
+  appearance: none;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-hairline);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.wing-tab-btn:hover {
+  border-color: var(--accent-primary);
+}
+
+.wing-tab-btn.active {
+  background: var(--accent-primary);
+  color: #F4F1EA;
+  border-color: var(--accent-primary);
+}
+
+.wing-tab-btn.is-locked {
+  opacity: 0.72;
+}
+
+.wing-a-container {
+  display: grid;
+  gap: 1rem;
+}
+
 .copro-steps {
   display: flex;
   flex-wrap: wrap;
@@ -1776,43 +1926,80 @@ html[data-theme="dark"] .btn-primary:hover {
   font-size: 0.82rem;
   color: var(--text-muted);
 }
+
 .copro-steps li {
-  padding: 0.35rem 0.7rem;
+  padding: 0.35rem 0.75rem;
   border: 1px solid var(--border-hairline);
-  border-radius: 999px;
+  border-radius: 6px;
+  background: var(--bg-canvas);
 }
+
 .copro-steps li.is-done {
   color: var(--status-ok);
   border-color: var(--status-ok);
 }
+
 .copro-steps li.is-current {
   color: var(--accent-primary);
   border-color: var(--accent-primary);
   background: var(--accent-soft);
   font-weight: 600;
 }
+
 .copro-panel {
   display: grid;
-  gap: 1rem;
+  gap: 1.1rem;
 }
+
 .copro-lead {
   margin: 0;
   color: var(--text-primary);
+  font-size: 0.96rem;
 }
-.copro-sieves {
+
+/* --- Тактильные карточки управления приборами --- */
+.tactile-controls-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.9rem;
 }
-.copro-sieve {
+
+.tactile-control-card {
   display: grid;
   gap: 0.6rem;
+  padding: 1rem;
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-hairline);
+  border-radius: 8px;
+}
+
+.tactile-control-card h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.tactile-control-card p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.copro-sieves {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.85rem;
+}
+
+.copro-sieve {
+  display: grid;
+  gap: 0.55rem;
   justify-items: center;
+  text-align: center;
   padding: 1rem;
   background: var(--bg-subtle);
   border: 1px solid var(--border-hairline);
   border-radius: 8px;
 }
+
 .copro-sieve-mesh {
   display: grid;
   place-items: center;
@@ -1820,151 +2007,284 @@ html[data-theme="dark"] .btn-primary:hover {
   height: 84px;
   border-radius: 50%;
   border: 3px solid var(--text-muted);
-  background-image: repeating-linear-gradient(0deg, transparent 0 6px, var(--border-hairline) 6px 7px), repeating-linear-gradient(90deg, transparent 0 6px, var(--border-hairline) 6px 7px);
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 6px, var(--border-hairline) 6px 7px),
+    repeating-linear-gradient(90deg, transparent 0 6px, var(--border-hairline) 6px 7px);
   font-weight: 700;
   color: var(--text-primary);
 }
+
 .copro-sieve.is-washed .copro-sieve-mesh {
   border-color: var(--status-ok);
+  background-color: var(--accent-soft);
 }
+
 .copro-sieve-result {
   color: var(--status-ok);
   font-weight: 600;
 }
+
+/* --- Микроскопия с окулярной линейкой --- */
+.microscope-Split-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 340px) 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.microscope-controls-col {
+  display: grid;
+  gap: 0.85rem;
+}
+
 .copro-scope {
-  width: min(100%, 360px);
+  width: min(100%, 330px);
   aspect-ratio: 1;
   justify-self: center;
   border-radius: 50%;
-  background: radial-gradient(circle, #f6f0dc 0 60%, #e9dfbf 100%);
+  background: radial-gradient(circle, #f6f0dc 0 62%, #e4d8b4 100%);
   border: 6px solid var(--text-primary);
+  box-shadow: inset 0 0 18px rgba(44, 48, 46, 0.25);
 }
+
 .copro-grid {
-  stroke: rgba(24, 29, 26, 0.15);
-  stroke-width: 0.3;
+  stroke: rgba(44, 48, 46, 0.16);
+  stroke-width: 0.35;
 }
+
+.copro-ruler-axis {
+  stroke: #9A3412;
+  stroke-width: 0.55;
+  stroke-dasharray: 1.5 1;
+}
+
 .copro-fiber {
-  stroke: #7a5a2e;
-  stroke-width: 0.9;
+  stroke: #6e4f26;
+  stroke-width: 1.1;
   stroke-linecap: round;
+  transition: filter 0.15s ease;
 }
+
 .copro-choices {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
 }
+
 .copro-choices-col {
   flex-direction: column;
   align-items: stretch;
 }
+
 .copro-choices-col .btn-secondary {
   white-space: normal;
   text-align: left;
   justify-content: flex-start;
 }
+
+/* --- Экспресс-тест pH --- */
+.ph-visual-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem;
+}
+
 .copro-strip {
-  width: 64px;
+  width: 68px;
   height: 140px;
   border-radius: 6px;
   border: 1px solid var(--border-hairline);
-  background: linear-gradient(to bottom, #fff 0 55%, var(--strip) 55% 100%);
+  background: linear-gradient(to bottom, #F4F1EA 0 52%, var(--strip) 52% 100%);
+  box-shadow: var(--shadow-subtle);
 }
+
 .copro-scale {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
+  gap: 0.65rem;
+  flex: 1;
 }
+
 .copro-swatch {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
   min-height: 44px;
-  padding: 0.4rem 0.9rem 0.4rem 0.4rem;
+  padding: 0.45rem 0.9rem 0.45rem 0.45rem;
   border: 1px solid var(--border-hairline);
   border-radius: 8px;
-  background: var(--bg-surface);
+  background: var(--bg-canvas);
   color: var(--text-primary);
   font: inherit;
+  font-weight: 500;
   cursor: pointer;
 }
+
 .copro-swatch::before {
   content: '';
   width: 32px;
   height: 32px;
   border-radius: 4px;
   background: var(--swatch);
+  border: 1px solid rgba(44, 48, 46, 0.2);
 }
+
 .copro-swatch:hover,
 .copro-swatch:focus-visible {
   border-color: var(--accent-primary);
 }
+
+/* --- Протокол вердикта и Стол 2 (Бумажная мастерская) --- */
+.verdict-summary-card {
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-hairline);
+  background: var(--bg-canvas);
+}
+
+.verdict-summary-card.is-violation {
+  border-left: 5px solid var(--status-warn);
+}
+
+.verdict-summary-card.is-norm {
+  border-left: 5px solid var(--status-ok);
+}
+
 .copro-report {
   display: grid;
   grid-template-columns: max-content 1fr;
-  gap: 0.4rem 1rem;
+  gap: 0.5rem 1.25rem;
   margin: 0;
 }
+
 .copro-report dt {
   color: var(--text-muted);
+  font-weight: 500;
 }
+
 .copro-report dd {
   margin: 0;
+  font-weight: 500;
 }
-.copro-craft {
+
+.bubble-level-track {
+  position: relative;
+  height: 22px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(154, 52, 18, 0.2) 0%, rgba(21, 101, 52, 0.25) 35% 65%, rgba(154, 52, 18, 0.2) 100%);
+  border: 1px solid var(--border-hairline);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.bubble-level-dot {
+  width: 26px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--accent-primary);
+  border: 2px solid #F4F1EA;
+  transition: transform 0.12s ease;
+}
+
+.crafted-sheet-showcase {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.25rem;
+  background: var(--bg-canvas);
+  border: 1px solid var(--border-hairline);
+  border-radius: 8px;
+}
+
+.crafted-sheet-details {
   display: grid;
   gap: 0.6rem;
-  justify-items: start;
+  flex: 1 1 280px;
 }
+
+.crafted-sheet-details h4 {
+  margin: 0;
+}
+
 .copro-note {
   margin: 0;
   color: var(--text-secondary);
 }
+
 .copro-sheet {
   display: grid;
-  gap: 0.25rem;
-  width: 148px;
-  height: 210px;
+  gap: 0.4rem;
+  width: 184px;
+  min-height: 236px;
+  height: auto;
   padding: 1rem;
-  align-content: end;
-  border-radius: 2px;
-  background: radial-gradient(circle at 30% 20%, rgba(122, 90, 46, 0.18) 0 2px, transparent 3px) 0 0 / 14px 14px, #efe6cf;
-  color: #3d3220;
-  box-shadow: var(--shadow-subtle);
+  align-content: space-between;
+  border-radius: 3px;
+  border: 1px solid #C8B99E;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(122, 90, 46, 0.16) 0 2px, transparent 3px) 0 0 / 14px 14px,
+    #EFE6CF;
+  color: #2C302E;
+  box-shadow: 0 6px 18px rgba(44, 48, 46, 0.12);
 }
+
+.sheet-watermark {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: #7A684B;
+  border-bottom: 1px dashed rgba(122, 104, 75, 0.4);
+  padding-bottom: 0.25rem;
+}
+
+.sheet-grade-name {
+  font-family: 'Georgia', serif;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: #1B5E3A;
+}
+
 .copro-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
 }
+
 .copro-status {
   margin: 0;
   min-height: 1.5em;
+  font-weight: 500;
   color: var(--text-secondary);
 }
+
 .copro-status[data-tone='ok'] {
   color: var(--status-ok);
 }
+
 .copro-status[data-tone='warn'] {
   color: var(--status-warn);
-}
-@media (max-width: 560px) {
-  .copro-lab {
-    padding: 1rem;
-  }
-  .copro-report {
-    grid-template-columns: 1fr;
-  }
-}
-
-.copro-lab {
-  scroll-margin-top: 5rem;
 }
 
 .copro-listing {
   font-size: 0.85rem;
   color: var(--text-secondary);
 }
+
 .copro-listing ul {
   columns: 3;
   margin: 0.4rem 0 0;
+}
+
+@media (max-width: 768px) {
+  .alisa-banner {
+    grid-template-columns: 1fr;
+  }
+  .microscope-Split-layout {
+    grid-template-columns: 1fr;
+  }
+  .copro-report {
+    grid-template-columns: 1fr;
+  }
 }

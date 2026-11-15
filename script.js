@@ -22,11 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isEmbedded) {
       bodyEl.classList.add('is-embedded');
       if (embeddedRibbon) embeddedRibbon.hidden = false;
-      if (previewEmbeddedBtn) previewEmbeddedBtn.textContent = 'Выйти из режима оверлея';
+      if (previewEmbeddedBtn) previewEmbeddedBtn.textContent = 'Развернуть лабораторный журнал';
     } else {
       bodyEl.classList.remove('is-embedded');
       if (embeddedRibbon) embeddedRibbon.hidden = true;
-      if (previewEmbeddedBtn) previewEmbeddedBtn.textContent = 'Режим оверлея (?embedded=1)';
+      if (previewEmbeddedBtn) previewEmbeddedBtn.textContent = 'Режим планшета станции';
     }
   }
 
