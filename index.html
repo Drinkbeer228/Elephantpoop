@@ -38,6 +38,7 @@
       <a href="#soil-science">Почвоведение</a>
       <a href="#agronomy">Калькуляторы C:N и WHC</a>
       <a href="#protocols">Лабораторные симуляторы</a>
+      <a href="#coprology">Копрограмма</a>
       <a href="#slonologia-edu">Слонология.EDU (51)</a>
     </nav>
 
@@ -51,7 +52,7 @@
   <!-- Панель интеграции для режима встраивания (?embedded=1) -->
   <div class="embedded-ribbon" id="embedded-ribbon" hidden>
     <div class="embedded-ribbon-inner">
-      <span class="mono-meta">RESEARCH-STATION OVERLAY · MODULE: SUBSTRATE-BIO-LAB &amp; SLONOLOGIA.EDU</span>
+      <span class="mono-meta">БИО-ЛАБОРАТОРИЯ СТАНЦИИ · ЛАБОРАТОРИЯ СУБСТРАТА</span>
       <div class="embedded-links">
         <a href="#biochemistry">01. Биохимия</a>
         <span aria-hidden="true">·</span>
@@ -60,6 +61,8 @@
         <a href="#agronomy">03. Калькуляторы</a>
         <span aria-hidden="true">·</span>
         <a href="#protocols">04. Симуляторы</a>
+        <span aria-hidden="true">·</span>
+        <a href="#coprology">Копрограмма</a>
         <span aria-hidden="true">·</span>
         <a href="#slonologia-edu">05. Слонология.EDU</a>
       </div>
@@ -888,6 +891,19 @@
     </section>
 
     <!-- РАЗДЕЛ 05: ОБРАЗОВАТЕЛЬНАЯ ПЛАТФОРМА СЛОНОЛОГИЯ.EDU (51 МОДУЛЬ, РАНГИ И АЧИВКИ) -->
+    <section id="coprology" class="science-section visible" aria-labelledby="coprology-title">
+      <div class="section-header">
+        <div class="section-kicker">Лабораторная работа · Партия сырья из Манежа</div>
+        <h2 id="coprology-title">Копрограмма и ситовый анализ</h2>
+        <p class="section-intro">
+          Электрокар привёз к разгрузочному пандусу партию навоза после уборки в Манеже. Отмойте пробу на ситах 4, 2 и 1 мм, оцените под микроскопом длину волокон и проверьте pH летучих жирных кислот: так лаборатория судит о рационе стада и о том, годится ли волокно на «слоновью бумагу».
+        </p>
+      </div>
+      <div id="coprology-lab" class="copro-lab">
+        <noscript><p>Лабораторная работа требует JavaScript.</p></noscript>
+      </div>
+    </section>
+
     <section id="slonologia-edu" class="science-section visible">
       <div class="section-header">
         <div class="section-kicker">05. Образовательная экосистема · Интеграция coursesData.ts и progress.ts</div>
@@ -1121,5 +1137,7 @@
   <script src="modules-data.js"></script>
   <script src="station-link.js"></script>
   <script src="script.js"></script>
+  <script src="coprology.js"></script>
+  <script src="coprology-ui.js"></script>
 </body>
 </html>

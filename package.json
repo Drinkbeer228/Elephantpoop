@@ -7,7 +7,8 @@
     "dev": "npx serve . -l 3000",
     "start": "npx serve . -l 3000",
     "build": "echo 'Build complete'",
-    "lint": "echo 'Lint complete'"
+    "lint": "echo 'Lint complete'",
+    "test": "node --test tests/station.test.js tests/coprology.test.js"
   },
   "devDependencies": {
     "serve": "^14.2.4"

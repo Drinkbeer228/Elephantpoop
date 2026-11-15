@@ -4,6 +4,7 @@
  *    а кнопка «На станцию» в ленте оверлея просит станцию закрыть «планшет» (`close-request`).
  * 2. Сводка для формуляра: ключ `ers_progress_v1:biolab`, схема `ers.progress/1` — только id модуля курса,
  *    статус, время и балл. Засчитываются модули, у которых есть дата прохождения (демо-данные курса без неё).
+ *    Записи лабораторных работ (копрограмма, лист бумаги) пишет `recordItem`; сводка курса их сохраняет.
  */
 (function (root, factory) {
   const api = factory();
@@ -31,12 +32,64 @@
     return { schema: 'ers.progress/1', module: MODULE, updatedAt: updatedAt || now || new Date().toISOString(), items };
   }
 
+  function store(storage) {
+    return storage || (typeof localStorage !== 'undefined' ? localStorage : null);
+  }
+
+  /** Сводка, уже лежащая в памяти, или null для пустого и чужого. */
+  function readSummary(storage) {
+    try {
+      const s = store(storage);
+      const x = s ? JSON.parse(s.getItem(KEY) || 'null') : null;
+      return x && x.schema === 'ers.progress/1' && x.module === MODULE && x.items && typeof x.items === 'object' ? x : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  /** Записи, которые пишет не курс, а лабораторные работы: при пересчёте курса они остаются. */
+  function labItems(summary) {
+    const out = {};
+    for (const [id, it] of Object.entries((summary && summary.items) || {})) {
+      if (ID.test(id) && it && it.kind !== 'module') out[id] = it;
+    }
+    return out;
+  }
+
   function writeSummary(progress, storage) {
     try {
-      const s = storage || (typeof localStorage !== 'undefined' ? localStorage : null);
-      if (s) s.setItem(KEY, JSON.stringify(toSummary(progress)));
+      const s = store(storage);
+      if (!s) return;
+      const next = toSummary(progress);
+      const kept = labItems(readSummary(s));
+      for (const [id, it] of Object.entries(kept)) {
+        if (!(id in next.items)) next.items[id] = it;
+        if (it.at > next.updatedAt) next.updatedAt = it.at;
+      }
+      s.setItem(KEY, JSON.stringify(next));
     } catch (e) {
       // Нет места или память закрыта: станция просто не увидит сводку.
+    }
+  }
+
+  /** Одна запись лабораторной работы: `done` не понижается до `started`, остальное — по новизне (CONTRACT.md §3). */
+  function recordItem(id, item, storage) {
+    if (!ID.test(id) || !item || (item.status !== 'done' && item.status !== 'started')) return false;
+    try {
+      const s = store(storage);
+      if (!s) return false;
+      const cur = readSummary(s) || { schema: 'ers.progress/1', module: MODULE, updatedAt: item.at, items: {} };
+      const prev = cur.items[id];
+      if (prev && prev.status === 'done' && item.status !== 'done') return false;
+      if (prev && prev.status === 'done' && typeof prev.score === 'number' && typeof item.score === 'number' && prev.score > item.score) {
+        item = Object.assign({}, item, { score: prev.score });
+      }
+      cur.items[id] = item;
+      if (!cur.updatedAt || item.at > cur.updatedAt) cur.updatedAt = item.at;
+      s.setItem(KEY, JSON.stringify(cur));
+      return true;
+    } catch (e) {
+      return false;
     }
   }
 
@@ -46,6 +99,15 @@
     } catch (e) {
       return true;
     }
+  }
+
+  function embedded() {
+    return typeof window !== 'undefined' && framed() && new URLSearchParams(window.location.search).get('embedded') === '1';
+  }
+
+  /** Попросить станцию закрыть «планшет»; вне станции — ничего. */
+  function requestClose() {
+    if (embedded()) post('close-request');
   }
 
   function post(type, extra) {
@@ -58,7 +120,7 @@
 
   /** Подключает протокол, если страница открыта станцией. Возвращает true внутри станции. */
   function connect(doc) {
-    if (typeof window === 'undefined' || !framed() || new URLSearchParams(window.location.search).get('embedded') !== '1') return false;
+    if (!embedded()) return false;
     const ribbon = doc.querySelector('.embedded-links');
     if (ribbon && !doc.getElementById('ers-close')) {
       const b = doc.createElement('button');
@@ -77,5 +139,5 @@
     return true;
   }
 
-  return { KEY, toSummary, writeSummary, connect };
+  return { KEY, toSummary, writeSummary, readSummary, recordItem, requestClose, embedded, connect };
 });
